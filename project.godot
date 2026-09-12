@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="HackWestTx2026"
+run/main_scene="uid://cg2jjj2okw5eq"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
@@ -18,8 +19,14 @@ config/icon="res://Assets/icon.svg"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/stretch/mode="canvas_items"
+window/size/mode=3
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [physics]
 
