@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://chm3008t7gynl"
+path="res://.godot/imported/3pairmult.png-e42bfedf8b61d38db9c82cad94db60bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/3pairmult.png"
+dest_files=["res://.godot/imported/3pairmult.png-e42bfedf8b61d38db9c82cad94db60bd.ctex"]
 
 [params]
 

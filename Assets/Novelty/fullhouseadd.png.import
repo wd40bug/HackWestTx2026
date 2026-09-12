@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://bjnbk0dqdrssh"
+path="res://.godot/imported/fullhouseadd.png-5b1bddf24d35f65c84355fa8d47233c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/fullhouseadd.png"
+dest_files=["res://.godot/imported/fullhouseadd.png-5b1bddf24d35f65c84355fa8d47233c9.ctex"]
 
 [params]
 

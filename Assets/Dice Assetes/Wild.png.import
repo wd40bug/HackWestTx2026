@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://bwsljkcdlw8v3"
+path="res://.godot/imported/Wild.png-70f98b4503f433e4c7792658e23765ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Dice Assetes/Wild.png"
+dest_files=["res://.godot/imported/Wild.png-70f98b4503f433e4c7792658e23765ab.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://dke7ckubdo1gg"
+path="res://.godot/imported/Exploded.png-a5b4e2dafaae323f349dc930fc921ff7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/Exploded.png"
+dest_files=["res://.godot/imported/Exploded.png-a5b4e2dafaae323f349dc930fc921ff7.ctex"]
 
 [params]
 
