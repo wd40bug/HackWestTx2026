@@ -10,6 +10,9 @@ var sides_to_score: Array[Die_side] = []
 var unbanked_score: int = 0
 var banked_score: int = 0
 
+signal banked_score_sig(new_score: int)
+signal unbanked_score_sig(unbank_score: int)
+
 enum Scoring_Dice_Sets {
 	SINGLE_1 = 100,
 	SINGLE_5 = 50,
@@ -31,26 +34,46 @@ enum Scoring_Dice_Sets {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var die_array: Array[Die] = init_base_dice()
+	
+	var die_side_array: Array[Die_side] = await roll_rollable_dice(die_array)
+	for die in die_side_array:
+		die.print_parameters()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(Input.is_action_pressed("confirm_dice")):
+		score_dice()
+		
 
 # Create an array of 6 dice with normal sides, weights, and no abilities
 func init_base_dice() -> Array[Die]:
 	var die_array: Array[Die] = []
-	for i in range(0, 6):
+	"""for i in range(0, 6):
+		var new_die: Die = Die.new()
+		new_die.create_sides(i)
+		die_array.append(new_die)"""
+	#die_array = $Dice.get_children() as Array[Die]
+	#var i = 0
+	"""for die in $Dice.get_children():
 		var new_die: Die = Die.new()
 		new_die.create_sides(i)
 		die_array.append(new_die)
+		i += 1"""
+	for i in range($Dice.get_child_count()):
+		var die: Die = $Dice.get_child(i) as Die
+		print(die)
+		die.create_sides(i)
+		die_array.append(die)
+	
+	print(die_array)
 	return die_array
 
 func roll_rollable_dice(dice: Array[Die]) -> Array[Die_side]:
 	var rolled_sides: Array[Die_side] = []
 	for i in rollable_dice:
-		var side: Die_side = dice[i].roll_die()
+		var side: Die_side = await dice[i].roll_die()
 		rolled_sides.append(side)
 	return rolled_sides
 
@@ -147,8 +170,15 @@ func bank_score():
 	banked_score += unbanked_score
 	unbanked_score = 0
 	reset_rollable_dice()
+	emit_signal("banked_score_sig", banked_score)
 	
+func score_dice():
+	unbanked_score += find_highest_hand_of_selected()
+	emit_signal("unbanked_score_sig", unbanked_score)
+
 # if unable to score
 func farkled_up():
 	unbanked_score = 0
 	reset_rollable_dice()
+
+	
