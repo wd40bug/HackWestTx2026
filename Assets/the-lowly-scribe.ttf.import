@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/the-lowly-scribe.ttf-b63dfcae71ac35de4a6d1d88
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
