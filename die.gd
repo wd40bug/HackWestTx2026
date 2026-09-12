@@ -14,10 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func create_sides():
+func create_sides(die_index: int):
 	for i in range(0, 6):
 		var side: Die_side = Die_side.new()
-		side.set_values(1, 0, i + 1)
+		side.set_values(1, 0, i + 1, die_index)
 		die_sides.append(side)
 
 # Modify a parameter of a side of the die
@@ -31,13 +31,13 @@ func modify_die_side_parameter(side: int, parameter: Parameter, value: int):
 		
 func print_die():
 	print("Novilty ability: ", die_ability)
+	print()
 	for i in range(0, 6):
 		print("side: ", i)
 		die_sides[i].print_parameters()
 		print()
 
-# return one of the values on the die, accounting for weight
-# for now only returns a number, not abilities or anything
+# return one of the sides of the die, accounting for weight
 func roll_die():
 	var total_weight: float = 0.0
 	for side in die_sides:
@@ -49,5 +49,5 @@ func roll_die():
 	for side in die_sides:
 		acc_weight += side.side_weight
 		if random_number < acc_weight:
-			return side.side_num
+			return side
 		
