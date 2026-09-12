@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8hkhlqafhpfm"
-path="res://.godot/imported/Five.png-518ceae0712c4c3ee841603fee94790a.ctex"
+uid="uid://s6k3xaqdq8f2"
+path="res://.godot/imported/BasicDie.png-50a90068c8e3198de3f33237a676dfc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Five.png"
-dest_files=["res://.godot/imported/Five.png-518ceae0712c4c3ee841603fee94790a.ctex"]
+source_file="res://Assets/Dice Assetes/BasicDie.png"
+dest_files=["res://.godot/imported/BasicDie.png-50a90068c8e3198de3f33237a676dfc0.ctex"]
 
 [params]
 

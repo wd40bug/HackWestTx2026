@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4l468geur2et"
-path="res://.godot/imported/Mainbg.png-9dea3e3c90359f2966e92ebe1cf39b28.ctex"
+uid="uid://cyvvl447nf401"
+path="res://.godot/imported/One.png-c0cd489e22aba5416c2fce867a7ace92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-9dea3e3c90359f2966e92ebe1cf39b28.ctex"]
+source_file="res://Assets/Dice Assetes/One.png"
+dest_files=["res://.godot/imported/One.png-c0cd489e22aba5416c2fce867a7ace92.ctex"]
 
 [params]
 

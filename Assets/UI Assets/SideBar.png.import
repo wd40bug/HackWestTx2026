@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b603i0rvrt7qp"
-path="res://.godot/imported/Six.png-339f4a7f690c7db7816d2102b9113344.ctex"
+uid="uid://2edkfulvhxfs"
+path="res://.godot/imported/SideBar.png-266c52ed3c2a2f2562c5d76de07ae035.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Six.png"
-dest_files=["res://.godot/imported/Six.png-339f4a7f690c7db7816d2102b9113344.ctex"]
+source_file="res://Assets/UI Assets/SideBar.png"
+dest_files=["res://.godot/imported/SideBar.png-266c52ed3c2a2f2562c5d76de07ae035.ctex"]
 
 [params]
 

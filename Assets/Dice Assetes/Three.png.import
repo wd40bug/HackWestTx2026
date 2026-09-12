@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1a1viouwewf3"
-path="res://.godot/imported/Four.png-0561643f60806b8b76b91e5fa8d100a7.ctex"
+uid="uid://b5832gx2kp524"
+path="res://.godot/imported/Three.png-0e1331446deb0a5ff1d8fddd0f6ee582.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Four.png"
-dest_files=["res://.godot/imported/Four.png-0561643f60806b8b76b91e5fa8d100a7.ctex"]
+source_file="res://Assets/Dice Assetes/Three.png"
+dest_files=["res://.godot/imported/Three.png-0e1331446deb0a5ff1d8fddd0f6ee582.ctex"]
 
 [params]
 
