@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://caq3q4cluyvh1"
+path="res://.godot/imported/Nadd4.png-52d59bf6bc955ba84a2eeebae1f7b4f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/Nadd4.png"
+dest_files=["res://.godot/imported/Nadd4.png-52d59bf6bc955ba84a2eeebae1f7b4f3.ctex"]
 
 [params]
 

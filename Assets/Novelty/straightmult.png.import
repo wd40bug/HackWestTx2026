@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://dogupi7xh66qa"
+path="res://.godot/imported/straightmult.png-170bae3edc9f22a3b2996c7cec10ae8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/straightmult.png"
+dest_files=["res://.godot/imported/straightmult.png-170bae3edc9f22a3b2996c7cec10ae8f.ctex"]
 
 [params]
 

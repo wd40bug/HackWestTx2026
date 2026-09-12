@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://cdu7fwt82yh7f"
+path="res://.godot/imported/GapStraight.png-23aab2eb164683be3d4d8323f0fbe212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/Novelty/GapStraight.png"
+dest_files=["res://.godot/imported/GapStraight.png-23aab2eb164683be3d4d8323f0fbe212.ctex"]
 
 [params]
 

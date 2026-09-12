@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7lki41j7jhch"
-path="res://.godot/imported/the-lowly-scribe.ttf-b63dfcae71ac35de4a6d1d88f11d46ab.fontdata"
+uid="uid://cr5o2oe7eq1qq"
+path="res://.godot/imported/Pixelta.ttf-3d55fe8903cddbb7ade6b7706e4466b2.fontdata"
 
 [deps]
 
-source_file="res://Assets/the-lowly-scribe.ttf"
-dest_files=["res://.godot/imported/the-lowly-scribe.ttf-b63dfcae71ac35de4a6d1d88f11d46ab.fontdata"]
+source_file="res://Assets/Pixelta.ttf"
+dest_files=["res://.godot/imported/Pixelta.ttf-3d55fe8903cddbb7ade6b7706e4466b2.fontdata"]
 
 [params]
 

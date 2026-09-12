@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://twhv5idljecv"
-path="res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"
+uid="uid://druxcdyh4r767"
+path="res://.godot/imported/Hover.png-3ad116e00c31544549f30ce111694620.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/Mainbg.png"
-dest_files=["res://.godot/imported/Mainbg.png-c2282edbf713098b3ea38608a32eef3f.ctex"]
+source_file="res://Assets/UI Assets/Hover.png"
+dest_files=["res://.godot/imported/Hover.png-3ad116e00c31544549f30ce111694620.ctex"]
 
 [params]
 
