@@ -1,0 +1,356 @@
+[gd_scene format=3 uid="uid://nseysgdx3jmi"]
+
+[ext_resource type="Texture2D" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
+[ext_resource type="Texture2D" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
+[ext_resource type="Texture2D" path="res://Assets/icon.svg" id="3_ycdy4"]
+[ext_resource type="FontFile" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/One.png" id="5_vivmo"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/Two.png" id="6_2cqfq"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/Three.png" id="7_yaehf"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/Four.png" id="8_074og"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/Five.png" id="9_cegan"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/Six.png" id="10_82xsv"]
+[ext_resource type="Texture2D" path="res://Assets/Dice Assetes/BasicDie.png" id="11_getpj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcva3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vivmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2cqfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yaehf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_074og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cegan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_82xsv")
+}],
+"loop": 1,
+"name": &"Roll",
+"speed": 7.0
+}]
+
+[node name="Main" type="Node2D" unique_id=203334925]
+
+[node name="UI" type="Control" parent="." unique_id=1379449162]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=29713066]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 140.5
+scale = Vector2(2, 2)
+texture = ExtResource("1_efxa6")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="InfoPane" type="TextureRect" parent="UI" unique_id=1772426569]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 270.0
+texture = ExtResource("2_dg77c")
+
+[node name="Rack" type="TextureRect" parent="UI" unique_id=1244232318]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 480.0
+offset_bottom = 75.0
+texture = ExtResource("3_ycdy4")
+expand_mode = 1
+
+[node name="RollingArea" type="TextureRect" parent="UI" unique_id=842106174]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 180.0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("3_ycdy4")
+expand_mode = 1
+
+[node name="LevelNum" type="Label" parent="UI" unique_id=1888048386]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 24.0
+offset_right = 83.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 28
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalNum" type="Label" parent="UI" unique_id=395506092]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 50.0
+offset_right = 126.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.6745098, 0.34509805, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "10000
+"
+
+[node name="BankedNum" type="Label" parent="UI" unique_id=1251190106]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 83.0
+offset_right = 126.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.29411766, 0.4117647, 0.18431373, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "10000
+"
+
+[node name="ScoreNum" type="Label" parent="UI" unique_id=257660155]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 105.0
+offset_right = 126.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.4627451, 0.25882354, 0.5411765, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "10000
+"
+
+[node name="TurnNum" type="Label" parent="UI" unique_id=881497007]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 155.0
+offset_right = 84.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 24
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dice" type="Control" parent="." unique_id=2028048908]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 15.0
+
+[node name="Die1" type="AnimatedSprite2D" parent="Dice" unique_id=400353154]
+z_index = 1
+position = Vector2(160, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+frame = 4
+frame_progress = 0.7628935
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die1" unique_id=570534850]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die1" unique_id=1139664449]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Die2" type="AnimatedSprite2D" parent="Dice" unique_id=1296916759]
+z_index = 1
+position = Vector2(210, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die2" unique_id=977059361]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die2" unique_id=113512864]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Die3" type="AnimatedSprite2D" parent="Dice" unique_id=779526743]
+z_index = 1
+position = Vector2(260, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die3" unique_id=1418060055]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die3" unique_id=1151899878]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Die4" type="AnimatedSprite2D" parent="Dice" unique_id=1194617023]
+z_index = 1
+position = Vector2(310, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die4" unique_id=1643964503]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die4" unique_id=13092493]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Die5" type="AnimatedSprite2D" parent="Dice" unique_id=723667655]
+z_index = 1
+position = Vector2(360, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die5" unique_id=1793212872]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die5" unique_id=944277827]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Die6" type="AnimatedSprite2D" parent="Dice" unique_id=66483750]
+z_index = 1
+position = Vector2(410, 210)
+sprite_frames = SubResource("SpriteFrames_hcva3")
+animation = &"Roll"
+metadata/_edit_group_ = true
+
+[node name="Die Base" type="TextureRect" parent="Dice/Die6" unique_id=425719651]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_getpj")
+
+[node name="Button" type="Button" parent="Dice/Die6" unique_id=1952371799]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
