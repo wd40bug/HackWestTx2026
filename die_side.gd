@@ -1,9 +1,11 @@
 class_name Die_side
 extends Node
 
+enum DieType { ONE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, WILD}
+
 var side_weight: int
 var side_ability: int
-var side_num: int
+var side_num: DieType
 
 # the die that the side belongs to
 var side_index: int

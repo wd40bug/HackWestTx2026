@@ -17,6 +17,16 @@ func _process(delta: float) -> void:
 	pass
 "
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_getpj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryguw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d13ii"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1u8w0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0odxb"]
+
 [node name="MainMenu" type="Control" unique_id=951430864]
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +48,11 @@ offset_left = 192.0
 offset_top = 108.0
 offset_right = 285.0
 offset_bottom = 164.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_getpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ryguw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d13ii")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_1u8w0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0odxb")
 script = ExtResource("2_7vrkn")
 
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button" method="_on_pressed"]
