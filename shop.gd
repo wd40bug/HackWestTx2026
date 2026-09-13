@@ -20,6 +20,8 @@ var mod_images = (
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ChestScreen.visible = false
+	$Chests/Chest1.visible = true
+	$Chests/Chest2.visible = true
 	seed(seed)
 	generate_chests()
 
@@ -107,21 +109,55 @@ func open_chest(type):
 		
 	$ChestScreen.visible = true
 
-func on_side_select(side):
-	$ChestScreen.visible = false
-	$Chest_open_info.text = "Chest side selected with side of %d and mod of %s"%[chestsides[side][0], chestsides[side][1]]
-
 func _on_chest_1_button_button_down():
+	$Chests/Chest1.visibile = false
 	open_chest(shopchests[0][0])
 
 func _on_chest_2_button_button_down():
+	$Chests/Chest2.visibile = false
 	open_chest(shopchests[1][0])
 
 
 func _on_chest_screen_side_selected(side):
 	on_side_select(side)
 
-#
+func on_side_select(side):
+	$ChestScreen.visible = false
+	$Chest_open_info.text = "Select die and side!"
+	
+
+func user_die_select(die):
+	pass
+
 #func _on_item_hover(special: Special) -> void:
 	#print("Hovering!!!")
+	#$TextureRect.visible = true
 	#$TextureRect.display(special)
+
+
+#func _on_shop_item_hover(item: Special) -> void:
+	#pass # Replace with function body.
+
+
+func _on_pd_1_button_button_down() -> void:
+	user_die_select(1)
+
+
+func _on_pd_2_button_button_down() -> void:
+	user_die_select(2)
+
+
+func _on_pd_3_button_button_down() -> void:
+	user_die_select(3)
+
+
+func _on_pd_4_button_button_down() -> void:
+	user_die_select(4)
+
+
+func _on_pd_5_button_button_down() -> void:
+	user_die_select(5)
+
+
+func _on_pd_6_button_button_down() -> void:
+	pass # Replace with function body.

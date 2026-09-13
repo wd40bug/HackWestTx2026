@@ -167,7 +167,7 @@ offset_right = 180.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 
-[node name="Button" type="Button" parent="UserDice/BasicDie" unique_id=1856048198]
+[node name="PD1Button" type="Button" parent="UserDice/BasicDie" unique_id=1856048198]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -182,7 +182,7 @@ offset_right = 240.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 
-[node name="Button" type="Button" parent="UserDice/BasicDie2" unique_id=402121185]
+[node name="PD2Button" type="Button" parent="UserDice/BasicDie2" unique_id=402121185]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -197,7 +197,7 @@ offset_right = 300.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 
-[node name="Button" type="Button" parent="UserDice/BasicDie3" unique_id=312692472]
+[node name="PD3Button" type="Button" parent="UserDice/BasicDie3" unique_id=312692472]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -212,7 +212,7 @@ offset_right = 360.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 
-[node name="Button" type="Button" parent="UserDice/BasicDie4" unique_id=1661612130]
+[node name="PD4Button" type="Button" parent="UserDice/BasicDie4" unique_id=1661612130]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -227,7 +227,7 @@ offset_right = 420.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 
-[node name="Button" type="Button" parent="UserDice/BasicDie5" unique_id=632907747]
+[node name="PD5Button" type="Button" parent="UserDice/BasicDie5" unique_id=632907747]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0

@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://nseysgdx3jmi"]
 
-[ext_resource type="Script" uid="uid://dy4n4a5hwr4tg" path="res://game.gd" id="1_ycdy4"]
-[ext_resource type="Texture2D" uid="uid://d4l468geur2et" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
 [ext_resource type="Texture2D" uid="uid://twhv5idljecv" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
+[ext_resource type="Script" uid="uid://dy4n4a5hwr4tg" path="res://game.gd" id="1_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://2edkfulvhxfs" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
-[ext_resource type="Texture2D" uid="uid://cn3m2ijfa2jbv" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
 [ext_resource type="Texture2D" uid="uid://cyvvl447nf401" path="res://Assets/Dice Assetes/One.png" id="5_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dnoeyhdx22yf8" path="res://Assets/Dice Assetes/Two.png" id="6_2cqfq"]
