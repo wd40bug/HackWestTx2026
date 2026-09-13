@@ -183,8 +183,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="button_down" from="Dice/Die1/Die1Button" to="." method="_on_die_1_button_button_down"]
-[connection signal="button_down" from="Dice/Die2/Die2Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Dice/Die2/Die2Button" to="." method="_on_die_2_button_button_down"]
+[connection signal="button_down" from="Dice/Die2/Die2Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Dice/Die3/Die3Button" to="." method="_on_die_3_button_button_down"]
 [connection signal="button_down" from="Dice/Die4/Die4Button" to="." method="_on_die_4_button_button_down"]
 [connection signal="button_down" from="Dice/Die5/Die5Button" to="." method="_on_die_5_button_button_down"]

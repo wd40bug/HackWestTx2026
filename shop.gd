@@ -18,15 +18,16 @@ var mod_images = (
 	"res://Assets/Modifiers/Weighted.png"])
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	$ChestScreen.visible = false
 	$Chests/Chest1.visible = true
 	$Chests/Chest2.visible = true
+	$Dice_Select.visible = false
 	seed(seed)
 	generate_chests()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta: float):
 	pass
 
 enum modifier {add, coins, daisy, multmod, weighted, none}
@@ -91,6 +92,10 @@ var chestsides = []
 var shop_cup
 
 var cup_pool: Array[String] = []
+
+var placing_side = 0
+
+var side_to_place
 
 func generate_cup():
 	const HAND_MULT_CHANCE = .5
@@ -199,41 +204,125 @@ func _on_chest_screen_side_selected(side):
 
 func on_side_select(side):
 	$ChestScreen.visible = false
+	$Chest_open_info.visible = true
 	$Chest_open_info.text = "Select die and side!"
+	side_to_place = chestsides[side]
+	placing_side = 1
 	
-
+var cur_selected
 func user_die_select(die):
-	pass
+	if die == cur_selected:
+		cur_selected = 9
+		$Dice_Select.visible = false
+		return
+	cur_selected = die
+	var cur_num
+	var cur_path
+	$Dice_Select.visible = true
+	for i in 6:
+		cur_num = gamemanager.dice_side_num[die][i]
+		cur_path = "Dice_Select/SelectDie%d/SD%dNum"%[i+1,i+1]
 
-#func _on_item_hover(special: Special) -> void:
+		match cur_num:
+			1:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/One.png")
+			2:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Two.png")
+			3:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Three.png")
+			4:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Four.png")
+			5:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Five.png")
+			6:
+				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Six.png")
+		cur_path = "Dice_Select/SelectDie%d/SD%dMod"%[i+1,i+1]
+		print(cur_path)
+		match gamemanager.dice_side_mod[die][i]:
+			0:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Add.png")
+			1:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Coins.png")
+			2:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Daisy.png")
+			3:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/MultModifier.png")
+			4:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Weighted.png")
+			5:
+				get_node(cur_path).texture = null
+
+func select_die_selected(side):
+	gamemanager.update_side(cur_selected, side, side_to_place[0], side_to_place[1])
+	$Chest_open_info.visible = false
+	user_die_select(cur_selected)
+
+#func _on_item_hover(special: Special):
 	#print("Hovering!!!")
 	#$TextureRect.visible = true
 	#$TextureRect.display(special)
 
 
-#func _on_shop_item_hover(item: Special) -> void:
+#func _on_shop_item_hover(item: Special):
 	#pass # Replace with function body.
 
 
-func _on_pd_1_button_button_down() -> void:
+func _on_pd_1_button_button_down():
+	user_die_select(0)
+
+
+func _on_pd_2_button_button_down():
 	user_die_select(1)
 
 
-func _on_pd_2_button_button_down() -> void:
+func _on_pd_3_button_button_down():
 	user_die_select(2)
 
 
-func _on_pd_3_button_button_down() -> void:
+func _on_pd_4_button_button_down():
 	user_die_select(3)
 
 
-func _on_pd_4_button_button_down() -> void:
+func _on_pd_5_button_button_down():
 	user_die_select(4)
 
 
-func _on_pd_5_button_button_down() -> void:
+func _on_pd_6_button_button_down():
 	user_die_select(5)
 
 
-func _on_pd_6_button_button_down() -> void:
-	pass # Replace with function body.
+
+func _on_sd_1_button_button_down():
+	if placing_side == 1:
+		select_die_selected(0)
+	else: return
+
+
+func _on_sd_2_button_button_down():
+	if placing_side == 1:
+		select_die_selected(1)
+	else: return
+
+
+func _on_sd_3_button_button_down():
+	if placing_side == 1:
+		select_die_selected(2)
+	else: return
+
+
+func _on_sd_4_button_button_down():
+	if placing_side == 1:
+		select_die_selected(3)
+	else: return
+
+
+func _on_sd_5_button_button_down():
+	if placing_side == 1:
+		select_die_selected(4)
+	else: return
+
+
+func _on_sd_6_button_button_down():
+	if placing_side == 1:
+		select_die_selected(5)
+	else: return

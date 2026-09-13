@@ -153,98 +153,6 @@ theme_override_fonts/font = ExtResource("3_gmb2m")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShopDice" type="Control" parent="." unique_id=969653277]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -10.0
-offset_top = -14.0
-offset_right = -10.0
-offset_bottom = -14.0
-mouse_filter = 1
-
-[node name="ShopDie1" type="TextureRect" parent="ShopDice" unique_id=1242445465]
-layout_mode = 0
-offset_left = 339.0
-offset_top = 225.0
-offset_right = 371.0
-offset_bottom = 257.0
-texture = ExtResource("4_8kdgp")
-metadata/_edit_group_ = true
-
-[node name="Price" type="Label" parent="ShopDice/ShopDie1" unique_id=2040606424]
-layout_mode = 0
-offset_left = -5.0
-offset_top = 30.0
-offset_right = 35.0
-offset_bottom = 55.0
-theme_override_fonts/font = ExtResource("3_gmb2m")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Side_mod" type="TextureRect" parent="ShopDice/ShopDie1" unique_id=1002242188]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Side_num" type="TextureRect" parent="ShopDice/ShopDie1" unique_id=507727]
-layout_mode = 1
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Button" type="Button" parent="ShopDice/ShopDie1" unique_id=590286472]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ShopDie2" type="TextureRect" parent="ShopDice" unique_id=1234837691]
-layout_mode = 0
-offset_left = 388.0
-offset_top = 224.0
-offset_right = 420.0
-offset_bottom = 256.0
-texture = ExtResource("4_8kdgp")
-metadata/_edit_group_ = true
-
-[node name="Price" type="Label" parent="ShopDice/ShopDie2" unique_id=1304993646]
-layout_mode = 0
-offset_left = -5.0
-offset_top = 30.0
-offset_right = 35.0
-offset_bottom = 55.0
-theme_override_fonts/font = ExtResource("3_gmb2m")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Side_mod" type="TextureRect" parent="ShopDice/ShopDie2" unique_id=2061867000]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Side_num" type="TextureRect" parent="ShopDice/ShopDie2" unique_id=1428237275]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="ShopDice/ShopDie2" unique_id=2068620375]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="UserDice" type="Control" parent="." unique_id=939722388]
 layout_mode = 3
 anchors_preset = 0
@@ -344,7 +252,7 @@ offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="UserDice/BasicDie6" unique_id=1934412457]
+[node name="PD6Button" type="Button" parent="UserDice/BasicDie6" unique_id=1934412457]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -446,8 +354,224 @@ offset_top = 142.0
 offset_right = 49.0
 offset_bottom = 165.0
 
+[node name="Dice_Select" type="Control" parent="." unique_id=55357392]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectDie1" type="TextureRect" parent="Dice_Select" unique_id=302613657]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 105.0
+offset_right = 130.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD1Mod" type="TextureRect" parent="Dice_Select/SelectDie1" unique_id=1257986603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD1Num" type="TextureRect" parent="Dice_Select/SelectDie1" unique_id=1062322753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD1Button" type="Button" parent="Dice_Select/SelectDie1" unique_id=1361911223]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
+[node name="SelectDie2" type="TextureRect" parent="Dice_Select" unique_id=2142548830]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 105.0
+offset_right = 190.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD2Mod" type="TextureRect" parent="Dice_Select/SelectDie2" unique_id=1989284111]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD2Num" type="TextureRect" parent="Dice_Select/SelectDie2" unique_id=432155700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD2Button" type="Button" parent="Dice_Select/SelectDie2" unique_id=1858680995]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
+[node name="SelectDie3" type="TextureRect" parent="Dice_Select" unique_id=694986894]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 105.0
+offset_right = 250.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD3Mod" type="TextureRect" parent="Dice_Select/SelectDie3" unique_id=1139779422]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD3Num" type="TextureRect" parent="Dice_Select/SelectDie3" unique_id=852197069]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD3Button" type="Button" parent="Dice_Select/SelectDie3" unique_id=570233421]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
+[node name="SelectDie4" type="TextureRect" parent="Dice_Select" unique_id=1607484457]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 105.0
+offset_right = 310.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD4Mod" type="TextureRect" parent="Dice_Select/SelectDie4" unique_id=745010850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD4Num" type="TextureRect" parent="Dice_Select/SelectDie4" unique_id=1510466718]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD4Button" type="Button" parent="Dice_Select/SelectDie4" unique_id=524066106]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
+[node name="SelectDie5" type="TextureRect" parent="Dice_Select" unique_id=2011165605]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 105.0
+offset_right = 370.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD5Mod" type="TextureRect" parent="Dice_Select/SelectDie5" unique_id=1194118988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD5Num" type="TextureRect" parent="Dice_Select/SelectDie5" unique_id=1268695836]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD5Button" type="Button" parent="Dice_Select/SelectDie5" unique_id=681425902]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
+[node name="SelectDie6" type="TextureRect" parent="Dice_Select" unique_id=760208124]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 105.0
+offset_right = 430.0
+offset_bottom = 155.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="SD6Mod" type="TextureRect" parent="Dice_Select/SelectDie6" unique_id=37004063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD6Num" type="TextureRect" parent="Dice_Select/SelectDie6" unique_id=1920075704]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SD6Button" type="Button" parent="Dice_Select/SelectDie6" unique_id=1928778177]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 45.0
+mouse_filter = 1
+
 [connection signal="button_down" from="Chests/Chest1/Chest1Button" to="." method="_on_chest_1_button_button_down"]
 [connection signal="button_down" from="Chests/Chest2/Chest2Button" to="." method="_on_chest_2_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie/PD1Button" to="." method="_on_pd_1_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie2/PD2Button" to="." method="_on_pd_2_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie3/PD3Button" to="." method="_on_pd_3_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie4/PD4Button" to="." method="_on_pd_4_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie5/PD5Button" to="." method="_on_pd_5_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie6/PD6Button" to="." method="_on_pd_6_button_button_down"]
 [connection signal="hover" from="ShopCup" to="." method="_on_item_hover"]
 [connection signal="unhover" from="ShopCup" to="." method="_on_shop_cup_unhover"]
 [connection signal="side_selected" from="ChestScreen" to="." method="_on_chest_screen_side_selected"]
+[connection signal="button_down" from="Dice_Select/SelectDie1/SD1Button" to="." method="_on_sd_1_button_button_down"]
+[connection signal="button_down" from="Dice_Select/SelectDie2/SD2Button" to="." method="_on_sd_2_button_button_down"]
+[connection signal="button_down" from="Dice_Select/SelectDie3/SD3Button" to="." method="_on_sd_3_button_button_down"]
+[connection signal="button_down" from="Dice_Select/SelectDie4/SD4Button" to="." method="_on_sd_4_button_button_down"]
+[connection signal="button_down" from="Dice_Select/SelectDie5/SD5Button" to="." method="_on_sd_5_button_button_down"]
+[connection signal="button_down" from="Dice_Select/SelectDie6/SD6Button" to="." method="_on_sd_6_button_button_down"]
