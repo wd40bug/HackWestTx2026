@@ -1,6 +1,7 @@
 extends Node
 
-var level = "level 1"
+
+var level = 1
 var dice_amm = 6
 var dice_side_num = ([
 	[1,2,3,4,5,6],
@@ -30,7 +31,9 @@ var money = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	nov_dice.resize(6)
+	nov_dice.fill(0)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

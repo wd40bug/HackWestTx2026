@@ -23,7 +23,7 @@ gamemanager="*uid://d0n4tsbt8b5vl"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=3
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/main_scene="uid://nseysgdx3jmi"
@@ -32,6 +32,10 @@ window/main_scene="uid://nseysgdx3jmi"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[gui]
+
+theme/custom_font="uid://c7lki41j7jhch"
 
 [input]
 

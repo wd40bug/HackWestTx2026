@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://brhheh6dnfoh5"]
+
+[ext_resource type="Texture2D" uid="uid://twhv5idljecv" path="res://Assets/UI Assets/Mainbg.png" id="1_5ye68"]
+
+[node name="PointScreen" type="Node2D" unique_id=1502215085]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1907736801]
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("1_5ye68")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1821113393]
+offset_left = 140.0
+offset_right = 315.0
+offset_bottom = 280.0
+color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1491095404]
+offset_left = 175.0
+offset_top = 10.0
+offset_right = 290.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 40
+text = "SCORE"
+
+[node name="Label5" type="Label" parent="." unique_id=206391626]
+offset_left = 147.0
+offset_top = 167.0
+offset_right = 309.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 24
+text = "Cash Earned"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="." unique_id=253967316]
+offset_left = 170.0
+offset_top = 47.0
+offset_right = 285.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 30
+text = "2,500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="." unique_id=2124173418]
+offset_left = 215.0
+offset_top = 95.0
+offset_right = 330.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 30
+text = "2,000"
+
+[node name="Label6" type="Label" parent="." unique_id=1945809297]
+offset_left = 232.0
+offset_top = 132.0
+offset_right = 347.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 30
+text = "500"
+
+[node name="Label3" type="Label" parent="." unique_id=2013000615]
+offset_left = 147.0
+offset_top = 96.0
+offset_right = 262.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 25
+text = "Goal:"
+
+[node name="Label4" type="Label" parent="." unique_id=1733895888]
+offset_left = 150.0
+offset_top = 130.0
+offset_right = 265.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 25
+text = "Extra:"
+
+[node name="Label8" type="Label" parent="." unique_id=1117019589]
+offset_left = 160.0
+offset_top = 200.0
+offset_right = 275.0
+offset_bottom = 241.0
+theme_override_font_sizes/font_size = 30
+text = "$20"
+horizontal_alignment = 1
+vertical_alignment = 1

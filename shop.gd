@@ -57,13 +57,13 @@ var cup_comp_mult_list: Array[String] = [
 	"comp_mult_mixed_fours",
 	"comp_mult_mixed_ones",
 	"comp_mult_mixed_sixes",
-	"comp_mult_mixed,threes",
+	"comp_mult_mixed_threes",
 	"comp_mult_mixed_twos",
 	"comp_mult_only_fives",
 	"comp_mult_only_fours",
 	"comp_mult_only_ones",
 	"comp_mult_only_sixes",
-	"comp_mult_only,threes",
+	"comp_mult_only_threes",
 	"comp_mult_only_twos"
 ]
 
@@ -99,7 +99,11 @@ var placing_side = 0
 
 var side_to_place
 
+var nov_select = 0
+
+
 func generate_cup():
+	$ShopCup.visible = true
 	const HAND_MULT_CHANCE = .5
 	const HAND_COMP_MULT_CHANCE = .3
 	const OTHER_ABILITY_CHANCE = .2
@@ -123,6 +127,9 @@ func generate_cup():
 var shop_nov: Array	 = []
 
 func generate_dice():
+	shop_nov.clear()
+	$ShopItem.visible = true
+	$ShopItem2.visible = true
 
 	shop_nov.append(load("res://Specials/Dice/" + novilty_pool.pick_random()))
 	shop_nov.append(load("res://Specials/Dice/" + novilty_pool.pick_random()))
@@ -132,6 +139,9 @@ func generate_dice():
 	$ShopItem.item_data = shop_nov[0]
 	$ShopItem2.item_data = shop_nov[1]
 	
+	$ShopItem/SIPrice1.text = "$%d"%shop_nov[0].price
+	$ShopItem2/SIPrice2.text = "$%d"%shop_nov[1].price
+
 	pass
 	
 func generate_side():
@@ -234,7 +244,6 @@ func _on_chest_2_button_button_down():
 	$Chests/Chest2.visible = false
 	open_chest(shopchests[1][0])
 
-
 func _on_chest_screen_side_selected(side):
 	on_side_select(side)
 
@@ -316,27 +325,81 @@ func _on_shop_cup_unhover() -> void:
 
 
 func _on_pd_1_button_button_down():
-	user_die_select(0)
+	if nov_select == 1:
+		gamemanager.nov_dice[0] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[0] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(0)
 
 
 func _on_pd_2_button_button_down():
-	user_die_select(1)
+	if nov_select == 1:
+		gamemanager.nov_dice[1] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[1] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(1)
 
 
 func _on_pd_3_button_button_down():
-	user_die_select(2)
+	if nov_select == 1:
+		gamemanager.nov_dice[2] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[2] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(2)
 
 
 func _on_pd_4_button_button_down():
-	user_die_select(3)
+	if nov_select == 1:
+		gamemanager.nov_dice[3] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[3] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(3)
 
 
 func _on_pd_5_button_button_down():
-	user_die_select(4)
+	if nov_select == 1:
+		gamemanager.nov_dice[4] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[4] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(4)
 
 
 func _on_pd_6_button_button_down():
-	user_die_select(5)
+	if nov_select == 1:
+		gamemanager.nov_dice[5] = shop_nov[0]
+		shop_nov[0] = null
+		nov_select = 0
+	elif nov_select == 2:
+		gamemanager.nov_dice[5] = shop_nov[1]
+		shop_nov[1] = null
+		nov_select = 0
+	else:
+		user_die_select(5)
 
 
 
@@ -378,12 +441,13 @@ func _on_sd_6_button_button_down():
 	
 
 
-func _on_reroll_button_down() -> void:
+func _on_reroll_button_down():
 	if gamemanager.money < 7:
 		return
 	else:
 		gamemanager.money -= 7
 		generate_chests()
+		generate_dice()
 
 
 func _on_shop_item_hover(item: Special) -> void:
@@ -412,3 +476,32 @@ func _on_shop_item_2_hover(item: Special) -> void:
 func _on_shop_item_2_unhover() -> void:
 	print("Unhovering!!!")
 	$TextureRect.hide_menu()
+
+
+func _on_next_button_down() -> void:
+	gamemanager.level += 1
+	get_tree().change_scene_to_file("res://main.tscn")
+
+
+func _on_cup_button_button_down():
+	gamemanager.money -= shop_cup.price
+	gamemanager.cups.append($ShopCup/TitleLabel.text)
+	$ShopCup.visible = false
+
+
+func _on_si_button_1_button_down() -> void:
+	if gamemanager.money >= shop_nov[0].price:
+		gamemanager.money -= shop_nov[0].price
+		$ShopItem.visible = false
+		nov_select = 1
+	else:
+		return
+
+
+func _on_si_button_2_button_down() -> void:
+	if gamemanager.money >= shop_nov[1].price:
+		gamemanager.money -= shop_nov[1].price
+		$ShopItem2.visible = false
+		nov_select = 2
+	else:
+		return
