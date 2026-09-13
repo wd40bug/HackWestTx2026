@@ -485,7 +485,7 @@ func _on_next_button_down() -> void:
 
 func _on_cup_button_button_down():
 	gamemanager.money -= shop_cup.price
-	gamemanager.cups.append($ShopCup/TitleLabel.text)
+	gamemanager.cups.append($ShopCup.item_data)
 	$ShopCup.visible = false
 
 
