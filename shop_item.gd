@@ -20,7 +20,8 @@ func _ready() -> void:
 		mouse_entered.connect(_on_mouse_entered)
 		mouse_exited.connect(_on_mouse_exited)
 		$CollisionShape2D.shape = RectangleShape2D.new()
-		$CollisionShape2D.shape.size = sprite.texture.get_size()
+		if sprite.texture:
+			$CollisionShape2D.shape.size = sprite.texture.get_size()
 
 func _update_visuals() -> void:
 	# Ensure the sprite node actually exists before trying to update it

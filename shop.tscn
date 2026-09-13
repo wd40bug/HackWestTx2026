@@ -10,8 +10,9 @@
 [ext_resource type="Script" uid="uid://dr44ht4t7vi2l" path="res://hover.gd" id="9_xqmyw"]
 [ext_resource type="FontFile" uid="uid://cr5o2oe7eq1qq" path="res://Assets/Pixelta.ttf" id="10_xqmyw"]
 [ext_resource type="PackedScene" uid="uid://8ja1e1n7i30c" path="res://ShopItem.tscn" id="11_sw5c6"]
-[ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/Dice/explosion.tres" id="12_e23gp"]
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="12_gldgk"]
 [ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/Cups/extra_die.tres" id="12_msgp6"]
+[ext_resource type="Texture2D" uid="uid://4yxeha1ln0s8" path="res://Assets/Novelty/Exploding.png" id="13_763b7"]
 [ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/Dice/snowflake.tres" id="13_rrolr"]
 [ext_resource type="PackedScene" uid="uid://0sbrrgllwkn6" path="res://chest_screen.tscn" id="14_rrolr"]
 
@@ -36,6 +37,15 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3iel"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2807j"]
+
+[sub_resource type="Resource" id="Resource_jtxfs"]
+script = ExtResource("12_gldgk")
+title = "Explosion"
+description = "Can explode and reroll all other dice"
+texture = ExtResource("13_763b7")
+is_die = true
+price = 3
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
 
 [node name="Shop" type="Node2D" unique_id=1438685333]
 script = ExtResource("1_8kdgp")
@@ -504,7 +514,7 @@ grow_vertical = 2
 
 [node name="ShopItem" parent="." unique_id=1578675073 instance=ExtResource("11_sw5c6")]
 position = Vector2(303, 227)
-item_data = ExtResource("12_e23gp")
+item_data = SubResource("Resource_jtxfs")
 
 [node name="SIPrice1" type="Label" parent="ShopItem" unique_id=1644998315]
 offset_left = -20.0
