@@ -84,4 +84,4 @@ func reset_everything():
 	
 	cups = []
 	nov_dice = []
-	money = 20
+	money = 0

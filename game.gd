@@ -87,6 +87,8 @@ func end_of_round():
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(END_SCREEN)
 	else:
+		var extra_money: int = int((banked_score - goal) / (goal * .1))
+		gamemanager.money += 3 + extra_money
 		get_tree().change_scene_to_packed(END_OF_ROUND)
 
 # Create an array of 6 dice with normal sides, weights, and no abilities
