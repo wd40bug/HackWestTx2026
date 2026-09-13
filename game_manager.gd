@@ -32,7 +32,7 @@ var dice_weight_mod = ([
 	[1, 1, 1, 1, 1, 1]
 ])
 
-var cups = []
+var cup
 
 var nov_dice = []
 
@@ -41,7 +41,7 @@ var money = 20
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	nov_dice.resize(6)
-	nov_dice.fill(0)
+	nov_dice.fill(null)
 
 
 
