@@ -44,6 +44,8 @@ func _ready() -> void:
 	
 	for die in die_sides:
 		die.side_index = die_index
+	
+	set_current(die_state - 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -141,7 +143,12 @@ var mod_resources = {
 }
 
 func shake():
-	$AnimatedSprite2D/AnimationPlayer.play("shake")
+	$AnimatedSprite2D/AnimationPlayer.queue("shake")
+
+func await_finish() -> void:
+	# Await in a loop to ensure we wait out ALL queued animations
+	while $AnimatedSprite2D/AnimationPlayer.is_playing():
+		await $AnimatedSprite2D/AnimationPlayer.animation_finished
 
 func set_current(i: int):
 	$AnimatedSprite2D/PipRect.texture = pip_resources[die_sides[i].side_num]
@@ -154,6 +161,7 @@ func tick_animation():
 
 func score() -> void:
 	$AnimatedSprite2D/AnimationPlayer.play("score")
+
 
 func _on_button_toggled(toggled_on: bool) -> void:
 	if not toggled_on:

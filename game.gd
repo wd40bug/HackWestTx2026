@@ -183,11 +183,41 @@ func bank_score():
 	banked_score_sig.emit(banked_score)
 	emit_signal("unbanked_score_sig", unbanked_score)
 	
-func score_dice():
-	for i in range(0, len(die_array)):
-		if i in selected:
-			die_array[i].score()
-	unbanked_score += hands.reduce(func(a, b): return a + Hands.HandVals[b], 0)
+func score_dice() -> void:
+	# 1. Trigger visuals/scoring state on selected dice
+	for i in selected:
+		die_array[i].score()
+
+	var mult: int = 1
+	var add: int = 0
+
+	# 2. Check modifiers on SELECTED dice
+	for die_idx in selected:
+		var die: Die = die_array[die_idx]
+		# Get the current active side from the die's state (1-6 converted to 0-5 array index)
+		var active_side: Die_side = die.die_sides[die.die_state - 1]
+		
+		if active_side.side_ability == GameManager.modifier.multmod:
+			die.shake()
+			mult += 1
+		elif active_side.side_ability == GameManager.modifier.add:
+			die.shake()
+			add += 100
+
+	# 3. Check for passive UNSELECTED modifiers (e.g., Daisy on unselected dice)
+	for i in range(die_array.size()):
+		if not (i in selected) and (i in rollable_dice):
+			var die: Die = die_array[i]
+			var active_side: Die_side = die.die_sides[die.die_state - 1]
+			
+			if active_side.side_ability == GameManager.modifier.daisy:
+				die.shake()
+				mult += 1
+
+	# 4. Calculate score with intended formula: (Base + Add) * Mult
+	var base_score: int = hands.reduce(func(accum, hand): return accum + Hands.HandVals[hand], 0)
+	unbanked_score += (base_score + add) * mult
+
 	emit_signal("unbanked_score_sig", unbanked_score)
 
 # if unable to score
@@ -230,11 +260,11 @@ func _die_clicked(active: bool, place: int):
 
 
 func _on_score_btn_pressed() -> void:
-	score_dice()
+	await score_dice()
 	finish_roll(false)
 
 
 func _on_bank_btn_pressed() -> void:
-	score_dice()
+	await score_dice()
 	bank_score()
 	finish_roll(true)

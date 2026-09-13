@@ -15,16 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
 [ext_resource type="Texture2D" uid="uid://qtcbtx1x5lsv" path="res://Assets/UI Assets/BankGray.png" id="21_ryguw"]
 
-[sub_resource type="Resource" id="Resource_l438t"]
+[sub_resource type="Resource" id="Resource_ycdy4"]
 script = ExtResource("10_w48qg")
-side_ability = 4
-side_num = 6
+side_ability = 1
+side_num = 1
 metadata/_custom_type_script = "uid://2imjp750xma3"
 
-[sub_resource type="Resource" id="Resource_kwyh5"]
+[sub_resource type="Resource" id="Resource_w48qg"]
 script = ExtResource("10_w48qg")
-side_ability = 3
-side_num = 1
+side_ability = 4
+side_num = 5
 metadata/_custom_type_script = "uid://2imjp750xma3"
 
 [node name="Main" type="Node2D" unique_id=203334925]
@@ -136,7 +136,7 @@ offset_bottom = 15.0
 
 [node name="Die" parent="Dice" unique_id=642897667 instance=ExtResource("9_ycdy4")]
 position = Vector2(-30, -33)
-side6 = SubResource("Resource_l438t")
+side1 = SubResource("Resource_ycdy4")
 
 [node name="Die2" parent="Dice" unique_id=4819076 instance=ExtResource("9_ycdy4")]
 position = Vector2(19.000008, -34)
@@ -145,6 +145,7 @@ die_index = 1
 [node name="Die3" parent="Dice" unique_id=1196906446 instance=ExtResource("9_ycdy4")]
 position = Vector2(71.00001, -34)
 die_index = 2
+side5 = SubResource("Resource_w48qg")
 
 [node name="Die4" parent="Dice" unique_id=1126854610 instance=ExtResource("9_ycdy4")]
 position = Vector2(122, -33)
@@ -157,7 +158,6 @@ die_index = 4
 [node name="Die6" parent="Dice" unique_id=1323645837 instance=ExtResource("9_ycdy4")]
 position = Vector2(217, -31)
 die_index = 5
-side1 = SubResource("Resource_kwyh5")
 
 [node name="ScoreBtn" type="TextureButton" parent="." unique_id=1094627571]
 offset_left = 160.0

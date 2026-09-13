@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyisxaevwwv5q"]
 
 [ext_resource type="Script" uid="uid://b2jkjeth4ektf" path="res://die.gd" id="1_85j3g"]
-[ext_resource type="Texture2D" uid="uid://b603i0rvrt7qp" path="res://Assets/Dice Assetes/Six.png" id="7_kniro"]
+[ext_resource type="Texture2D" uid="uid://cyvvl447nf401" path="res://Assets/Dice Assetes/One.png" id="4_kwyh5"]
 [ext_resource type="Texture2D" uid="uid://s6k3xaqdq8f2" path="res://Assets/Dice Assetes/BasicDie.png" id="8_f33si"]
 [ext_resource type="AudioStream" uid="uid://gbdt4hooo8h4" path="res://sounds/die_rolling.mp3" id="9_4cpll"]
 [ext_resource type="Texture2D" uid="uid://bqy4m1ukikbbc" path="res://Assets/UI Assets/Particle.png" id="10_qpb7f"]
@@ -218,7 +218,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("7_kniro")
+texture = ExtResource("4_kwyh5")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimatedSprite2D" unique_id=832742321]
 position = Vector2(1, -12)

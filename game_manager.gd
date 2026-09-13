@@ -12,7 +12,7 @@ var dice_side_num = ([
 	[1,2,3,4,5,6]
 ])
 
-enum modifier {add, coins, daisy, multmod, weighted, none}
+enum modifier {none, add, coins, daisy, multmod, weighted}
 
 var dice_side_mod = ([
 	[modifier.none,modifier.none,modifier.none,modifier.none,modifier.none,modifier.none],
