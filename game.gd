@@ -25,6 +25,8 @@ func _ready() -> void:
 const END_SCREEN = preload("res://EndScreen.tscn")
 const END_OF_ROUND = preload("res://shop.tscn")
 
+@onready var sound_effect = $AudioStreamPlayer
+
 @export var goal: int = 10_000
 
 var enter_prev_pressed: bool = false
@@ -43,6 +45,7 @@ var hands: Array[Hands.HandTypes] = []
 
 '''Initializes everything'''
 func begin_game():
+	#$AudioStreamPlayer.play()
 	$HandsLbl.text = ""
 	$UI/GoalNum.text = str(goal)
 	for child_dice in $Dice.get_children():
@@ -79,6 +82,9 @@ func begin_game():
 
 func end_of_round():
 	if banked_score < goal:
+		emit_signal("turns_left_sig", turns_left)
+		$AudioStreamPlayer.play()
+		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(END_SCREEN)
 	else:
 		get_tree().change_scene_to_packed(END_OF_ROUND)
