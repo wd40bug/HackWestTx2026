@@ -10,10 +10,13 @@
 [ext_resource type="Script" uid="uid://dr44ht4t7vi2l" path="res://hover.gd" id="9_xqmyw"]
 [ext_resource type="FontFile" uid="uid://cr5o2oe7eq1qq" path="res://Assets/Pixelta.ttf" id="10_xqmyw"]
 [ext_resource type="PackedScene" uid="uid://8ja1e1n7i30c" path="res://ShopItem.tscn" id="11_sw5c6"]
+[ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/explosion.tres" id="12_e23gp"]
 [ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/extra_die.tres" id="12_msgp6"]
+[ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/snowflake.tres" id="13_rrolr"]
 
 [node name="Shop" type="Node2D" unique_id=1438685333]
 script = ExtResource("1_8kdgp")
+seed = 198237918732
 
 [node name="UI" type="Control" parent="." unique_id=227224427]
 layout_mode = 3
@@ -157,9 +160,9 @@ offset_bottom = -14.0
 
 [node name="ShopDie1" type="TextureRect" parent="ShopDice" unique_id=1242445465]
 layout_mode = 0
-offset_left = 320.0
+offset_left = 339.0
 offset_top = 225.0
-offset_right = 352.0
+offset_right = 371.0
 offset_bottom = 257.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
@@ -197,10 +200,10 @@ grow_vertical = 2
 
 [node name="ShopDie2" type="TextureRect" parent="ShopDice" unique_id=1234837691]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 225.0
-offset_right = 402.0
-offset_bottom = 257.0
+offset_left = 388.0
+offset_top = 224.0
+offset_right = 420.0
+offset_bottom = 256.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
@@ -482,3 +485,13 @@ text = "Title"
 [node name="Area2D" parent="." unique_id=1056026310 instance=ExtResource("11_sw5c6")]
 position = Vector2(369, 148)
 item_data = ExtResource("12_msgp6")
+
+[node name="ShopItem" parent="." unique_id=1578675073 instance=ExtResource("11_sw5c6")]
+position = Vector2(303, 227)
+item_data = ExtResource("12_e23gp")
+
+[node name="ShopItem2" parent="." unique_id=1652561559 instance=ExtResource("11_sw5c6")]
+position = Vector2(262, 226)
+item_data = ExtResource("13_rrolr")
+
+[connection signal="hover" from="Area2D" to="." method="_on_item_hover"]
