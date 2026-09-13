@@ -23,7 +23,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="UI" unique_id=1209675329]
 layout_mode = 0
@@ -88,7 +87,6 @@ offset_left = 131.0
 offset_top = 190.0
 offset_right = 171.0
 offset_bottom = 230.0
-mouse_filter = 1
 
 [node name="Chest1" type="TextureRect" parent="Chests" unique_id=1129327458]
 layout_mode = 1
@@ -159,7 +157,6 @@ offset_left = -10.0
 offset_top = -14.0
 offset_right = -10.0
 offset_bottom = -14.0
-mouse_filter = 1
 
 [node name="ShopDie1" type="TextureRect" parent="ShopDice" unique_id=1242445465]
 layout_mode = 0
@@ -251,7 +248,6 @@ offset_left = -25.0
 offset_top = -16.0
 offset_right = 15.0
 offset_bottom = 24.0
-mouse_filter = 1
 
 [node name="BasicDie" type="TextureRect" parent="UserDice" unique_id=238811843]
 layout_mode = 0
@@ -268,7 +264,6 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 45.0
-mouse_filter = 1
 
 [node name="BasicDie2" type="TextureRect" parent="UserDice" unique_id=1712407289]
 layout_mode = 0
@@ -400,4 +395,3 @@ position = Vector2(262, 226)
 item_data = ExtResource("13_rrolr")
 
 [connection signal="hover" from="ShopCup" to="." method="_on_item_hover"]
-[connection signal="unhover" from="ShopCup" to="." method="_on_shop_cup_unhover"]

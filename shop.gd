@@ -19,7 +19,7 @@ var mod_images = (
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	seed(seed)
+	#seed(seed)
 	generate_items()
 
 
@@ -84,9 +84,32 @@ var shopsides = []
 
 var shopchests = []
 
+var shop_cup
+
+var cup_pool: Array[String] = []
 
 func generate_cup():
-	pass
+	const HAND_MULT_CHANCE = .5
+	const HAND_COMP_MULT_CHANCE = .3
+	const OTHER_ABILITY_CHANCE = .2
+	
+	var rand_num = randf()
+	var cup_pool
+	if(rand_num < HAND_MULT_CHANCE):
+		cup_pool = cup_hand_mult_list
+	elif(rand_num > HAND_MULT_CHANCE + HAND_COMP_MULT_CHANCE):
+		cup_pool = cup_comp_mult_list
+	else:
+		cup_pool = cup_other_abilities_list
+		
+	var shop_cup_name = cup_pool.pick_random()
+	var shop_cup_path = "res://Specials/Cups/" + shop_cup_name + ".tres"
+	
+	var cup = load(shop_cup_path)
+
+	return cup
+	
+		
 
 func generate_side():
 	var side = side_pool[randi() % side_pool.size()]
@@ -108,7 +131,10 @@ func generate_chest():
 func generate_items():
 	shopsides = [generate_side(), generate_side()]
 	shopchests = [generate_chest(), generate_chest()]
-		
+	shop_cup = generate_cup()
+	
+	$ShopCup.item_data = shop_cup
+	
 	$ShopDice/ShopDie1/Side_num.texture = load(num_images[shopsides[0][0] - 1])
 	if shopsides[0][1] != modifier.none:
 		$ShopDice/ShopDie1/Side_mod.texture = load(mod_images[shopsides[0][1]])
@@ -136,3 +162,9 @@ func generate_items():
 func _on_item_hover(special: Special) -> void:
 	print("Hovering!!!")
 	$TextureRect.display(special)
+	
+
+
+func _on_shop_cup_unhover() -> void:
+	print("Unhovering!!!")
+	$TextureRect.hide_menu()

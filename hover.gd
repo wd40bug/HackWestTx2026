@@ -9,6 +9,8 @@ func _ready() -> void:
 func display(data: Special) -> void:
 	title_label.text = data.title
 	desc_label.text = data.description
+	
+	move_to_front()
 	show()
 
 func hide_menu() -> void:
