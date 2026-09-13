@@ -65,7 +65,7 @@ func begin_game():
 			
 			var new_side = Die_side.new(side_ability, side_num, side_index)
 			#new_side.print_parameters()
-			new_die.die_sides.append(new_side)
+			new_die.die_sides[k] = (new_side)
 		die_array.append(new_die)
 	
 	turns_left = 3
