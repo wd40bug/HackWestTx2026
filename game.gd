@@ -55,12 +55,14 @@ func begin_game():
 		var new_die: Die = $Dice.get_child(i) as Die
 		for k in range(6):
 			#die_side
-			var new_side = Die_side.new()
+
 			# die side ability
-			new_side.side_ability = gamemanager.dice_side_mod[i][k]
-			new_side.side_num = gamemanager.dice_side_num[i][k]
-			new_side.side_index = i
-			new_side.side_weight = gamemanager.dice_weight_mod[i][k]
+			var side_ability = gamemanager.dice_side_mod[i][k]
+			var side_num = gamemanager.dice_side_num[i][k]
+			var side_index = i
+			var side_weight = gamemanager.dice_weight_mod[i][k]
+			
+			var new_side = Die_side.new(side_ability, side_num, side_index)
 			#new_side.print_parameters()
 			new_die.die_sides.append(new_side)
 		die_array.append(new_die)

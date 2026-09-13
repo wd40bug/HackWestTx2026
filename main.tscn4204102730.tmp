@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://nseysgdx3jmi"]
+
+[ext_resource type="Texture2D" uid="uid://twhv5idljecv" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
+[ext_resource type="Script" uid="uid://dy4n4a5hwr4tg" path="res://game.gd" id="1_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://2edkfulvhxfs" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
+[ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
+[ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
+[ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
+[ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://dyisxaevwwv5q" path="res://die.tscn" id="9_ycdy4"]
+[ext_resource type="Script" uid="uid://2imjp750xma3" path="res://die_side.gd" id="10_w48qg"]
+[ext_resource type="Texture2D" uid="uid://b42fab531ymuj" path="res://Assets/UI Assets/ScoreGray.png" id="18_074og"]
+[ext_resource type="Texture2D" uid="uid://cpyx54fbe32g5" path="res://Assets/UI Assets/ScoreGreen.png" id="18_cegan"]
+[ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
+[ext_resource type="Texture2D" uid="uid://qtcbtx1x5lsv" path="res://Assets/UI Assets/BankGray.png" id="21_ryguw"]
+
+[sub_resource type="Resource" id="Resource_l438t"]
+script = ExtResource("10_w48qg")
+side_ability = 4
+side_num = 6
+metadata/_custom_type_script = "uid://2imjp750xma3"
+
+[node name="Main" type="Node2D" unique_id=203334925]
+script = ExtResource("1_ycdy4")
+goal = 1500
+
+[node name="UI" type="Control" parent="." unique_id=884199193]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=29713066]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("1_efxa6")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="InfoPane" type="TextureRect" parent="UI" unique_id=1772426569]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 270.0
+texture = ExtResource("2_dg77c")
+
+[node name="Rack" type="TextureRect" parent="UI" unique_id=1244232318]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 480.0
+offset_bottom = 75.0
+texture = ExtResource("3_efxa6")
+expand_mode = 1
+
+[node name="LevelNum" type="Label" parent="UI" unique_id=1888048386]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 24.0
+offset_right = 83.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 28
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalNum" type="Label" parent="UI" unique_id=395506092]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 50.0
+offset_right = 126.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.6745098, 0.34509805, 0.19607843, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "10000
+"
+
+[node name="BankedNum" type="Label" parent="UI" unique_id=1251190106]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 83.0
+offset_right = 126.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.29411766, 0.4117647, 0.18431373, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+script = ExtResource("6_w48qg")
+
+[node name="ScoreNum" type="Label" parent="UI" unique_id=257660155]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 105.0
+offset_right = 126.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.4627451, 0.25882354, 0.5411765, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 20
+text = "0"
+script = ExtResource("7_w48qg")
+
+[node name="TurnNum" type="Label" parent="UI" unique_id=881497007]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 155.0
+offset_right = 84.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 24
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_2cqfq")
+
+[node name="Dice" type="Control" parent="." unique_id=2028048908]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 15.0
+
+[node name="Die" parent="Dice" unique_id=642897667 instance=ExtResource("9_ycdy4")]
+position = Vector2(-16, -16)
+side6 = SubResource("Resource_l438t")
+
+[node name="Die2" parent="Dice" unique_id=4819076 instance=ExtResource("9_ycdy4")]
+position = Vector2(33.000008, -17)
+die_index = 1
+
+[node name="Die3" parent="Dice" unique_id=1196906446 instance=ExtResource("9_ycdy4")]
+position = Vector2(85.00001, -17)
+die_index = 2
+
+[node name="Die4" parent="Dice" unique_id=1126854610 instance=ExtResource("9_ycdy4")]
+position = Vector2(136, -16)
+die_index = 3
+
+[node name="Die5" parent="Dice" unique_id=1860872796 instance=ExtResource("9_ycdy4")]
+position = Vector2(183, -15)
+die_index = 4
+
+[node name="Die6" parent="Dice" unique_id=1323645837 instance=ExtResource("9_ycdy4")]
+position = Vector2(231, -14)
+die_index = 5
+
+[node name="ScoreBtn" type="TextureButton" parent="." unique_id=1094627571]
+offset_left = 160.0
+offset_top = 228.0
+offset_right = 224.0
+offset_bottom = 268.0
+disabled = true
+texture_normal = ExtResource("18_cegan")
+texture_disabled = ExtResource("18_074og")
+
+[node name="HandsLbl" type="Label" parent="." unique_id=1753473987]
+anchors_preset = -1
+offset_left = 220.0
+offset_top = 121.0
+offset_right = 393.0
+offset_bottom = 144.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.89963657, 0, 0.1859959, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 21
+text = "FULL HOUSE, TRIPLE 5"
+uppercase = true
+
+[node name="BustedLabel" type="Label" parent="." unique_id=1059549154]
+visible = false
+offset_left = 64.0
+offset_top = 87.0
+offset_right = 435.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(1, 0.039215688, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 100
+text = "BUSTED"
+
+[node name="BankBtn" type="TextureButton" parent="." unique_id=196218779]
+offset_left = 238.0
+offset_top = 228.0
+offset_right = 302.0
+offset_bottom = 268.0
+disabled = true
+texture_normal = ExtResource("20_getpj")
+texture_disabled = ExtResource("21_ryguw")
+
+[connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
+[connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
+[connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
+[connection signal="pressed" from="ScoreBtn" to="." method="_on_score_btn_pressed"]
+[connection signal="pressed" from="BankBtn" to="." method="_on_bank_btn_pressed"]
