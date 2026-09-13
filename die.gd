@@ -88,17 +88,18 @@ func roll() -> int:
 	var acc_weight: float = 0.0
 	
 	
-	for side in die_sides:
+	for i in range(die_sides.size()):
+		var side: Die_side = die_sides[i]
 		acc_weight += 1 + (1 if side.side_ability == GameManager.modifier.weighted else 0)
 		if random_number < acc_weight:
 			die_state = side.side_num
 			emit_signal("die_roll_state", die_state)
-			return side.side_index
+			return i # Return the array index (0-5)
 	assert(false)
 	return 0
 
 func roll_die():
-	sound_effect.play()
+
 	die_state = 0
 	emit_signal("die_roll_state", die_state)
 	if get_tree():
@@ -110,13 +111,15 @@ func roll_die():
 		await t.timeout
 		t.queue_free()
 	
+	sound_effect.play()
 	$Timer.start()
 	$OverallTimer.start()
 	
 	await $OverallTimer.timeout
 	$Timer.stop()
 	
-	return die_sides[roll()]
+	var v = roll()
+	return die_sides[v]
 
 var pip_resources = {
 	Die_side.DieType.ONE: preload("res://Assets/Dice Assetes/One.png"),
@@ -134,10 +137,11 @@ var mod_resources = {
 	GameManager.modifier.daisy: preload("res://Assets/Modifiers/Daisy.png"),
 	GameManager.modifier.coins: preload("res://Assets/Modifiers/Coins.png"),
 	GameManager.modifier.weighted: preload("res://Assets/Modifiers/Weighted.png"),
-	GameManager.modifier.none: Image.create(100, 100, false, Image.FORMAT_RGBA8)
+	GameManager.modifier.none: null
 }
 
-
+func shake():
+	$AnimatedSprite2D/AnimationPlayer.play("shake")
 
 func set_current(i: int):
 	$AnimatedSprite2D/PipRect.texture = pip_resources[die_sides[i].side_num]
@@ -146,15 +150,14 @@ func set_current(i: int):
 func tick_animation():
 	var i = roll()
 	set_current(i)
+	$Timer.start()
 
 func score() -> void:
 	$AnimatedSprite2D/AnimationPlayer.play("score")
-	await $AnimatedSprite2D/AnimationPlayer.animation_finished
 
 func _on_button_toggled(toggled_on: bool) -> void:
 	if not toggled_on:
 		$"AnimatedSprite2D/AnimationPlayer".play("unselect")
-		await $AnimatedSprite2D/AnimationPlayer.animation_finished
 	if(toggled_on and die_state != 0 and not button.disabled):
 		$AnimatedSprite2D/AnimationPlayer.play("select")
 		#animated_sprite.modulate = Color(10, 10, 10, 1)
