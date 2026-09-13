@@ -274,7 +274,7 @@ offset_right = 100.0
 offset_bottom = 141.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_xqmyw")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 12
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 autowrap_mode = 2
 
