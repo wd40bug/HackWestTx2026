@@ -11,11 +11,10 @@ extends Node
 @export var side6: Die_side = Die_side.new(GameManager.modifier.none, 6, die_index)
 
 @onready var die_sides: Array[Die_side] = [side1, side2, side3, side4, side5, side6]
-@export var die_ability: Novilty_ability
+@export var die_ability: Special = preload("res://Assets/Novelty/basic_die.tres")
 
 
 enum Parameter {WEIGHT, ABILITY, NUM}
-enum Novilty_ability {NONE}
 
 # 0 = rolling
 # 1-6 is side to show
@@ -37,6 +36,7 @@ var sound_effect: AudioStreamPlayer
 func _ready() -> void:
 	sound_effect = AudioStreamPlayer.new()
 	animated_sprite.add_child(sound_effect)
+	$"AnimatedSprite2D/Die Base".texture = die_ability.texture
 	
 	button.disabled = true
 	

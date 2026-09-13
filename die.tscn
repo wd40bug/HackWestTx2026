@@ -222,6 +222,7 @@ texture = ExtResource("4_kwyh5")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="AnimatedSprite2D" unique_id=832742321]
 position = Vector2(1, -12)
+rotation = 1.5707964
 emitting = false
 texture = ExtResource("11_l438t")
 lifetime = 0.8

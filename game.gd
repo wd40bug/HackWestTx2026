@@ -3,6 +3,18 @@ extends Node
 
 enum State {ROLLING, SELECTING, SCORING}
 
+func has_novelty(name: String) -> bool:
+	for die in die_array:
+		if die.die_ability.title == name:
+			return true
+	return false
+
+func get_novelty(name: String) -> Die:
+	for die in die_array:
+		if die.die_ability.title == name:
+			return die
+	return null
+
 var state = State.ROLLING
 
 # Indices of dice that are able to be rolled--unracked dice
@@ -26,6 +38,9 @@ const END_SCREEN = preload("res://EndScreen.tscn")
 const END_OF_ROUND = preload("res://shop.tscn")
 
 @export var goal: int = 10_000
+@export var cup: Special
+
+var angel_cup_used = false
 
 var enter_prev_pressed: bool = false
 var space_prev_pressed: bool = false
@@ -45,6 +60,7 @@ var hands: Array[Hands.HandTypes] = []
 func begin_game():
 	$HandsLbl.text = ""
 	$UI/GoalNum.text = str(goal)
+	$UI/TextureRect.texture = cup.texture
 	for child_dice in $Dice.get_children():
 		child_dice.clicked_signal.connect(_die_clicked)
 	
@@ -108,15 +124,31 @@ func roll_rollable_dice(dice: Array[Die]):
 	var die_sides: Array[Die_side.DieType] = []
 	for side in rolled_sides:
 		die_sides.append(side.side_num)
-	var hands_cls = Hands.calculate_hands(die_sides)
+	var hands_cls = Hands.calculate_hands(die_sides, has_novelty("Gap Straight"))
 	
+	var post_roll_add = {
+		"Ones": Die_side.DieType.ONE,
+		"Twos": Die_side.DieType.TWO,
+		"Threes": Die_side.DieType.THREE,
+		"Fours": Die_side.DieType.FOUR,
+		"Fives": Die_side.DieType.FIVE,
+		"Sixes": Die_side.DieType.SIX
+	}
+	
+	for name in post_roll_add:
+		var novelty = get_novelty("%s Add" % name)
+		if novelty:
+			novelty.shake()
+			for side in rolled_sides:
+				if side.side_num == post_roll_add[name]:
+					unbanked_score += 50
+					die_array[side.side_index].shake()
+	
+	unbanked_score_sig.emit(unbanked_score)
 	
 	if (hands_cls.hands.is_empty()):
-		$BustedLabel.show()
-		await get_tree().create_timer(2).timeout
-		$BustedLabel.hide()
 		farkled_up()
-		finish_roll(true)
+		
 	for die in dice:
 		die.disabled_override = false
 
@@ -126,9 +158,10 @@ func update_scoring():
 	for side in selected:
 		var idx = rolled_sides.find_custom(func(a: Die_side): return a.side_index == side)
 		die_sides.append(rolled_sides[idx].side_num)
-	var hands_cls = Hands.calculate_hands(die_sides)
+	var hands_cls = Hands.calculate_hands(die_sides, has_novelty("Gap Straight"))
 	hands = hands_cls.hands if hands_cls.remainder.is_empty() and not hands_cls.hands.is_empty() else ([] as Array[Hands.HandTypes])
 	
+
 	var names = []
 	for hand in hands:
 		var name = ""
@@ -144,6 +177,7 @@ func update_scoring():
 			Hands.HandTypes.FOUR_OF_KIND: name = "Four of a kind"
 			Hands.HandTypes.FOUR_OF_KIND_1: name = "Four Ones"
 			Hands.HandTypes.STRAIGHT: name = "Straight"
+			Hands.HandTypes.STRAIGHT_GAP: name = "Straight"
 			Hands.HandTypes.THREE_PAIR: name = "Three Pair"
 			Hands.HandTypes.FULL_HOUSE: name = "Full House"
 			Hands.HandTypes.FIVE_OF_KIND: name = "Five of a kind"
@@ -204,6 +238,12 @@ func score_dice() -> void:
 			die.shake()
 			add += 100
 
+	for hand in hands:
+		if hand == Hands.HandTypes.STRAIGHT_GAP:
+			for die in die_array:
+				if die.die_ability.title == "Gap Straight":
+					die.shake()
+
 	# 3. Check for passive UNSELECTED modifiers (e.g., Daisy on unselected dice)
 	for i in range(die_array.size()):
 		if not (i in selected) and (i in rollable_dice):
@@ -222,9 +262,21 @@ func score_dice() -> void:
 
 # if unable to score
 func farkled_up():
+	if cup.title == "Angel" and not angel_cup_used:
+		$SavedLabel.show()
+		await get_tree().create_timer(2).timeout
+		$SavedLabel.hide()
+		angel_cup_used = true
+		finish_roll(false)
+		return
+	
+	$BustedLabel.show()
+	await get_tree().create_timer(2).timeout
+	$BustedLabel.hide()
 	unbanked_score = 0
 	emit_signal("unbanked_score_sig", unbanked_score)
 	emit_signal("turns_left_sig", turns_left)
+	finish_roll(true)
 
 func finish_roll(end_turn):
 	for die in selected:
