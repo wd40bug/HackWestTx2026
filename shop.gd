@@ -24,7 +24,18 @@ func _ready():
 	$Chests/Chest2.visible = true
 	$Dice_Select.visible = false
 	seed(seed)
-	#seed(seed)
+	if gamemanager.nov_dice[0] != null:
+		$UserDice/BasicDie1/NovDie1.texture = gamemanager.nov_dice[0].texture
+	if gamemanager.nov_dice[1] != null:
+		$UserDice/BasicDie2/NovDie2.texture = gamemanager.nov_dice[1].texture 
+	if gamemanager.nov_dice[2] != null:
+		$UserDice/BasicDie3/NovDie3.texture = gamemanager.nov_dice[2].texture 
+	if gamemanager.nov_dice[3] != null:
+		$UserDice/BasicDie4/NovDie4.texture = gamemanager.nov_dice[3].texture 
+	if gamemanager.nov_dice[4] != null:
+		$UserDice/BasicDie5/NovDie5.texture = gamemanager.nov_dice[4].texture 
+	if gamemanager.nov_dice[5] != null:
+		$UserDice/BasicDie6/NovDie6.texture = gamemanager.nov_dice[5].texture 
 	generate_chests()
 	generate_dice()
 
