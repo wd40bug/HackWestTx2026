@@ -39,7 +39,6 @@
 
 [node name="Shop" type="Node2D" unique_id=1438685333]
 script = ExtResource("1_8kdgp")
-seed = 198237918732
 
 [node name="UI" type="Control" parent="." unique_id=227224427]
 layout_mode = 3

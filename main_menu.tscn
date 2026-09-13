@@ -1,21 +1,8 @@
 [gd_scene format=3 uid="uid://cg2jjj2okw5eq"]
 
 [ext_resource type="Texture2D" uid="uid://dtjj2rn5v7pcm" path="res://Assets/Title.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://vvw83nhgb27" path="res://global_seed.gd" id="1_fu7sn"]
 [ext_resource type="Script" uid="uid://cty22ktqwke8g" path="res://button.gd" id="2_7vrkn"]
-
-[sub_resource type="GDScript" id="GDScript_fu7sn"]
-script/source = "extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_getpj"]
 
@@ -34,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_fu7sn")
+script = ExtResource("1_fu7sn")
 
 [node name="TitleScreen" type="TextureRect" parent="." unique_id=465920780]
 layout_mode = 0
@@ -55,4 +42,14 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_1u8w0")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0odxb")
 script = ExtResource("2_7vrkn")
 
+[node name="LineEdit" type="LineEdit" parent="TitleScreen" unique_id=351972611]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 225.0
+text = "Seed:"
+
+[connection signal="pressed" from="TitleScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TitleScreen/Button" to="TitleScreen/Button" method="_on_pressed"]
+[connection signal="text_submitted" from="TitleScreen/LineEdit" to="." method="_on_line_edit_text_submitted"]
