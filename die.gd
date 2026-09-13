@@ -1,9 +1,18 @@
 class_name Die
 extends Node
 
-var die_sides: Array[Die_side] = []
-var die_ability: Novilty_ability
-var die_index: int
+@export var die_index: int
+
+@export var side1: Die_side = Die_side.new(GameManager.modifier.none, 1, die_index)
+@export var side2: Die_side = Die_side.new(GameManager.modifier.none, 2, die_index)
+@export var side3: Die_side = Die_side.new(GameManager.modifier.none, 3, die_index)
+@export var side4: Die_side = Die_side.new(GameManager.modifier.none, 4, die_index)
+@export var side5: Die_side = Die_side.new(GameManager.modifier.none, 5, die_index)
+@export var side6: Die_side = Die_side.new(GameManager.modifier.none, 6, die_index)
+
+@onready var die_sides: Array[Die_side] = [side1, side2, side3, side4, side5, side6]
+@export var die_ability: Novilty_ability
+
 
 enum Parameter {WEIGHT, ABILITY, NUM}
 enum Novilty_ability {NONE}
@@ -32,6 +41,9 @@ func _ready() -> void:
 	button.disabled = true
 	
 	sound_effect.stream = load("res://sounds/die_rolling.mp3")
+	
+	for die in die_sides:
+		die.side_index = die_index
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -43,7 +55,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play()
 	elif(die_state == 7):
 		button.disabled = true
-		animated_sprite.hide()
+		animated_sprite.show()
 	elif(die_state == 8):
 		button.disabled = true
 		animated_sprite.show()
@@ -54,13 +66,6 @@ func _process(delta: float) -> void:
 		button.disabled = disabled_override
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.frame = die_state - 1
-	
-
-func create_sides(die_index: int):
-	for i in range(0, 6):
-		var side: Die_side = Die_side.new()
-		side.set_values(1, 0, i + 1, die_index)
-		die_sides.append(side)
 
 # Modify a parameter of a side of the die
 func modify_die_side_parameter(side: int, parameter: Parameter, value: int):
@@ -94,24 +99,28 @@ func roll_die():
 		t.queue_free()
 	var total_weight: float = 0.0
 	for side in die_sides:
-		total_weight += side.side_weight
+		total_weight += 1 + (1 if side.side_ability == GameManager.modifier.weighted else 0)
 	
 	var random_number: float = randf_range(0.0, total_weight)
 	var acc_weight: float = 0.0
 	
 	
 	for side in die_sides:
-		acc_weight += side.side_weight
+		acc_weight += 1 + (1 if side.side_ability == GameManager.modifier.weighted else 0)
 		if random_number < acc_weight:
 			die_state = side.side_num
 			emit_signal("die_roll_state", die_state)
 			return side
-	
+func score() -> void:
+	$AnimatedSprite2D/AnimationPlayer.play("score")
+	await $AnimatedSprite2D/AnimationPlayer.animation_finished
+
 func _on_button_toggled(toggled_on: bool) -> void:
 	if not toggled_on:
-		$"AnimatedSprite2D".position += Vector2(0, 32)
+		$"AnimatedSprite2D/AnimationPlayer".play("unselect")
+		await $AnimatedSprite2D/AnimationPlayer.animation_finished
 	if(toggled_on and die_state != 0 and not button.disabled):
-		$"AnimatedSprite2D".position += Vector2(0, -32)
+		$AnimatedSprite2D/AnimationPlayer.play("select")
 		#animated_sprite.modulate = Color(10, 10, 10, 1)
 		emit_signal("clicked_signal", toggled_on, die_index)
 	elif(die_state != 7):

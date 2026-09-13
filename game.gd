@@ -68,25 +68,10 @@ func end_of_round():
 # Create an array of 6 dice with normal sides, weights, and no abilities
 func init_base_dice() -> Array[Die]:
 	var die_array: Array[Die] = []
-	"""for i in range(0, 6):
-		var new_die: Die = Die.new()
-		new_die.create_sides(i)
-		die_array.append(new_die)"""
-	#die_array = $Dice.get_children() as Array[Die]
-	#var i = 0
-	"""for die in $Dice.get_children():
-		var new_die: Die = Die.new()
-		new_die.create_sides(i)
-		die_array.append(new_die)
-		i += 1"""
 	for i in range($Dice.get_child_count()):
 		var die: Die = $Dice.get_child(i) as Die
-		print(die)
-		die.create_sides(i)
-		die.die_index = i
 		die_array.append(die)
-	
-	print(die_array)
+
 	return die_array
 
 func roll_rollable_dice(dice: Array[Die]):
@@ -181,6 +166,9 @@ func bank_score():
 	emit_signal("unbanked_score_sig", unbanked_score)
 	
 func score_dice():
+	for i in range(0, len(die_array)):
+		if i in selected:
+			die_array[i].score()
 	unbanked_score += hands.reduce(func(a, b): return a + Hands.HandVals[b], 0)
 	emit_signal("unbanked_score_sig", unbanked_score)
 
@@ -195,11 +183,6 @@ func finish_roll(end_turn):
 		die_array[die].die_state = 7
 		rollable_dice.erase(die)
 	selected.clear()
-	
-	# unpress all the buttons
-	for button in get_tree().get_nodes_in_group("dice_buttons"):
-		if button is BaseButton:
-			button.button_pressed = false
 	
 	if (end_turn):
 		turns_left-=1
