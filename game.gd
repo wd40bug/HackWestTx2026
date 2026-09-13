@@ -18,6 +18,8 @@ signal unbanked_score_sig(unbank_score: int)
 var turns_left: int = 0
 signal turns_left_sig(turns: int)
 
+signal goal_sig(final_goal: int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	begin_game()
@@ -27,7 +29,8 @@ const END_OF_ROUND = preload("res://shop.tscn")
 
 @onready var sound_effect = $AudioStreamPlayer
 
-@export var goal: int = 10_000
+#@export var goal: int = 1500
+var goal
 
 var enter_prev_pressed: bool = false
 var space_prev_pressed: bool = false
@@ -46,13 +49,15 @@ var hands: Array[Hands.HandTypes] = []
 '''Initializes everything'''
 func begin_game():
 	#$AudioStreamPlayer.play()
+	goal = gamemanager.goal
 	$HandsLbl.text = ""
 	$UI/GoalNum.text = str(goal)
 	for child_dice in $Dice.get_children():
 		child_dice.clicked_signal.connect(_die_clicked)
 	
 	die_array = []
-	
+	emit_signal("goal_sig", goal)
+	print("Goal: ", goal)
 	for i in range(gamemanager.dice_amm):
 		#var new_die = Die.new()
 		var new_die: Die = $Dice.get_child(i) as Die
@@ -84,11 +89,13 @@ func end_of_round():
 	if banked_score < goal:
 		emit_signal("turns_left_sig", turns_left)
 		$AudioStreamPlayer.play()
+		gamemanager.goal = 1500
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(END_SCREEN)
 	else:
-		var extra_money: int = int((banked_score - goal) / (goal * .1))
+		var extra_money: int = int((banked_score - goal) / (goal * .2))
 		gamemanager.money += 3 + extra_money
+		gamemanager.goal += 500
 		get_tree().change_scene_to_packed(END_OF_ROUND)
 
 # Create an array of 6 dice with normal sides, weights, and no abilities
