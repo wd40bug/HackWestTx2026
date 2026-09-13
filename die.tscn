@@ -156,11 +156,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-<<<<<<< HEAD
-offset_transform_position = Vector2(35, 35)
-=======
 offset_transform_position = Vector2(35, 19)
->>>>>>> 3ed5cc069a76a9d507f51c4049f07d4e050491c7
 texture = ExtResource("8_f33si")
 
 [node name="Button" type="Button" parent="AnimatedSprite2D" unique_id=588667165 groups=["dice_buttons"]]
@@ -216,89 +212,6 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 19.8
 initial_velocity_max = 19.8
 
-<<<<<<< HEAD
-[node name="Weighted" type="TextureRect" parent="AnimatedSprite2D" unique_id=437609686]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_enabled = true
-texture = ExtResource("12_8fx4x")
-
-[node name="Daisy" type="TextureRect" parent="AnimatedSprite2D" unique_id=1546055858]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-34, -35)
-texture = ExtResource("13_kniro")
-
-[node name="Coin" type="TextureRect" parent="AnimatedSprite2D" unique_id=808037906]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-34, -35)
-texture = ExtResource("14_f33si")
-
-[node name="Mult" type="TextureRect" parent="AnimatedSprite2D" unique_id=367312725]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-34, -35)
-texture = ExtResource("15_4cpll")
-
-[node name="Add" type="TextureRect" parent="AnimatedSprite2D" unique_id=1890871385]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-35, -35)
-texture = ExtResource("16_qpb7f")
-
-[node name="Pip1" type="TextureRect" parent="AnimatedSprite2D" unique_id=2764325]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("2_l438t")
-
-[node name="Pip2" type="TextureRect" parent="AnimatedSprite2D" unique_id=340017815]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("3_8fx4x")
-
-[node name="Pip3" type="TextureRect" parent="AnimatedSprite2D" unique_id=675616948]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("4_g5qhq")
-
-[node name="Pip4" type="TextureRect" parent="AnimatedSprite2D" unique_id=470690167]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("5_bv0h0")
-
-[node name="Pip5" type="TextureRect" parent="AnimatedSprite2D" unique_id=91440843]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("6_yaaqd")
-
-[node name="Pip6" type="TextureRect" parent="AnimatedSprite2D" unique_id=996539597]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-offset_transform_position = Vector2(-20, -20)
-texture = ExtResource("7_kniro")
-
-[node name="Timer" type="Timer" parent="." unique_id=2134309181]
-wait_time = 0.1
-
-[connection signal="toggled" from="AnimatedSprite2D/Button" to="." method="_on_button_toggled"]
-=======
 [node name="ModifierRect" type="TextureRect" parent="AnimatedSprite2D" unique_id=598819398]
 offset_top = -16.0
 offset_right = 40.0
@@ -321,4 +234,3 @@ one_shot = true
 [connection signal="toggled" from="AnimatedSprite2D/Button" to="." method="_on_button_toggled"]
 [connection signal="timeout" from="Timer" to="." method="tick_animation"]
 [connection signal="timeout" from="OverallTimer" to="." method="_on_overall_timer_timeout"]
->>>>>>> 3ed5cc069a76a9d507f51c4049f07d4e050491c7

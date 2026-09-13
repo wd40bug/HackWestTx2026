@@ -53,6 +53,7 @@ func begin_game():
 	for i in range(gamemanager.dice_amm):
 		#var new_die = Die.new()
 		var new_die: Die = $Dice.get_child(i) as Die
+		
 		for k in range(6):
 			#die_side
 
