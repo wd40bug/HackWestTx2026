@@ -1,6 +1,7 @@
 extends Node
+class_name GameManager
 
-var level = "level 1"
+var level = 1
 var dice_amm = 6
 var dice_side_num = ([
 	[1,2,3,4,5,6],
