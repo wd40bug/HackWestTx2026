@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyisxaevwwv5q" path="res://die.tscn" id="9_ycdy4"]
 [ext_resource type="Script" uid="uid://2imjp750xma3" path="res://die_side.gd" id="10_w48qg"]
 [ext_resource type="AudioStream" uid="uid://d0xkaugqlrrh1" path="res://sounds/sad_trumpet.mp3" id="15_vivmo"]
+[ext_resource type="AudioStream" uid="uid://c8riy2xmff8bp" path="res://sounds/bg_music.mp3" id="17_yaehf"]
 [ext_resource type="Texture2D" uid="uid://b42fab531ymuj" path="res://Assets/UI Assets/ScoreGray.png" id="18_074og"]
 [ext_resource type="Texture2D" uid="uid://cpyx54fbe32g5" path="res://Assets/UI Assets/ScoreGreen.png" id="18_cegan"]
 [ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
@@ -209,6 +210,12 @@ texture_disabled = ExtResource("21_ryguw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1572597180]
 stream = ExtResource("15_vivmo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1309815600]
+stream = ExtResource("17_yaehf")
+autoplay = true
+playback_type = 1
+parameters/looping = true
 
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
 [connection signal="goal_sig" from="." to="UI/GoalNum" method="_on_main_goal_sig"]
