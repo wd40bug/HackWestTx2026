@@ -24,7 +24,18 @@ func _ready():
 	$Chests/Chest2.visible = true
 	$Dice_Select.visible = false
 	seed(seed)
-	#seed(seed)
+	if gamemanager.nov_dice[0] != null:
+		$UserDice/BasicDie1/NovDie1.texture = gamemanager.nov_dice[0].texture
+	if gamemanager.nov_dice[1] != null:
+		$UserDice/BasicDie2/NovDie2.texture = gamemanager.nov_dice[1].texture 
+	if gamemanager.nov_dice[2] != null:
+		$UserDice/BasicDie3/NovDie3.texture = gamemanager.nov_dice[2].texture 
+	if gamemanager.nov_dice[3] != null:
+		$UserDice/BasicDie4/NovDie4.texture = gamemanager.nov_dice[3].texture 
+	if gamemanager.nov_dice[4] != null:
+		$UserDice/BasicDie5/NovDie5.texture = gamemanager.nov_dice[4].texture 
+	if gamemanager.nov_dice[5] != null:
+		$UserDice/BasicDie6/NovDie6.texture = gamemanager.nov_dice[5].texture 
 	generate_chests()
 	generate_dice()
 
@@ -32,6 +43,7 @@ func _ready():
 func _process(delta: float):
 	$UI/Money.text = "$%d"%gamemanager.money
 
+	
 enum modifier {add, coins, daisy, multmod, weighted, none}
 
 # separate lists in case we want to weigh each cup modifier type's
@@ -81,9 +93,9 @@ var mod_list = [modifier.add, modifier.coins, modifier.daisy, modifier.multmod, 
 
 var side_pool = [1, 2, 3, 4, 5, 6]
 
-@export var mod_chance = .33
+var mod_chance = .33
 
-@export var tier2_chance = .33
+var tier2_chance = .33
 
 var novilty_pool: Array = DirAccess.get_files_at("res://Specials/Dice/")
 
@@ -327,10 +339,13 @@ func _on_shop_cup_unhover() -> void:
 func _on_pd_1_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[0] = shop_nov[0]
+		$UserDice/BasicDie1/NovDie1.texture = shop_nov[0].texture
+		print("Nov die assigned!")
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[0] = shop_nov[1]
+		$UserDice/BasicDie1/NovDie1.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
@@ -340,10 +355,12 @@ func _on_pd_1_button_button_down():
 func _on_pd_2_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[1] = shop_nov[0]
+		$UserDice/BasicDie2/NovDie2.texture = shop_nov[0].texture
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[1] = shop_nov[1]
+		$UserDice/BasicDie2/NovDie2.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
@@ -353,23 +370,26 @@ func _on_pd_2_button_button_down():
 func _on_pd_3_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[2] = shop_nov[0]
+		$UserDice/BasicDie3/NovDie3.texture = shop_nov[0].texture
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[2] = shop_nov[1]
+		$UserDice/BasicDie3/NovDie3.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
 		user_die_select(2)
 
-
 func _on_pd_4_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[3] = shop_nov[0]
+		$UserDice/BasicDie4/NovDie4.texture = shop_nov[0].texture
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[3] = shop_nov[1]
+		$UserDice/BasicDie4/NovDie4.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
@@ -379,10 +399,12 @@ func _on_pd_4_button_button_down():
 func _on_pd_5_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[4] = shop_nov[0]
+		$UserDice/BasicDie5/NovDie5.texture = shop_nov[0].texture
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[4] = shop_nov[1]
+		$UserDice/BasicDie5/NovDie5.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
@@ -392,10 +414,12 @@ func _on_pd_5_button_button_down():
 func _on_pd_6_button_button_down():
 	if nov_select == 1:
 		gamemanager.nov_dice[5] = shop_nov[0]
+		$UserDice/BasicDie6/NovDie6.texture = shop_nov[0].texture
 		shop_nov[0] = null
 		nov_select = 0
 	elif nov_select == 2:
 		gamemanager.nov_dice[5] = shop_nov[1]
+		$UserDice/BasicDie6/NovDie6.texture = shop_nov[1].texture
 		shop_nov[1] = null
 		nov_select = 0
 	else:
@@ -514,13 +538,12 @@ func show_hover(item: Special) -> void:
 
 
 func _on_next_button_down() -> void:
-	gamemanager.level += 1
 	get_tree().change_scene_to_file("res://main.tscn")
 
 
 func _on_cup_button_button_down():
 	gamemanager.money -= shop_cup.price
-	gamemanager.cups.append($ShopCup.item_data)
+	gamemanager.cup = $ShopCup.item_data
 	$ShopCup.visible = false
 
 

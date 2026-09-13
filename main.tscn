@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://c2vfketnhfjcr" path="res://Specials/Cups/angel.tres" id="2_vivmo"]
 [ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
+[ext_resource type="Script" uid="uid://crd388qstkyk6" path="res://goal_num.gd" id="6_2cqfq"]
+[ext_resource type="Script" uid="uid://d21si8ndohvu0" path="res://level_num.gd" id="6_074og"]
 [ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
 [ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
 [ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
@@ -14,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cxpbhonrqsioi" path="res://Assets/Cups/Angel.png" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://2imjp750xma3" path="res://die_side.gd" id="10_w48qg"]
 [ext_resource type="Resource" uid="uid://c42sqvwb5wd1e" path="res://Specials/Dice/comp_one_add.tres" id="14_074og"]
+[ext_resource type="AudioStream" uid="uid://d0xkaugqlrrh1" path="res://sounds/sad_trumpet.mp3" id="15_vivmo"]
+[ext_resource type="AudioStream" uid="uid://c8riy2xmff8bp" path="res://sounds/bg_music.mp3" id="17_yaehf"]
 [ext_resource type="Texture2D" uid="uid://b42fab531ymuj" path="res://Assets/UI Assets/ScoreGray.png" id="18_074og"]
 [ext_resource type="Texture2D" uid="uid://cpyx54fbe32g5" path="res://Assets/UI Assets/ScoreGreen.png" id="18_cegan"]
 [ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
@@ -91,6 +95,7 @@ theme_override_font_sizes/font_size = 28
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_074og")
 
 [node name="GoalNum" type="Label" parent="UI" unique_id=395506092]
 layout_mode = 0
@@ -103,6 +108,7 @@ theme_override_fonts/font = ExtResource("4_w48qg")
 theme_override_font_sizes/font_size = 20
 text = "10000
 "
+script = ExtResource("6_2cqfq")
 
 [node name="BankedNum" type="Label" parent="UI" unique_id=1251190106]
 layout_mode = 0
@@ -247,7 +253,18 @@ disabled = true
 texture_normal = ExtResource("20_getpj")
 texture_disabled = ExtResource("21_ryguw")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1572597180]
+stream = ExtResource("15_vivmo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1309815600]
+stream = ExtResource("17_yaehf")
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
+[connection signal="goal_sig" from="." to="UI/GoalNum" method="_on_main_goal_sig"]
+[connection signal="level_sig" from="." to="UI/LevelNum" method="_on_main_level_sig"]
 [connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
 [connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
 [connection signal="pressed" from="ScoreBtn" to="." method="_on_score_btn_pressed"]

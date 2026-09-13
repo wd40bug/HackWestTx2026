@@ -30,6 +30,9 @@ signal unbanked_score_sig(unbank_score: int)
 var turns_left: int = 0
 signal turns_left_sig(turns: int)
 
+signal goal_sig(final_goal: int)
+signal level_sig(new_level: int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	begin_game()
@@ -41,6 +44,11 @@ const END_OF_ROUND = preload("res://shop.tscn")
 @export var cup: Special
 
 var angel_cup_used = false
+const PERCENT_OVER_FOR_MONEY = .1
+const MONEY_FOR_WINNING = 4
+const GOAL_INCREASE_BY = 500
+
+@onready var sound_effect = $AudioStreamPlayer
 
 var enter_prev_pressed: bool = false
 var space_prev_pressed: bool = false
@@ -58,6 +66,8 @@ var hands: Array[Hands.HandTypes] = []
 
 '''Initializes everything'''
 func begin_game():
+	#$AudioStreamPlayer.play()
+	goal = gamemanager.goal
 	$HandsLbl.text = ""
 	$UI/GoalNum.text = str(goal)
 	$UI/TextureRect.texture = cup.texture
@@ -66,6 +76,12 @@ func begin_game():
 	
 	die_array = []
 	
+	emit_signal("goal_sig", goal)
+	level_sig.emit(gamemanager.level)
+	
+	print("Level: ", gamemanager.level)
+	print("Goal: ", goal)
+
 	for i in range(gamemanager.dice_amm):
 		#var new_die = Die.new()
 		var new_die: Die = $Dice.get_child(i) as Die
@@ -81,7 +97,7 @@ func begin_game():
 			
 			var new_side = Die_side.new(side_ability, side_num, side_index)
 			#new_side.print_parameters()
-			new_die.die_sides.append(new_side)
+			new_die.die_sides[k] = (new_side)
 		die_array.append(new_die)
 	
 	turns_left = 3
@@ -94,9 +110,22 @@ func begin_game():
 	
 
 func end_of_round():
+	# player loses, reset
 	if banked_score < goal:
+		emit_signal("turns_left_sig", turns_left)
+		$AudioStreamPlayer.play()
+		gamemanager.goal = 1500
+		gamemanager.level = 1
+		level_sig.emit(gamemanager.level)
+		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(END_SCREEN)
+	# player succeeds, proceed to shop and increase difficulty
 	else:
+		var extra_money: int = int((banked_score - goal) / (goal * PERCENT_OVER_FOR_MONEY))
+		gamemanager.money += MONEY_FOR_WINNING + extra_money
+		gamemanager.goal += GOAL_INCREASE_BY
+		gamemanager.level += 1
+		level_sig.emit(gamemanager.level)
 		get_tree().change_scene_to_packed(END_OF_ROUND)
 
 # Create an array of 6 dice with normal sides, weights, and no abilities

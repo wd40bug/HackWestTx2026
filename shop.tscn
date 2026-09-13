@@ -182,8 +182,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_right = 74.0
+offset_left = 35.0
+offset_right = 59.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -228,7 +228,7 @@ offset_right = 15.0
 offset_bottom = 24.0
 mouse_filter = 1
 
-[node name="BasicDie" type="TextureRect" parent="UserDice" unique_id=238811843]
+[node name="BasicDie1" type="TextureRect" parent="UserDice" unique_id=238811843]
 layout_mode = 0
 offset_left = 130.0
 offset_top = 30.0
@@ -237,7 +237,15 @@ offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
-[node name="PD1Button" type="Button" parent="UserDice/BasicDie" unique_id=1856048198]
+[node name="NovDie1" type="TextureRect" parent="UserDice/BasicDie1" unique_id=1916346389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PD1Button" type="Button" parent="UserDice/BasicDie1" unique_id=1856048198]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -264,6 +272,14 @@ offset_right = 235.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
+
+[node name="NovDie2" type="TextureRect" parent="UserDice/BasicDie2" unique_id=938193916]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PD2Button" type="Button" parent="UserDice/BasicDie2" unique_id=402121185]
 layout_mode = 0
@@ -292,6 +308,14 @@ offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
+[node name="NovDie3" type="TextureRect" parent="UserDice/BasicDie3" unique_id=821603382]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PD3Button" type="Button" parent="UserDice/BasicDie3" unique_id=312692472]
 layout_mode = 0
 offset_left = 6.0
@@ -318,6 +342,14 @@ offset_right = 345.0
 offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
+
+[node name="NovDie4" type="TextureRect" parent="UserDice/BasicDie4" unique_id=1985419165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PD4Button" type="Button" parent="UserDice/BasicDie4" unique_id=1661612130]
 layout_mode = 0
@@ -346,6 +378,14 @@ offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
+[node name="NovDie5" type="TextureRect" parent="UserDice/BasicDie5" unique_id=1520191276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PD5Button" type="Button" parent="UserDice/BasicDie5" unique_id=632907747]
 layout_mode = 0
 offset_left = 6.0
@@ -373,7 +413,15 @@ offset_bottom = 80.0
 texture = ExtResource("4_8kdgp")
 metadata/_edit_group_ = true
 
-[node name="PD6Button" type="Button" parent="UserDice/BasicDie6" unique_id=1934412457]
+[node name="NovDie6" type="TextureRect" parent="UserDice/BasicDie6" unique_id=2067092724]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PD6Button" type="Button" parent="UserDice/BasicDie6/NovDie6" unique_id=1934412457]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
@@ -733,12 +781,12 @@ mouse_filter = 1
 [connection signal="button_down" from="UI/Next" to="." method="_on_next_button_down"]
 [connection signal="button_down" from="Chests/Chest1/Chest1Button" to="." method="_on_chest_1_button_button_down"]
 [connection signal="button_down" from="Chests/Chest2/Chest2Button" to="." method="_on_chest_2_button_button_down"]
-[connection signal="button_down" from="UserDice/BasicDie/PD1Button" to="." method="_on_pd_1_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie1/PD1Button" to="." method="_on_pd_1_button_button_down"]
 [connection signal="button_down" from="UserDice/BasicDie2/PD2Button" to="." method="_on_pd_2_button_button_down"]
 [connection signal="button_down" from="UserDice/BasicDie3/PD3Button" to="." method="_on_pd_3_button_button_down"]
 [connection signal="button_down" from="UserDice/BasicDie4/PD4Button" to="." method="_on_pd_4_button_button_down"]
 [connection signal="button_down" from="UserDice/BasicDie5/PD5Button" to="." method="_on_pd_5_button_button_down"]
-[connection signal="button_down" from="UserDice/BasicDie6/PD6Button" to="." method="_on_pd_6_button_button_down"]
+[connection signal="button_down" from="UserDice/BasicDie6/NovDie6/PD6Button" to="." method="_on_pd_6_button_button_down"]
 [connection signal="hover" from="ShopCup" to="." method="_on_item_hover"]
 [connection signal="unhover" from="ShopCup" to="." method="_on_shop_cup_unhover"]
 [connection signal="button_down" from="ShopCup/CupButton" to="." method="_on_cup_button_button_down"]
