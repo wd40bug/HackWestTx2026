@@ -13,6 +13,8 @@ extends Node
 @onready var die_sides: Array[Die_side] = [side1, side2, side3, side4, side5, side6]
 @export var die_ability: Special = preload("res://Assets/Novelty/basic_die.tres")
 
+signal hovered(idx: int)
+signal unhovered(idx: int)
 
 enum Parameter {WEIGHT, ABILITY, NUM}
 
@@ -182,3 +184,11 @@ func _on_button_toggled(toggled_on: bool) -> void:
 		emit_signal("clicked_signal", toggled_on, die_index)
 	elif(die_state == 7):
 		emit_signal("clicked_signal", toggled_on, die_index)
+
+
+func _on_button_mouse_entered() -> void:
+	hovered.emit(die_index)
+
+
+func _on_button_mouse_exited() -> void:
+	unhovered.emit(die_index)

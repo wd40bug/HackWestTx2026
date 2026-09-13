@@ -277,6 +277,8 @@ one_shot = true
 wait_time = 0.9
 one_shot = true
 
+[connection signal="mouse_entered" from="AnimatedSprite2D/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="AnimatedSprite2D/Button" to="." method="_on_button_mouse_exited"]
 [connection signal="toggled" from="AnimatedSprite2D/Button" to="." method="_on_button_toggled"]
 [connection signal="timeout" from="Timer" to="." method="tick_animation"]
 [connection signal="timeout" from="OverallTimer" to="." method="_on_overall_timer_timeout"]

@@ -1,5 +1,5 @@
 class_name Game
-extends Node
+extends Control
 
 enum State {ROLLING, SELECTING, SCORING}
 
@@ -66,6 +66,12 @@ var hands: Array[Hands.HandTypes] = []
 
 '''Initializes everything'''
 func begin_game():
+	angel_cup_used = false
+	lock_locked = false
+	has_rerolled_even = false
+	has_rerolled_odd = false
+	hand_has_saved_hands = false
+	
 	#$AudioStreamPlayer.play()
 	goal = gamemanager.goal
 	$HandsLbl.text = ""
@@ -73,6 +79,8 @@ func begin_game():
 
 	for child_dice in $Dice.get_children():
 		child_dice.clicked_signal.connect(_die_clicked)
+		(child_dice as Die).hovered.connect(_on_die_hovered)
+		(child_dice as Die).unhovered.connect(_on_die_unhovered)
 	
 	die_array = []
 	
@@ -145,6 +153,11 @@ func init_base_dice() -> Array[Die]:
 
 	return die_array
 
+var has_rerolled_even = false
+var has_rerolled_odd = false
+
+var lock_locked = false
+var locked_num = 0
 func roll_rollable_dice(dice: Array[Die]):
 	await get_tree().process_frame
 	for die in dice:
@@ -175,14 +188,63 @@ func roll_rollable_dice(dice: Array[Die]):
 	for name in post_roll_add:
 		var novelty = get_novelty("%s Add" % name)
 		if novelty:
-			novelty.shake()
+			var shake = false
 			for side in rolled_sides:
 				if side.side_num == post_roll_add[name]:
 					unbanked_score += 50
 					die_array[side.side_index].shake()
+					shake = true
+			if shake:
+				novelty.shake()
+	
+	var lock = get_novelty("Lock")
+	if lock && lock_locked:
+		var shake = false
+		for side in rolled_sides:
+			if side.side_num == locked_num:
+				unbanked_score += 50
+				shake = true
+				die_array[side.side_index].shake()
+		if shake:
+			lock.shake()
 	
 	unbanked_score_sig.emit(unbanked_score)
 	
+	if cup.title == "Reroll Even" && not has_rerolled_even:
+		var even_sides: Array[int] = []
+		for side in rolled_sides:
+			if side.side_num % 2 == 0:
+				even_sides.append(side.side_index)
+		
+		if even_sides:
+			var rolled_sides_bak = rolled_sides
+			var rollable_dice_bak = rollable_dice
+			rollable_dice = even_sides
+			has_rerolled_even = true
+			await roll_rollable_dice(die_array)
+			has_rerolled_even = false
+			rollable_dice = rollable_dice_bak
+			rolled_sides += rolled_sides.filter(func(a: Die_side): return a.side_num % 2 == 1)
+			
+	if cup.title == "Reroll Odd" && not has_rerolled_odd:
+		var odd_sides: Array[int] = []
+		for side in rolled_sides:
+			if side.side_num % 2 == 1:
+				odd_sides.append(side.side_index)
+		
+		if odd_sides:
+			var rolled_sides_bak = rolled_sides
+			var rollable_dice_bak = rollable_dice
+			rollable_dice = odd_sides
+			has_rerolled_odd = true
+			has_rerolled_even = true
+			await roll_rollable_dice(die_array)
+			has_rerolled_odd = false
+			has_rerolled_even = false
+			rollable_dice = rollable_dice_bak
+			rolled_sides += rolled_sides.filter(func(a: Die_side): return a.side_num % 2 == 0)
+	
+
 	if (hands_cls.hands.is_empty()):
 		farkled_up()
 		
@@ -254,6 +316,10 @@ func bank_score():
 	banked_score_sig.emit(banked_score)
 	emit_signal("unbanked_score_sig", unbanked_score)
 	
+var hand_history: Array[Hands.HandTypes] = []
+
+var hand_has_saved_hands = false
+var hand_saved_hands: Array[Hands.HandTypes]
 func score_dice() -> void:
 	# 1. Trigger visuals/scoring state on selected dice
 	for i in selected:
@@ -261,6 +327,7 @@ func score_dice() -> void:
 
 	var mult: int = 1
 	var add: int = 0
+	
 
 	# 2. Check modifiers on SELECTED dice
 	for die_idx in selected:
@@ -290,8 +357,41 @@ func score_dice() -> void:
 			if active_side.side_ability == GameManager.modifier.daisy:
 				die.shake()
 				mult += 1
-
+	
+	var snowflake = get_novelty("Snowflake")
+	if snowflake:
+		var shake = false
+		for hand in hands:
+			if hand not in hand_history:
+				mult += 1
+				shake = true
+			hand_history.append(hand)
+		if shake:
+			snowflake.shake()
+	else:
+		hand_history += hands
+		
+	if has_novelty("Hand"):
+		if !hand_has_saved_hands:
+			for s in selected:
+				if die_array[s].die_ability.title == "Hand":
+					hand_has_saved_hands = true
+					hand_saved_hands = hands
+		else:
+			var shake = false
+			for hand in hands:
+				if hand in hand_saved_hands:
+					mult += 1
+					shake = true
+			if shake:
+				get_novelty("Hand").shake()
+	if has_novelty("Lock") and not lock_locked:
+		for s in selected:
+			if die_array[s].die_ability.title == "Lock":
+				lock_locked = true;
+				locked_num = die_array[s].die_state
 	# 4. Calculate score with intended formula: (Base + Add) * Mult
+	
 	var base_score: int = hands.reduce(func(accum, hand): return accum + Hands.HandVals[hand], 0)
 	unbanked_score += (base_score + add) * mult
 
@@ -316,12 +416,15 @@ func farkled_up():
 	finish_roll(true)
 
 func finish_roll(end_turn):
+
 	for die in selected:
 		die_array[die].die_state = 7
 		rollable_dice.erase(die)
 	selected.clear()
 	
 	if (end_turn):
+		lock_locked = false
+		hand_has_saved_hands = false
 		turns_left-=1
 		if turns_left == 0:
 			end_of_round()
@@ -357,3 +460,61 @@ func _on_bank_btn_pressed() -> void:
 	await score_dice()
 	bank_score()
 	finish_roll(true)
+	
+func _on_die_hovered(idx: int) -> void:
+	show_hover(die_array[idx].die_ability)
+	
+func _on_die_unhovered(idx: int) -> void:
+	$UI/TextureRect2.hide_menu()
+	
+func show_hover(item: Special) -> void:
+	var popup = $UI/TextureRect2
+	
+	popup.display(item)
+
+	await get_tree().process_frame
+
+	var mouse := get_global_mouse_position()
+	var viewport_size := get_viewport_rect().size
+	
+	# Get the actual size of the texture being displayed
+	var popup_size = popup.texture.get_size() * popup.scale
+	
+	var margin := 10.0
+	
+	# Default position: centered above mouse
+	var target := Vector2(
+		mouse.x - popup_size.x / 2.0,
+		mouse.y - popup_size.y - margin
+	)
+	
+	# --------------------------------
+	# LEFT / RIGHT
+	# --------------------------------
+	if target.x < margin:
+		target.x = margin
+	
+	if target.x + popup_size.x > viewport_size.x - margin:
+		target.x = viewport_size.x - popup_size.x - margin
+	
+	# --------------------------------
+	# TOP
+	# --------------------------------
+	if target.y < margin:
+		target.y = mouse.y + margin
+	
+	# --------------------------------
+	# BOTTOM
+	# --------------------------------
+	if target.y + popup_size.y > viewport_size.y - margin:
+		target.y = viewport_size.y - popup_size.y - margin
+	
+	popup.global_position = target
+
+
+func _on_texture_rect_mouse_entered() -> void:
+	show_hover(cup)
+
+
+func _on_texture_rect_mouse_exited() -> void:
+	$UI/TextureRect2.hide_menu()

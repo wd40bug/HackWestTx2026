@@ -24,6 +24,7 @@ func _ready():
 	$Chests/Chest2.visible = true
 	$Dice_Select.visible = false
 	#seed(seed)
+
 	if gamemanager.nov_dice[0] != null:
 		$UserDice/BasicDie1/NovDie1.texture = gamemanager.nov_dice[0].texture
 	if gamemanager.nov_dice[1] != null:
@@ -297,17 +298,17 @@ func user_die_select(die):
 		cur_path = "Dice_Select/SelectDie%d/SD%dMod"%[i+1,i+1]
 		match gamemanager.dice_side_mod[die][i]:
 			0:
-				get_node(cur_path).texture = load("res://Assets/Modifiers/Add.png")
-			1:
-				get_node(cur_path).texture = load("res://Assets/Modifiers/Coins.png")
-			2:
-				get_node(cur_path).texture = load("res://Assets/Modifiers/Daisy.png")
-			3:
-				get_node(cur_path).texture = load("res://Assets/Modifiers/MultModifier.png")
-			4:
-				get_node(cur_path).texture = load("res://Assets/Modifiers/Weighted.png")
-			5:
 				get_node(cur_path).texture = null
+			1:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Add.png")
+			2:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Coins.png")
+			3:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Daisy.png")
+			4:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/MultModifier.png")
+			5:
+				get_node(cur_path).texture = load("res://Assets/Modifiers/Weighted.png")
 
 func select_die_selected(side):
 	print("Placing side: %d with mod: %d at die: %d side: %d"%[side_to_place[0], side_to_place[1], cur_selected, side])
