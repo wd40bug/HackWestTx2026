@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://0sbrrgllwkn6"]
+
+[ext_resource type="Texture2D" uid="uid://s6k3xaqdq8f2" path="res://Assets/Dice Assetes/BasicDie.png" id="1_gncym"]
+[ext_resource type="Script" uid="uid://eqkckykst42r" path="res://chest_screen.gd" id="1_hk3qt"]
+
+[node name="ChestScreen" type="Node2D" unique_id=1012830468]
+script = ExtResource("1_hk3qt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=851439308]
+offset_top = 1.0
+offset_right = 480.0
+offset_bottom = 271.0
+color = Color(0.13137859, 0.13137859, 0.13137859, 1)
+
+[node name="Dice" type="Control" parent="." unique_id=650636778]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -175.0
+offset_top = -100.0
+offset_right = -175.0
+offset_bottom = -100.0
+
+[node name="Die1" type="TextureRect" parent="Dice" unique_id=1270859009]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 225.0
+offset_right = 372.0
+offset_bottom = 257.0
+texture = ExtResource("1_gncym")
+metadata/_edit_group_ = true
+
+[node name="Side_mod" type="TextureRect" parent="Dice/Die1" unique_id=1011475236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="Dice/Die1" unique_id=519027093]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Die1Button" type="Button" parent="Dice/Die1" unique_id=755932142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die2" type="TextureRect" parent="Dice" unique_id=2014263791]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 224.0
+offset_right = 422.0
+offset_bottom = 256.0
+texture = ExtResource("1_gncym")
+metadata/_edit_group_ = true
+
+[node name="Side_mod" type="TextureRect" parent="Dice/Die2" unique_id=173589737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="Dice/Die2" unique_id=1091309959]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die2Button" type="Button" parent="Dice/Die2" unique_id=1637838459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die3" type="TextureRect" parent="Dice" unique_id=1712656355]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 225.0
+offset_right = 472.0
+offset_bottom = 257.0
+texture = ExtResource("1_gncym")
+metadata/_edit_group_ = true
+
+[node name="Side_mod" type="TextureRect" parent="Dice/Die3" unique_id=618309692]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="Dice/Die3" unique_id=2014647053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die3Button" type="Button" parent="Dice/Die3" unique_id=1737079256]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die4" type="TextureRect" parent="Dice" unique_id=778125081]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 225.0
+offset_right = 322.0
+offset_bottom = 257.0
+texture = ExtResource("1_gncym")
+metadata/_edit_group_ = true
+
+[node name="Side_mod" type="TextureRect" parent="Dice/Die4" unique_id=2018681825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="Dice/Die4" unique_id=126818610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die4Button" type="Button" parent="Dice/Die4" unique_id=354055150]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die5" type="TextureRect" parent="Dice" unique_id=617304603]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 225.0
+offset_right = 522.0
+offset_bottom = 257.0
+texture = ExtResource("1_gncym")
+metadata/_edit_group_ = true
+
+[node name="Side_mod" type="TextureRect" parent="Dice/Die5" unique_id=1495508852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="Dice/Die5" unique_id=326617571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Die5Button" type="Button" parent="Dice/Die5" unique_id=1339179831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Dice/Die1/Die1Button" to="." method="_on_die_1_button_button_down"]
+[connection signal="button_down" from="Dice/Die2/Die2Button" to="." method="_on_die_2_button_button_down"]
+[connection signal="button_down" from="Dice/Die2/Die2Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Dice/Die3/Die3Button" to="." method="_on_die_3_button_button_down"]
+[connection signal="button_down" from="Dice/Die4/Die4Button" to="." method="_on_die_4_button_button_down"]
+[connection signal="button_down" from="Dice/Die5/Die5Button" to="." method="_on_die_5_button_button_down"]
