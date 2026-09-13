@@ -52,42 +52,23 @@ enum modifier {add, coins, daisy, multmod, weighted, none}
 
 # pool of cups that multiply hand types, e.g. 3 of a kind, full house
 var cup_hand_mult_list: Array[String] = [
-	"mult_2_triplets",
-	"mult_3_of_kind",
-	"mult_3_pair",
-	"mult_4_of_kind",
-	"mult_5_of_kind",
-	"mult_6_of_kind",
-	"mult_full_house",
-	"mult_single",
-	"mult_straight"
+
 ]
 
 # pool of cups that multiply compoundingly via number of
 # numbers in a hand
 var cup_comp_mult_list: Array[String] = [
-	"comp_mult_mixed_fives",
-	"comp_mult_mixed_fours",
-	"comp_mult_mixed_ones",
-	"comp_mult_mixed_sixes",
-	"comp_mult_mixed_threes",
-	"comp_mult_mixed_twos",
-	"comp_mult_only_fives",
-	"comp_mult_only_fours",
-	"comp_mult_only_ones",
-	"comp_mult_only_sixes",
-	"comp_mult_only_threes",
-	"comp_mult_only_twos"
+
 ]
 
 # cups with misc abilities
 var cup_other_abilities_list = [
-	"additional_all_two",
+
 	"angel",
-	"extra_die",
+
 	"reroll_evens",
 	"reroll_odds",
-	"times_two"
+
 ]
 
 var mod_list = [modifier.add, modifier.coins, modifier.daisy, modifier.multmod, modifier.weighted]
@@ -123,12 +104,7 @@ func generate_cup():
 	
 	var rand_num = randf()
 	var cup_pool
-	if(rand_num < HAND_MULT_CHANCE):
-		cup_pool = cup_hand_mult_list
-	elif(rand_num > HAND_MULT_CHANCE + HAND_COMP_MULT_CHANCE):
-		cup_pool = cup_comp_mult_list
-	else:
-		cup_pool = cup_other_abilities_list
+	cup_pool = cup_other_abilities_list
 		
 	var shop_cup_name = cup_pool.pick_random()
 	var shop_cup_path = "res://Specials/Cups/" + shop_cup_name + ".tres"
