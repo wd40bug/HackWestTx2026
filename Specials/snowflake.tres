@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://82aihhdfhjcf"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_1m1ck"]
+[ext_resource type="Texture2D" uid="uid://bk0q7cqy7tw4k" path="res://Assets/Novelty/Snowflake.png" id="2_qoh13"]
+
+[resource]
+script = ExtResource("1_1m1ck")
+title = "Snowflake"
+description = "Gives 1.5x mult for unique hands"
+texture = ExtResource("2_qoh13")
+is_die = true
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

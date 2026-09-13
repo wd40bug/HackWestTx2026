@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://nseysgdx3jmi"]
 
-[ext_resource type="Texture2D" uid="uid://d4l468geur2et" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
 [ext_resource type="Script" uid="uid://dy4n4a5hwr4tg" path="res://game.gd" id="1_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://d4l468geur2et" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
+[ext_resource type="Texture2D" uid="uid://twhv5idljecv" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
 [ext_resource type="Texture2D" uid="uid://2edkfulvhxfs" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
-[ext_resource type="Texture2D" uid="uid://b1nw2qd8rw4py" path="res://Assets/icon.svg" id="3_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://cn3m2ijfa2jbv" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
 [ext_resource type="Texture2D" uid="uid://cyvvl447nf401" path="res://Assets/Dice Assetes/One.png" id="5_vivmo"]
 [ext_resource type="Texture2D" uid="uid://dnoeyhdx22yf8" path="res://Assets/Dice Assetes/Two.png" id="6_2cqfq"]
@@ -58,10 +59,8 @@ metadata/_edit_group_ = true
 
 [node name="Background" type="TextureRect" parent="UI" unique_id=29713066]
 layout_mode = 0
-offset_top = 10.0
-offset_right = 240.0
-offset_bottom = 140.5
-scale = Vector2(2, 2)
+offset_right = 480.0
+offset_bottom = 270.0
 texture = ExtResource("1_efxa6")
 expand_mode = 1
 stretch_mode = 1
@@ -77,16 +76,7 @@ layout_mode = 0
 offset_left = 128.0
 offset_right = 480.0
 offset_bottom = 75.0
-texture = ExtResource("3_ycdy4")
-expand_mode = 1
-
-[node name="RollingArea" type="TextureRect" parent="UI" unique_id=842106174]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 180.0
-offset_right = 480.0
-offset_bottom = 270.0
-texture = ExtResource("3_ycdy4")
+texture = ExtResource("3_efxa6")
 expand_mode = 1
 
 [node name="LevelNum" type="Label" parent="UI" unique_id=1888048386]
