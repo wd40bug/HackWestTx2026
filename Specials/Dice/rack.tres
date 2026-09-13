@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://bxjeyfxqc8m6c"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_b0p0f"]
+[ext_resource type="Texture2D" uid="uid://daa8wctbwjrv1" path="res://Assets/Novelty/Rack.png" id="2_dplft"]
+
+[resource]
+script = ExtResource("1_b0p0f")
+title = "Rack"
+description = "Can be selected for scoring even when it is in the rack"
+texture = ExtResource("2_dplft")
+is_die = true
+price = 7
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

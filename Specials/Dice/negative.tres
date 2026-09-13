@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://b48marilysnq0"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_6pj4m"]
+[ext_resource type="Texture2D" uid="uid://vp0wlrced1tp" path="res://Assets/Novelty/Negative.png" id="2_4ncmu"]
+
+[resource]
+script = ExtResource("1_6pj4m")
+title = "Negative"
+description = "Does not take up a die slot, meaning you can roll more dice"
+texture = ExtResource("2_4ncmu")
+is_die = true
+price = 10
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

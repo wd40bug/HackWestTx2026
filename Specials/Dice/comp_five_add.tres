@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://hneuuelthw1n"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_2xdpw"]
+[ext_resource type="Texture2D" uid="uid://y0pm7aug0d5j" path="res://Assets/Novelty/Nadd5.png" id="2_0dl5n"]
+
+[resource]
+script = ExtResource("1_2xdpw")
+title = "CompFiveAdd"
+description = "Adds a flat bonus for each five in scored hand"
+texture = ExtResource("2_0dl5n")
+is_die = true
+price = 2
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
