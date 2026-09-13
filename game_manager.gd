@@ -22,6 +22,15 @@ var dice_side_mod = ([
 	[modifier.none,modifier.none,modifier.none,modifier.none,modifier.none,modifier.none],
 ])
 
+var dice_weight_mod = ([
+	[1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 1]
+])
+
 var cups = []
 
 var nov_dice = []

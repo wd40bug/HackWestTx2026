@@ -48,7 +48,22 @@ func begin_game():
 	for child_dice in $Dice.get_children():
 		child_dice.clicked_signal.connect(_die_clicked)
 	
-	die_array = init_base_dice()
+	die_array = []
+	
+	for i in range(gamemanager.dice_amm):
+		#var new_die = Die.new()
+		var new_die: Die = $Dice.get_child(i) as Die
+		for k in range(6):
+			#die_side
+			var new_side = Die_side.new()
+			# die side ability
+			new_side.side_ability = gamemanager.dice_side_mod[i][k]
+			new_side.side_num = gamemanager.dice_side_num[i][k]
+			new_side.side_index = i
+			new_side.side_weight = gamemanager.dice_weight_mod[i][k]
+			#new_side.print_parameters()
+			new_die.die_sides.append(new_side)
+		die_array.append(new_die)
 	
 	turns_left = 3
 
