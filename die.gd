@@ -79,6 +79,13 @@ func print_die():
 		die_sides[i].print_parameters()
 		print()
 
+func set_special(new_special: Special):
+	die_ability = new_special
+	$"AnimatedSprite2D/Die Base".texture = die_ability.texture
+	
+	
+	
+
 # return one of the sides of the die, accounting for weight
 
 func roll() -> int:

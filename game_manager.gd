@@ -32,7 +32,7 @@ var dice_weight_mod = ([
 	[1, 1, 1, 1, 1, 1]
 ])
 
-var cup
+var cup: Special = null
 
 var nov_dice = []
 
@@ -43,7 +43,7 @@ func _ready() -> void:
 	nov_dice.resize(6)
 	nov_dice.fill(null)
 
-var goal = 1500
+var goal = 150
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

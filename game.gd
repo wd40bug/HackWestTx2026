@@ -70,7 +70,7 @@ func begin_game():
 	goal = gamemanager.goal
 	$HandsLbl.text = ""
 	$UI/GoalNum.text = str(goal)
-	$UI/TextureRect.texture = cup.texture
+
 	for child_dice in $Dice.get_children():
 		child_dice.clicked_signal.connect(_die_clicked)
 	
@@ -81,9 +81,11 @@ func begin_game():
 	
 	print("Level: ", gamemanager.level)
 	print("Goal: ", goal)
-
+	
+	# populate dice
 	for i in range(gamemanager.dice_amm):
 		#var new_die = Die.new()
+			
 		var new_die: Die = $Dice.get_child(i) as Die
 		
 		for k in range(6):
@@ -98,7 +100,13 @@ func begin_game():
 			var new_side = Die_side.new(side_ability, side_num, side_index)
 			#new_side.print_parameters()
 			new_die.die_sides[k] = (new_side)
+		if(gamemanager.nov_dice[i] != null):
+			new_die.set_special(gamemanager.nov_dice[i])
+		if(gamemanager.cup != null):
+			cup = gamemanager.cup
 		die_array.append(new_die)
+		print(new_die.die_ability)
+		$UI/TextureRect.texture = cup.texture
 	
 	turns_left = 3
 
