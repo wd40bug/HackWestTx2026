@@ -514,7 +514,6 @@ func show_hover(item: Special) -> void:
 
 
 func _on_next_button_down() -> void:
-	gamemanager.level += 1
 	get_tree().change_scene_to_file("res://main.tscn")
 
 

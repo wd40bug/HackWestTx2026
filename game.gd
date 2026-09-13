@@ -19,6 +19,7 @@ var turns_left: int = 0
 signal turns_left_sig(turns: int)
 
 signal goal_sig(final_goal: int)
+signal level_sig(new_level: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,10 @@ func _ready() -> void:
 	
 const END_SCREEN = preload("res://EndScreen.tscn")
 const END_OF_ROUND = preload("res://shop.tscn")
+
+const PERCENT_OVER_FOR_MONEY = .1
+const MONEY_FOR_WINNING = 4
+const GOAL_INCREASE_BY = 500
 
 @onready var sound_effect = $AudioStreamPlayer
 
@@ -56,8 +61,13 @@ func begin_game():
 		child_dice.clicked_signal.connect(_die_clicked)
 	
 	die_array = []
+	
 	emit_signal("goal_sig", goal)
+	level_sig.emit(gamemanager.level)
+	
+	print("Level: ", gamemanager.level)
 	print("Goal: ", goal)
+
 	for i in range(gamemanager.dice_amm):
 		#var new_die = Die.new()
 		var new_die: Die = $Dice.get_child(i) as Die
@@ -86,16 +96,22 @@ func begin_game():
 	
 
 func end_of_round():
+	# player loses, reset
 	if banked_score < goal:
 		emit_signal("turns_left_sig", turns_left)
 		$AudioStreamPlayer.play()
 		gamemanager.goal = 1500
+		gamemanager.level = 1
+		level_sig.emit(gamemanager.level)
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_packed(END_SCREEN)
+	# player succeeds, proceed to shop and increase difficulty
 	else:
-		var extra_money: int = int((banked_score - goal) / (goal * .2))
-		gamemanager.money += 3 + extra_money
-		gamemanager.goal += 500
+		var extra_money: int = int((banked_score - goal) / (goal * PERCENT_OVER_FOR_MONEY))
+		gamemanager.money += MONEY_FOR_WINNING + extra_money
+		gamemanager.goal += GOAL_INCREASE_BY
+		gamemanager.level += 1
+		level_sig.emit(gamemanager.level)
 		get_tree().change_scene_to_packed(END_OF_ROUND)
 
 # Create an array of 6 dice with normal sides, weights, and no abilities

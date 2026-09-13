@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
 [ext_resource type="Script" uid="uid://crd388qstkyk6" path="res://goal_num.gd" id="6_2cqfq"]
+[ext_resource type="Script" uid="uid://d21si8ndohvu0" path="res://level_num.gd" id="6_074og"]
 [ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
 [ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
 [ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
@@ -76,6 +77,7 @@ theme_override_font_sizes/font_size = 28
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_074og")
 
 [node name="GoalNum" type="Label" parent="UI" unique_id=395506092]
 layout_mode = 0
@@ -219,6 +221,7 @@ parameters/looping = true
 
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
 [connection signal="goal_sig" from="." to="UI/GoalNum" method="_on_main_goal_sig"]
+[connection signal="level_sig" from="." to="UI/LevelNum" method="_on_main_level_sig"]
 [connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
 [connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
 [connection signal="pressed" from="ScoreBtn" to="." method="_on_score_btn_pressed"]
