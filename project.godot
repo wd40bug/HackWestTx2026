@@ -33,6 +33,10 @@ window/main_scene="uid://nseysgdx3jmi"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[gui]
+
+theme/custom_font="uid://c7lki41j7jhch"
+
 [input]
 
 confirm_dice={
