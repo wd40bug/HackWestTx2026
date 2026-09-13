@@ -134,6 +134,7 @@ func generate_items():
 	shop_cup = generate_cup()
 	
 	$ShopCup.item_data = shop_cup
+	$ShopCup/Price.text = "$" + str(shop_cup.price)
 	
 	$ShopDice/ShopDie1/Side_num.texture = load(num_images[shopsides[0][0] - 1])
 	if shopsides[0][1] != modifier.none:
