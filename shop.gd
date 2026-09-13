@@ -384,8 +384,6 @@ func _on_reroll_button_down() -> void:
 	else:
 		gamemanager.money -= 7
 		generate_chests()
-func _on_pd_6_button_button_down() -> void:
-	pass # Replace with function body.
 
 
 func _on_shop_item_hover(item: Special) -> void:

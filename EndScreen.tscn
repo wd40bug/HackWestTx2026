@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dwj8n4tskp0vr"]
+
+[ext_resource type="Texture2D" uid="uid://vsv1fc62ljdq" path="res://Assets/UI Assets/GameOver.png" id="1_ekb8w"]
+[ext_resource type="Script" uid="uid://h5ja3ofo27o3" path="res://end_screen.gd" id="1_lmk8k"]
+[ext_resource type="Script" uid="uid://cty22ktqwke8g" path="res://button.gd" id="2_8dv01"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lmk8k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3w1jx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6a7n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adxjw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j885"]
+
+[node name="EndScreen" type="Node2D" unique_id=952131448]
+script = ExtResource("1_lmk8k")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=904680377]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ekb8w")
+
+[node name="Button" type="Button" parent="." unique_id=1247886058]
+offset_left = 183.0
+offset_top = 206.0
+offset_right = 302.0
+offset_bottom = 262.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_lmk8k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3w1jx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_e6a7n")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_adxjw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_7j885")
+script = ExtResource("2_8dv01")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
