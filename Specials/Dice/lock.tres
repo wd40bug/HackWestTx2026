@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://kand367yxlim"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_b4dqs"]
+[ext_resource type="Texture2D" uid="uid://fh0rncsuq30k" path="res://Assets/Novelty/LockDie.png" id="2_ua1q6"]
+
+[resource]
+script = ExtResource("1_b4dqs")
+title = "Lock"
+description = "When scored, provides a multiplier to future hands of the same type"
+texture = ExtResource("2_ua1q6")
+is_die = true
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

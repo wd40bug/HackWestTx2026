@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://bqa4hr8uk1gja"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_ic4wa"]
+[ext_resource type="Texture2D" uid="uid://dxrfljlegotl6" path="res://Assets/Novelty/5mul.png" id="2_y7t2e"]
+
+[resource]
+script = ExtResource("1_ic4wa")
+title = "CompFiveMult"
+description = "Gives a multiplier for each scored five if used in scoring"
+texture = ExtResource("2_y7t2e")
+is_die = true
+price = 3
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

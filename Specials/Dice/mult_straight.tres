@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://d1aanq01jd80w"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_pdjmu"]
+[ext_resource type="Texture2D" uid="uid://dogupi7xh66qa" path="res://Assets/Novelty/straightmult.png" id="2_p1cr8"]
+
+[resource]
+script = ExtResource("1_pdjmu")
+title = "StraightMult"
+description = "Multiplies straights by a flat value"
+texture = ExtResource("2_p1cr8")
+is_die = true
+price = 7
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

@@ -24,7 +24,9 @@ func _ready():
 	$Chests/Chest2.visible = true
 	$Dice_Select.visible = false
 	seed(seed)
+	#seed(seed)
 	generate_chests()
+	generate_dice()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
@@ -83,7 +85,7 @@ var side_pool = [1, 2, 3, 4, 5, 6]
 
 @export var tier2_chance = .33
 
-var shopdies = []
+var novilty_pool: Array = DirAccess.get_files_at("res://Specials/Dice/")
 
 var shopchests = []
 
@@ -118,8 +120,20 @@ func generate_cup():
 
 	return cup
 	
-		
+var shop_nov: Array	 = []
 
+func generate_dice():
+
+	shop_nov.append(load("res://Specials/Dice/" + novilty_pool.pick_random()))
+	shop_nov.append(load("res://Specials/Dice/" + novilty_pool.pick_random()))
+
+	print(shop_nov)
+	
+	$ShopItem.item_data = shop_nov[0]
+	$ShopItem2.item_data = shop_nov[1]
+	
+	pass
+	
 func generate_side():
 	var side = side_pool[randi() % side_pool.size()]
 	var side_mod = modifier.none
@@ -286,6 +300,15 @@ func select_die_selected(side):
 	#print("Hovering!!!")
 	#$TextureRect.visible = true
 	#$TextureRect.display(special)
+	pass
+
+func _on_item_hover(special: Special) -> void:
+	print("Hovering!!!")
+	$TextureRect.display(special)
+	
+func _on_shop_cup_unhover() -> void:
+	print("Unhovering!!!")
+	$TextureRect.hide_menu()
 
 
 #func _on_shop_item_hover(item: Special):
@@ -361,3 +384,33 @@ func _on_reroll_button_down() -> void:
 	else:
 		gamemanager.money -= 7
 		generate_chests()
+func _on_pd_6_button_button_down() -> void:
+	pass # Replace with function body.
+
+
+func _on_shop_item_hover(item: Special) -> void:
+	print("Hovering!!!")
+	$TextureRect.display(item)
+
+
+func _on_shop_item_unhover() -> void:
+	print("Unhovering!!!")
+	$TextureRect.hide_menu()
+
+
+func _on_shop_item_2_hover(item: Special) -> void:
+	print("Hovering!!!")
+	$TextureRect.display(item)
+	
+	var mouse = get_global_mouse_position()
+	var view = get_viewport().get_visible_rect().size
+	var size = $TextureRect.texture.get_size() * $TextureRect.scale
+	var target = Vector2(mouse.x - (size.x / 2), mouse.y - size.y)
+	target.x = clamp(target.x, 0, view.x - size.x)
+	if target.y < 0: 
+		target.y = mouse.y
+	$TextureRect.global_position = target
+
+func _on_shop_item_2_unhover() -> void:
+	print("Unhovering!!!")
+	$TextureRect.hide_menu()

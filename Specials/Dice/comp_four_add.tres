@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://b407mw2u48ps7"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_stack"]
+[ext_resource type="Texture2D" uid="uid://caq3q4cluyvh1" path="res://Assets/Novelty/Nadd4.png" id="2_fhss1"]
+
+[resource]
+script = ExtResource("1_stack")
+title = "CompFourAdd"
+description = "Adds a flat bonus for each four in scored hand"
+texture = ExtResource("2_fhss1")
+is_die = true
+price = 2
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

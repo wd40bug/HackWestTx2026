@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dcnhykx4bseu7"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_kd5i1"]
+[ext_resource type="Texture2D" uid="uid://s5j4dvlv1cy1" path="res://Assets/Novelty/4ofakindadd.png" id="2_ydtx0"]
+
+[resource]
+script = ExtResource("1_kd5i1")
+title = "AddFourOfKind"
+description = "Adds a flat value to fours of a kind"
+texture = ExtResource("2_ydtx0")
+is_die = true
+price = 3
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

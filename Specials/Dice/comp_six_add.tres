@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dgd5qqruutsrb"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_hl8mf"]
+[ext_resource type="Texture2D" uid="uid://b3626ykngmtus" path="res://Assets/Novelty/Nadd6.png" id="2_tysui"]
+
+[resource]
+script = ExtResource("1_hl8mf")
+title = "CompSixAdd"
+description = "Adds a flat bonus for each six in scored hand"
+texture = ExtResource("2_tysui")
+is_die = true
+price = 2
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

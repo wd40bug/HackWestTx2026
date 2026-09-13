@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://cqa6gdo2k8mo8"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_nq6py"]
+[ext_resource type="Texture2D" uid="uid://c5dv5kg2mbqss" path="res://Assets/Novelty/1mul.png" id="2_npssw"]
+
+[resource]
+script = ExtResource("1_nq6py")
+title = "CompOneMult"
+description = "Gives a multiplier for each scored one if used in scoring"
+texture = ExtResource("2_npssw")
+is_die = true
+price = 3
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

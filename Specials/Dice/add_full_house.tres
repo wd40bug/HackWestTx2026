@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://craraf5fakd0v"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_tvfx2"]
+[ext_resource type="Texture2D" uid="uid://bjnbk0dqdrssh" path="res://Assets/Novelty/fullhouseadd.png" id="2_fn8gn"]
+
+[resource]
+script = ExtResource("1_tvfx2")
+title = "AddFullHouse"
+description = "Adds a flat bonus to full houses"
+texture = ExtResource("2_fn8gn")
+is_die = true
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

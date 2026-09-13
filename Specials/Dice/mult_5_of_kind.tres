@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dok0hmegqhwof"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_j33t1"]
+[ext_resource type="Texture2D" uid="uid://dtg2wx4pinv1t" path="res://Assets/Novelty/5ofakindmult.png" id="2_jqr48"]
+
+[resource]
+script = ExtResource("1_j33t1")
+title = "MultFiveOfKind"
+description = "Multiply the point value of fives of a kind by a flat value"
+texture = ExtResource("2_jqr48")
+is_die = true
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

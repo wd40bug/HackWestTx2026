@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://3mko0l8kaq6w"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_bilb6"]
+[ext_resource type="Texture2D" uid="uid://48mkvt7bv4bs" path="res://Assets/Novelty/Nadd2.png" id="2_uq5jc"]
+
+[resource]
+script = ExtResource("1_bilb6")
+title = "CompTwoAdd"
+description = "Adds a flat bonus for each two in scored hand"
+texture = ExtResource("2_uq5jc")
+is_die = true
+price = 2
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://b7i2i121ed4po"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_xo71p"]
+[ext_resource type="Texture2D" uid="uid://bp6usetbc8pex" path="res://Assets/Novelty/HandDie.png" id="2_1pk8p"]
+
+[resource]
+script = ExtResource("1_xo71p")
+title = "THEHAND"
+description = "The hand this die is used in gets additional multipliers in future hands"
+texture = ExtResource("2_1pk8p")
+is_die = true
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
