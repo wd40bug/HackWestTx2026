@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://8hkhlqafhpfm" path="res://Assets/Dice Assetes/Five.png" id="9_cegan"]
 [ext_resource type="Texture2D" uid="uid://b603i0rvrt7qp" path="res://Assets/Dice Assetes/Six.png" id="10_82xsv"]
 [ext_resource type="Texture2D" uid="uid://s6k3xaqdq8f2" path="res://Assets/Dice Assetes/BasicDie.png" id="11_getpj"]
+[ext_resource type="AudioStream" uid="uid://gbdt4hooo8h4" path="res://sounds/die_rolling.mp3" id="17_yaehf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcva3"]
 animations = [{
@@ -200,6 +201,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Dice/Die7" unique_id=180082981]
+stream = ExtResource("17_yaehf")
+
 [node name="Die" type="Node" parent="Dice" unique_id=681120199]
 script = ExtResource("8_vivmo")
 metadata/_custom_type_script = "uid://b2jkjeth4ektf"
@@ -239,6 +243,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Dice/Die/AnimatedSprite2D" unique_id=1505331884]
+stream = ExtResource("17_yaehf")
 
 [node name="Die2" type="Node" parent="Dice" unique_id=574217439]
 script = ExtResource("8_vivmo")
@@ -280,6 +287,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die2/AnimatedSprite2D" unique_id=453245403]
+stream = ExtResource("17_yaehf")
+
 [node name="Die3" type="Node" parent="Dice" unique_id=1364009544]
 script = ExtResource("8_vivmo")
 metadata/_custom_type_script = "uid://b2jkjeth4ektf"
@@ -319,6 +329,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die3/AnimatedSprite2D" unique_id=578379376]
+stream = ExtResource("17_yaehf")
 
 [node name="Die4" type="Node" parent="Dice" unique_id=69857179]
 script = ExtResource("8_vivmo")
@@ -362,6 +375,9 @@ focus_mode = 0
 toggle_mode = true
 metadata/_edit_use_anchors_ = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die4/AnimatedSprite2D" unique_id=1588077717]
+stream = ExtResource("17_yaehf")
+
 [node name="Die5" type="Node" parent="Dice" unique_id=1318417110]
 script = ExtResource("8_vivmo")
 metadata/_custom_type_script = "uid://b2jkjeth4ektf"
@@ -401,6 +417,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 focus_mode = 0
 toggle_mode = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die5/AnimatedSprite2D" unique_id=597229971]
+stream = ExtResource("17_yaehf")
 
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
 [connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]

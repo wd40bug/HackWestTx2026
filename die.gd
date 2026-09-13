@@ -19,12 +19,16 @@ signal clicked_signal(state: bool, index: int)
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var button = $AnimatedSprite2D/Button
+var sound_effect: AudioStreamPlayer
 
 var clickable: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	sound_effect = AudioStreamPlayer.new()
+	animated_sprite.add_child(sound_effect)
+	
+	sound_effect.stream = load("res://sounds/die_rolling.mp3")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -74,6 +78,7 @@ func print_die():
 
 # return one of the sides of the die, accounting for weight
 func roll_die():
+	sound_effect.play()
 	die_state = 0
 	emit_signal("die_roll_state", die_state)
 	if get_tree():
