@@ -28,7 +28,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
-	pass
+	$UI/Money.text = "$%d"%gamemanager.money
 
 enum modifier {add, coins, daisy, multmod, weighted, none}
 
@@ -128,6 +128,8 @@ func generate_side():
 	return [side, side_mod]
 
 func generate_chest():
+	$Chests/Chest1.visible = true
+	$Chests/Chest2.visible = true
 	var chest = "tier 1"
 	var chestprice = 5
 	if(randf() < tier2_chance):
@@ -160,10 +162,19 @@ func generate_chests():
 func open_chest(type):
 	chestsides = []
 	if type == "tier 1":
+		gamemanager.money -= 5
 		chestsides = [generate_side(), generate_side(), generate_side()]
 		$ChestScreen/Dice/Die4.visible = false
 		$ChestScreen/Dice/Die5.visible = false
+		
+		$ChestScreen/Dice/Die4/Side_num.texture = null
+		$ChestScreen/Dice/Die4/Side_mod.texture = null
+		
+		$ChestScreen/Dice/Die5/Side_num.texture = null
+		$ChestScreen/Dice/Die5/Side_mod.texture = null
+		
 	else:
+		gamemanager.money -= 8
 		chestsides = [generate_side(), generate_side(), generate_side(), generate_side(), generate_side()]
 		$ChestScreen/Dice/Die4.visible = true
 		$ChestScreen/Dice/Die5.visible = true
@@ -171,23 +182,34 @@ func open_chest(type):
 		$ChestScreen/Dice/Die4/Side_num.texture = load(num_images[chestsides[3][0] - 1])
 		if chestsides[3][1] != modifier.none:
 			$ChestScreen/Dice/Die4/Side_mod.texture = load(mod_images[chestsides[3][1]])
-	
+		else:
+			$ChestScreen/Dice/Die4/Side_mod.texture = null
+			
 		$ChestScreen/Dice/Die5/Side_num.texture = load(num_images[chestsides[4][0] - 1])
 		if chestsides[4][1] != modifier.none:
 			$ChestScreen/Dice/Die5/Side_mod.texture = load(mod_images[chestsides[4][1]])
+		else:
+			$ChestScreen/Dice/Die5/Side_mod.texture = null
+
 	
 	$ChestScreen/Dice/Die1/Side_num.texture = load(num_images[chestsides[0][0] - 1])
 	if chestsides[0][1] != modifier.none:
 		$ChestScreen/Dice/Die1/Side_mod.texture = load(mod_images[chestsides[0][1]])
+	else:
+			$ChestScreen/Dice/Die1/Side_mod.texture = null
 	
 	$ChestScreen/Dice/Die2/Side_num.texture = load(num_images[chestsides[1][0] - 1])
 	if chestsides[1][1] != modifier.none:
 		$ChestScreen/Dice/Die2/Side_mod.texture = load(mod_images[chestsides[1][1]])
+	else:
+			$ChestScreen/Dice/Die2/Side_mod.texture = null
 	
 	$ChestScreen/Dice/Die3/Side_num.texture = load(num_images[chestsides[2][0] - 1])
 	if chestsides[2][1] != modifier.none:
 		$ChestScreen/Dice/Die3/Side_mod.texture = load(mod_images[chestsides[2][1]])
-		
+	else:
+			$ChestScreen/Dice/Die3/Side_mod.texture = null
+	
 	$ChestScreen.visible = true
 
 func _on_chest_1_button_button_down():
@@ -207,12 +229,13 @@ func on_side_select(side):
 	$Chest_open_info.visible = true
 	$Chest_open_info.text = "Select die and side!"
 	side_to_place = chestsides[side]
+	print("Plan to place num: %d mod %d"%[chestsides[side][0], chestsides[side][1]])
 	placing_side = 1
 	
 var cur_selected
 func user_die_select(die):
 	if die == cur_selected:
-		cur_selected = 9
+		cur_selected = null
 		$Dice_Select.visible = false
 		return
 	cur_selected = die
@@ -237,7 +260,6 @@ func user_die_select(die):
 			6:
 				get_node(cur_path).texture = load("res://Assets/Dice Assetes/Six.png")
 		cur_path = "Dice_Select/SelectDie%d/SD%dMod"%[i+1,i+1]
-		print(cur_path)
 		match gamemanager.dice_side_mod[die][i]:
 			0:
 				get_node(cur_path).texture = load("res://Assets/Modifiers/Add.png")
@@ -253,8 +275,11 @@ func user_die_select(die):
 				get_node(cur_path).texture = null
 
 func select_die_selected(side):
+	print("Placing side: %d with mod: %d at die: %d side: %d"%[side_to_place[0], side_to_place[1], cur_selected, side])
 	gamemanager.update_side(cur_selected, side, side_to_place[0], side_to_place[1])
+	placing_side = 0
 	$Chest_open_info.visible = false
+	print("User die for target is num: %d mod: %d"%[gamemanager.dice_side_num[cur_selected][side], gamemanager.dice_side_mod[cur_selected][side]])
 	user_die_select(cur_selected)
 
 #func _on_item_hover(special: Special):
@@ -326,3 +351,13 @@ func _on_sd_6_button_button_down():
 	if placing_side == 1:
 		select_die_selected(5)
 	else: return
+	
+	
+
+
+func _on_reroll_button_down() -> void:
+	if gamemanager.money < 7:
+		return
+	else:
+		gamemanager.money -= 7
+		generate_chests()

@@ -11,7 +11,7 @@ func _process(delta: float):
 
 enum side {side1, side2, side3, side4, side5}
 
-signal side_selected()
+signal side_selected(selected_side: int)
 
 func _on_die_1_button_button_down():
 	side_selected.emit(side.side1)

@@ -558,6 +558,7 @@ offset_right = 44.0
 offset_bottom = 45.0
 mouse_filter = 1
 
+[connection signal="button_down" from="UI/Reroll" to="." method="_on_reroll_button_down"]
 [connection signal="button_down" from="Chests/Chest1/Chest1Button" to="." method="_on_chest_1_button_button_down"]
 [connection signal="button_down" from="Chests/Chest2/Chest2Button" to="." method="_on_chest_2_button_button_down"]
 [connection signal="button_down" from="UserDice/BasicDie/PD1Button" to="." method="_on_pd_1_button_button_down"]
