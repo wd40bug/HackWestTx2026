@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://do3d72xnmfv81"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_acj34"]
+[ext_resource type="Texture2D" uid="uid://b74m4gir1px32" path="res://Assets/Cups/5ofakindmult.png" id="2_oj3ib"]
+
+[resource]
+script = ExtResource("1_acj34")
+title = "MultFiveOfKind"
+description = "Multiplies the value of a five of a kind"
+texture = ExtResource("2_oj3ib")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

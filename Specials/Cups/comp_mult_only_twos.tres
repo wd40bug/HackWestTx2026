@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://cw1ecerh4f3vi"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_kmmyg"]
+[ext_resource type="Texture2D" uid="uid://bjd1do3av8a0h" path="res://Assets/Cups/times2_only2.png" id="2_jdh4y"]
+
+[resource]
+script = ExtResource("1_kmmyg")
+title = "OnlyTwosHand"
+description = "Gives a compounding multiplier per two in scored hand. Scoring hand must only contain twos."
+texture = ExtResource("2_jdh4y")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

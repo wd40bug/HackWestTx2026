@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://duexvgcjita8"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_4su8d"]
+[ext_resource type="Texture2D" uid="uid://cyvtjyxwxe2km" path="res://Assets/Cups/RerollEven.png" id="2_qonnu"]
+
+[resource]
+script = ExtResource("1_4su8d")
+title = "RerollEvens"
+description = "Allows you to reroll any rolled evens"
+texture = ExtResource("2_qonnu")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

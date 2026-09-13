@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://0p80vi52tr5w"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_pea63"]
+[ext_resource type="Texture2D" uid="uid://bpwrfcg7wjg21" path="res://Assets/Cups/times2_only5.png" id="2_7c8nj"]
+
+[resource]
+script = ExtResource("1_pea63")
+title = "OnlyFivesHand"
+description = "Gives a compounding multiplier per fives in scored hand. Scoring hand must only contain fives."
+texture = ExtResource("2_7c8nj")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

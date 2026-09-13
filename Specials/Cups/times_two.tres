@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://cvfoj0pjbx84r"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_m6ts8"]
+[ext_resource type="Texture2D" uid="uid://cmb4vvhk35k3g" path="res://Assets/Cups/2xcup.png" id="2_lnnvw"]
+
+[resource]
+script = ExtResource("1_m6ts8")
+title = "TimesTwo"
+description = "Multiplies score by two"
+texture = ExtResource("2_lnnvw")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

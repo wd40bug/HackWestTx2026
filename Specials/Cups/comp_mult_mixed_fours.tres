@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://cffljrholp33i"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_rrg80"]
+[ext_resource type="Texture2D" uid="uid://cv66kyr57dr5w" path="res://Assets/Cups/times2_4.png" id="2_pledg"]
+
+[resource]
+script = ExtResource("1_rrg80")
+title = "MixedFoursHand"
+description = "Gives a compounding multiplier per four in scored hand"
+texture = ExtResource("2_pledg")
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

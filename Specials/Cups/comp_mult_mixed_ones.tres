@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://d3plece7xk0wc"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_0hqum"]
+[ext_resource type="Texture2D" uid="uid://bys6mnumaiosg" path="res://Assets/Cups/times2_1.png" id="2_yb2x3"]
+
+[resource]
+script = ExtResource("1_0hqum")
+title = "MixedOnesHandMultiplier"
+description = "Gives a compounding multiplier per one in scored hand"
+texture = ExtResource("2_yb2x3")
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

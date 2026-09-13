@@ -24,7 +24,8 @@ gamemanager="*uid://d0n4tsbt8b5vl"
 window/size/viewport_width=480
 window/size/viewport_height=270
 window/size/mode=3
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/main_scene="uid://nseysgdx3jmi"
 
 [editor]
