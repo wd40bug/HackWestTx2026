@@ -130,7 +130,7 @@ func end_of_round():
 	if banked_score < goal:
 		emit_signal("turns_left_sig", turns_left)
 		$AudioStreamPlayer.play()
-		gamemanager.goal = 1500
+		gamemanager.goal = 750
 		gamemanager.level = 1
 		level_sig.emit(gamemanager.level)
 		await get_tree().create_timer(3).timeout

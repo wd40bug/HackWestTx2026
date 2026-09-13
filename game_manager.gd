@@ -43,7 +43,7 @@ func _ready() -> void:
 	nov_dice.resize(6)
 	nov_dice.fill(null)
 
-var goal = 1500
+var goal = 750
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,3 +84,5 @@ func reset_everything():
 	
 	nov_dice = []
 	money = 0
+	nov_dice.resize(6)
+	nov_dice.fill(null)

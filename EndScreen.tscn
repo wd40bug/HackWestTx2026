@@ -34,4 +34,8 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_adxjw")
 theme_override_styles/focus = SubResource("StyleBoxTexture_7j885")
 script = ExtResource("2_8dv01")
 
+[node name="Label" type="Label" parent="." unique_id=878392788]
+offset_right = 40.0
+offset_bottom = 17.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
