@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
 [ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
 [ext_resource type="Texture2D" uid="uid://b5832gx2kp524" path="res://Assets/Dice Assetes/Three.png" id="7_yaehf"]
+[ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://1a1viouwewf3" path="res://Assets/Dice Assetes/Four.png" id="8_074og"]
 [ext_resource type="Script" uid="uid://b2jkjeth4ektf" path="res://die.gd" id="8_vivmo"]
 [ext_resource type="Texture2D" uid="uid://8hkhlqafhpfm" path="res://Assets/Dice Assetes/Five.png" id="9_cegan"]
@@ -45,11 +46,13 @@ animations = [{
 [node name="Main" type="Node2D" unique_id=203334925]
 script = ExtResource("1_ycdy4")
 
-[node name="UI" type="Control" parent="." unique_id=1379449162]
+[node name="UI" type="Control" parent="." unique_id=884199193]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="Background" type="TextureRect" parent="UI" unique_id=29713066]
@@ -119,7 +122,7 @@ offset_bottom = 128.0
 theme_override_colors/font_color = Color(0.29411766, 0.4117647, 0.18431373, 1)
 theme_override_fonts/font = ExtResource("4_w48qg")
 theme_override_font_sizes/font_size = 20
-text = "10000
+text = "0
 "
 script = ExtResource("6_w48qg")
 
@@ -132,8 +135,7 @@ offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.4627451, 0.25882354, 0.5411765, 1)
 theme_override_fonts/font = ExtResource("4_w48qg")
 theme_override_font_sizes/font_size = 20
-text = "10000
-"
+text = "0"
 script = ExtResource("7_w48qg")
 
 [node name="TurnNum" type="Label" parent="UI" unique_id=881497007]
@@ -148,6 +150,7 @@ theme_override_font_sizes/font_size = 24
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_2cqfq")
 
 [node name="Dice" type="Control" parent="." unique_id=2028048908]
 layout_mode = 3
@@ -183,7 +186,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
 
-[node name="Button" type="Button" parent="Dice/Die7/AnimatedSprite2D" unique_id=113512864]
+[node name="Button" type="Button" parent="Dice/Die7/AnimatedSprite2D" unique_id=113512864 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -194,6 +197,8 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
 
 [node name="Die" type="Node" parent="Dice" unique_id=681120199]
 script = ExtResource("8_vivmo")
@@ -221,7 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
 
-[node name="Button" type="Button" parent="Dice/Die/AnimatedSprite2D" unique_id=1139664449]
+[node name="Button" type="Button" parent="Dice/Die/AnimatedSprite2D" unique_id=1139664449 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -232,6 +237,8 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
 
 [node name="Die2" type="Node" parent="Dice" unique_id=574217439]
 script = ExtResource("8_vivmo")
@@ -259,7 +266,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
 
-[node name="Button" type="Button" parent="Dice/Die2/AnimatedSprite2D" unique_id=1151899878]
+[node name="Button" type="Button" parent="Dice/Die2/AnimatedSprite2D" unique_id=1151899878 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -270,6 +277,8 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
 
 [node name="Die3" type="Node" parent="Dice" unique_id=1364009544]
 script = ExtResource("8_vivmo")
@@ -297,7 +306,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
 
-[node name="Button" type="Button" parent="Dice/Die3/AnimatedSprite2D" unique_id=13092493]
+[node name="Button" type="Button" parent="Dice/Die3/AnimatedSprite2D" unique_id=13092493 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -308,6 +317,8 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
 
 [node name="Die4" type="Node" parent="Dice" unique_id=69857179]
 script = ExtResource("8_vivmo")
@@ -334,8 +345,9 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="Dice/Die4/AnimatedSprite2D" unique_id=944277827]
+[node name="Button" type="Button" parent="Dice/Die4/AnimatedSprite2D" unique_id=944277827 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -346,6 +358,9 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Die5" type="Node" parent="Dice" unique_id=1318417110]
 script = ExtResource("8_vivmo")
@@ -373,7 +388,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_getpj")
 
-[node name="Button" type="Button" parent="Dice/Die5/AnimatedSprite2D" unique_id=1952371799]
+[node name="Button" type="Button" parent="Dice/Die5/AnimatedSprite2D" unique_id=1952371799 groups=["dice_buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -384,6 +399,15 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
 
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
+[connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
 [connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
+[connection signal="toggled" from="Dice/Die7/AnimatedSprite2D/Button" to="Dice/Die7" method="_on_button_toggled"]
+[connection signal="toggled" from="Dice/Die/AnimatedSprite2D/Button" to="Dice/Die" method="_on_button_toggled"]
+[connection signal="toggled" from="Dice/Die2/AnimatedSprite2D/Button" to="Dice/Die2" method="_on_button_toggled"]
+[connection signal="toggled" from="Dice/Die3/AnimatedSprite2D/Button" to="Dice/Die3" method="_on_button_toggled"]
+[connection signal="toggled" from="Dice/Die4/AnimatedSprite2D/Button" to="Dice/Die4" method="_on_button_toggled"]
+[connection signal="toggled" from="Dice/Die5/AnimatedSprite2D/Button" to="Dice/Die5" method="_on_button_toggled"]
