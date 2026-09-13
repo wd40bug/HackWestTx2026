@@ -29,6 +29,49 @@ func _process(delta: float) -> void:
 
 enum modifier {add, coins, daisy, multmod, weighted, none}
 
+# separate lists in case we want to weigh each cup modifier type's
+# probability of appearing in the sop
+
+# pool of cups that multiply hand types, e.g. 3 of a kind, full house
+var cup_hand_mult_list: Array[String] = [
+	"mult_2_triplets",
+	"mult_3_of_kind",
+	"mult_3_pair",
+	"mult_4_of_kind",
+	"mult_5_of_kind",
+	"mult_6_of_kind",
+	"mult_full_house",
+	"mult_single",
+	"mult_straight"
+]
+
+# pool of cups that multiply compoundingly via number of
+# numbers in a hand
+var cup_comp_mult_list: Array[String] = [
+	"comp_mult_mixed_fives",
+	"comp_mult_mixed_fours",
+	"comp_mult_mixed_ones",
+	"comp_mult_mixed_sixes",
+	"comp_mult_mixed,threes",
+	"comp_mult_mixed_twos",
+	"comp_mult_only_fives",
+	"comp_mult_only_fours",
+	"comp_mult_only_ones",
+	"comp_mult_only_sixes",
+	"comp_mult_only,threes",
+	"comp_mult_only_twos"
+]
+
+# cups with misc abilities
+var cup_other_abilities_list = [
+	"additional_all_two",
+	"angel",
+	"extra_die",
+	"reroll_evens",
+	"reroll_odds",
+	"times_two"
+]
+
 var mod_list = [modifier.add, modifier.coins, modifier.daisy, modifier.multmod, modifier.weighted]
 
 var side_pool = [1, 2, 3, 4, 5, 6]
@@ -40,6 +83,10 @@ var tier2_chance = .33
 var shopsides = []
 
 var shopchests = []
+
+
+func generate_cup():
+	pass
 
 func generate_side():
 	var side = side_pool[randi() % side_pool.size()]
