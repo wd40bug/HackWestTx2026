@@ -43,7 +43,7 @@ func _ready() -> void:
 	nov_dice.resize(6)
 	nov_dice.fill(null)
 
-var goal = 150
+var goal = 1500
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
