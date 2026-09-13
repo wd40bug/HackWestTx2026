@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_4su8d")
-title = "RerollEvens"
+title = "Reroll Even"
 description = "Allows you to reroll any rolled evens"
 texture = ExtResource("2_qonnu")
 price = 5

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_b4dqs")
 title = "Lock"
-description = "When scored, provides a multiplier to future hands of the same type"
+description = "When scored, provides a bonus to future nums of the same number"
 texture = ExtResource("2_ua1q6")
 is_die = true
 price = 6

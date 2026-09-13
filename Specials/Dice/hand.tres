@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_xo71p")
-title = "THEHAND"
+title = "Hand"
 description = "The hand this die is used in gets additional multipliers in future hands"
 texture = ExtResource("2_1pk8p")
 is_die = true
