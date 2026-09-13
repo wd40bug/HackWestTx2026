@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://bamcjrv86puq"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_ew5wg"]
+[ext_resource type="Texture2D" uid="uid://jysx1p63efqm" path="res://Assets/Cups/RerollOdd.png" id="2_el6dd"]
+
+[resource]
+script = ExtResource("1_ew5wg")
+title = "RerollOdds"
+description = "Allows you to reroll any rolled odds"
+texture = ExtResource("2_el6dd")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

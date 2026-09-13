@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dtqym0pp54mof"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_26kyr"]
+[ext_resource type="Texture2D" uid="uid://dvnus3cs55vmo" path="res://Assets/Cups/3ofakindmult.png" id="2_kwi2q"]
+
+[resource]
+script = ExtResource("1_26kyr")
+title = "MultThreeOfKind"
+description = "Multiplies the value of three of a kind"
+texture = ExtResource("2_kwi2q")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

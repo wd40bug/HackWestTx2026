@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://dr44ht4t7vi2l" path="res://hover.gd" id="9_xqmyw"]
 [ext_resource type="FontFile" uid="uid://cr5o2oe7eq1qq" path="res://Assets/Pixelta.ttf" id="10_xqmyw"]
 [ext_resource type="PackedScene" uid="uid://8ja1e1n7i30c" path="res://ShopItem.tscn" id="11_sw5c6"]
-[ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/explosion.tres" id="12_e23gp"]
-[ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/extra_die.tres" id="12_msgp6"]
-[ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/snowflake.tres" id="13_rrolr"]
+[ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/Dice/explosion.tres" id="12_e23gp"]
+[ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/Cups/extra_die.tres" id="12_msgp6"]
+[ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/Dice/snowflake.tres" id="13_rrolr"]
 
 [node name="Shop" type="Node2D" unique_id=1438685333]
 script = ExtResource("1_8kdgp")

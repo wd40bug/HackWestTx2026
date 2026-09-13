@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dhmurb6iri7px"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_pvcnd"]
+[ext_resource type="Texture2D" uid="uid://vyhgxxrbbyj2" path="res://Assets/Cups/times2_only4.png" id="2_x3cva"]
+
+[resource]
+script = ExtResource("1_pvcnd")
+title = "OnlyFoursHand"
+description = "Gives a compounding multiplier per four in scored hand. Scoring hand must only contain fours."
+texture = ExtResource("2_x3cva")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

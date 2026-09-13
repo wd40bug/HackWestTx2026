@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://cggpdopcods8q"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_qotoi"]
+[ext_resource type="Texture2D" uid="uid://cs8it6o7sli8x" path="res://Assets/Cups/times2_3.png" id="2_vlj41"]
+
+[resource]
+script = ExtResource("1_qotoi")
+title = "MixedThreesHand"
+description = "Gives a compounding multiplier per three in scored hand"
+texture = ExtResource("2_vlj41")
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

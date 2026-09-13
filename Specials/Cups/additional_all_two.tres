@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://de3hqd5cxpk1s"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_s43ia"]
+[ext_resource type="Texture2D" uid="uid://brsholstlaetm" path="res://Assets/Cups/AdditionalAll2.png" id="2_tly5r"]
+
+[resource]
+script = ExtResource("1_s43ia")
+title = "Additiona_Diel_All_Two"
+description = "Adds an additional die to your hand, with all 6 sides being 2s"
+texture = ExtResource("2_tly5r")
+price = 7
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

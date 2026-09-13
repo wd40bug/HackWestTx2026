@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://d2n01fdovg4kw"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_tjsec"]
+[ext_resource type="Texture2D" uid="uid://b8xvu0pis82ck" path="res://Assets/Cups/fullhousemult.png" id="2_brj0r"]
+
+[resource]
+script = ExtResource("1_tjsec")
+title = "MultFullHouse"
+description = "Multiplies the value of a full house"
+texture = ExtResource("2_brj0r")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
