@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var seed = 1234
-
 var num_images = (
 	["res://Assets/Dice Assetes/One.png",
 	"res://Assets/Dice Assetes/Two.png",
@@ -23,7 +21,7 @@ func _ready():
 	$Chests/Chest1.visible = true
 	$Chests/Chest2.visible = true
 	$Dice_Select.visible = false
-	seed(seed)
+
 	if gamemanager.nov_dice[0] != null:
 		$UserDice/BasicDie1/NovDie1.texture = gamemanager.nov_dice[0].texture
 	if gamemanager.nov_dice[1] != null:
