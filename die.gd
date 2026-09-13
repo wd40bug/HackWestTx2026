@@ -1,9 +1,18 @@
 class_name Die
 extends Node
 
-var die_sides: Array[Die_side] = []
-var die_ability: Novilty_ability
-var die_index: int
+@export var die_index: int
+
+@export var side1: Die_side = Die_side.new(GameManager.modifier.none, 1, die_index)
+@export var side2: Die_side = Die_side.new(GameManager.modifier.none, 2, die_index)
+@export var side3: Die_side = Die_side.new(GameManager.modifier.none, 3, die_index)
+@export var side4: Die_side = Die_side.new(GameManager.modifier.none, 4, die_index)
+@export var side5: Die_side = Die_side.new(GameManager.modifier.none, 5, die_index)
+@export var side6: Die_side = Die_side.new(GameManager.modifier.none, 6, die_index)
+
+@onready var die_sides: Array[Die_side] = [side1, side2, side3, side4, side5, side6]
+@export var die_ability: Novilty_ability
+
 
 enum Parameter {WEIGHT, ABILITY, NUM}
 enum Novilty_ability {NONE}
@@ -32,35 +41,24 @@ func _ready() -> void:
 	button.disabled = true
 	
 	sound_effect.stream = load("res://sounds/die_rolling.mp3")
+	
+	for die in die_sides:
+		die.side_index = die_index
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not animated_sprite:
-		return
-	$AnimatedSprite2D.animation = "Roll"
 	if(die_state == 0):
 		button.disabled = true
-		$AnimatedSprite2D.play()
 	elif(die_state == 7):
 		button.disabled = true
-		animated_sprite.hide()
+		animated_sprite.show()
 	elif(die_state == 8):
 		button.disabled = true
 		animated_sprite.show()
 		die_state = 1
-		print("Die index: ", die_index)
-		print("Die state: ", die_state)
 	else:
 		button.disabled = disabled_override
-		$AnimatedSprite2D.stop()
-		$AnimatedSprite2D.frame = die_state - 1
-	
-
-func create_sides(die_index: int):
-	for i in range(0, 6):
-		var side: Die_side = Die_side.new()
-		side.set_values(1, 0, i + 1, die_index)
-		die_sides.append(side)
+		set_current(die_state - 1)
 
 # Modify a parameter of a side of the die
 func modify_die_side_parameter(side: int, parameter: Parameter, value: int):
@@ -80,6 +78,25 @@ func print_die():
 		print()
 
 # return one of the sides of the die, accounting for weight
+
+func roll() -> int:
+	var total_weight = 0
+	for side in die_sides:
+		total_weight += 1 + (1 if side.side_ability == GameManager.modifier.weighted else 0)
+	
+	var random_number: float = randf_range(0.0, total_weight)
+	var acc_weight: float = 0.0
+	
+	
+	for side in die_sides:
+		acc_weight += 1 + (1 if side.side_ability == GameManager.modifier.weighted else 0)
+		if random_number < acc_weight:
+			die_state = side.side_num
+			emit_signal("die_roll_state", die_state)
+			return side.side_index
+	assert(false)
+	return 0
+
 func roll_die():
 	sound_effect.play()
 	die_state = 0
@@ -92,26 +109,54 @@ func roll_die():
 		t.start(2)
 		await t.timeout
 		t.queue_free()
-	var total_weight: float = 0.0
-	for side in die_sides:
-		total_weight += side.side_weight
 	
-	var random_number: float = randf_range(0.0, total_weight)
-	var acc_weight: float = 0.0
+	$Timer.start()
+	$OverallTimer.start()
 	
+	await $OverallTimer.timeout
+	$Timer.stop()
 	
-	for side in die_sides:
-		acc_weight += side.side_weight
-		if random_number < acc_weight:
-			die_state = side.side_num
-			emit_signal("die_roll_state", die_state)
-			return side
-	
+	return die_sides[roll()]
+
+var pip_resources = {
+	Die_side.DieType.ONE: preload("res://Assets/Dice Assetes/One.png"),
+	Die_side.DieType.TWO: preload("res://Assets/Dice Assetes/Two.png"),
+	Die_side.DieType.THREE: preload("res://Assets/Dice Assetes/Three.png"),
+	Die_side.DieType.FOUR: preload("res://Assets/Dice Assetes/Four.png"),
+	Die_side.DieType.FIVE: preload("res://Assets/Dice Assetes/Five.png"),
+	Die_side.DieType.SIX: preload("res://Assets/Dice Assetes/Six.png"),
+	Die_side.DieType.WILD: preload("res://Assets/Dice Assetes/Wild.png")
+}
+
+var mod_resources = {
+	GameManager.modifier.add: preload("res://Assets/Modifiers/Add.png"),
+	GameManager.modifier.multmod: preload("res://Assets/Modifiers/MultModifier.png"),
+	GameManager.modifier.daisy: preload("res://Assets/Modifiers/Daisy.png"),
+	GameManager.modifier.coins: preload("res://Assets/Modifiers/Coins.png"),
+	GameManager.modifier.weighted: preload("res://Assets/Modifiers/Weighted.png"),
+	GameManager.modifier.none: Image.create(100, 100, false, Image.FORMAT_RGBA8)
+}
+
+
+
+func set_current(i: int):
+	$AnimatedSprite2D/PipRect.texture = pip_resources[die_sides[i].side_num]
+	$AnimatedSprite2D/ModifierRect.texture = mod_resources[die_sides[i].side_ability]
+
+func tick_animation():
+	var i = roll()
+	set_current(i)
+
+func score() -> void:
+	$AnimatedSprite2D/AnimationPlayer.play("score")
+	await $AnimatedSprite2D/AnimationPlayer.animation_finished
+
 func _on_button_toggled(toggled_on: bool) -> void:
 	if not toggled_on:
-		$"AnimatedSprite2D".position += Vector2(0, 32)
+		$"AnimatedSprite2D/AnimationPlayer".play("unselect")
+		await $AnimatedSprite2D/AnimationPlayer.animation_finished
 	if(toggled_on and die_state != 0 and not button.disabled):
-		$"AnimatedSprite2D".position += Vector2(0, -32)
+		$AnimatedSprite2D/AnimationPlayer.play("select")
 		#animated_sprite.modulate = Color(10, 10, 10, 1)
 		emit_signal("clicked_signal", toggled_on, die_index)
 	elif(die_state != 7):

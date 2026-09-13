@@ -1,38 +1,15 @@
 class_name Die_side
-extends Node
+extends Resource
 
 enum DieType { ONE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6, WILD}
 
-var side_weight: int
-var side_ability: int
-var side_num: DieType
+@export var side_ability: GameManager.modifier
+@export var side_num: DieType
 
 # the die that the side belongs to
 var side_index: int
 
-enum Side_ability {NONE}
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func set_values(weight: int, ability: Side_ability, num: int, index: int):
-	side_weight = weight
-	side_ability = ability
-	side_num = num
-	side_index = index
-
-# function to do the side ability based on the ability enum
-func do_side_ability():
-	pass
-
-func print_parameters():
-	print("side_index: ", side_index)
-	print("side_weight: ", side_weight)
-	print("side_ability: ", side_ability)
-	print("side_num: ", side_num)
-	print()
+func _init(side_ability: GameManager.modifier, side_num: DieType, side_index: int):
+	self.side_ability = side_ability
+	self.side_num = side_num
+	self.side_index = side_index

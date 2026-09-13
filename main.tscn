@@ -5,108 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://2edkfulvhxfs" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
-[ext_resource type="Texture2D" uid="uid://cyvvl447nf401" path="res://Assets/Dice Assetes/One.png" id="5_vivmo"]
-[ext_resource type="Texture2D" uid="uid://dnoeyhdx22yf8" path="res://Assets/Dice Assetes/Two.png" id="6_2cqfq"]
 [ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
 [ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
-[ext_resource type="Texture2D" uid="uid://b5832gx2kp524" path="res://Assets/Dice Assetes/Three.png" id="7_yaehf"]
 [ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://1a1viouwewf3" path="res://Assets/Dice Assetes/Four.png" id="8_074og"]
-[ext_resource type="Script" uid="uid://b2jkjeth4ektf" path="res://die.gd" id="8_vivmo"]
-[ext_resource type="Texture2D" uid="uid://8hkhlqafhpfm" path="res://Assets/Dice Assetes/Five.png" id="9_cegan"]
-[ext_resource type="Texture2D" uid="uid://b603i0rvrt7qp" path="res://Assets/Dice Assetes/Six.png" id="10_82xsv"]
-[ext_resource type="Texture2D" uid="uid://s6k3xaqdq8f2" path="res://Assets/Dice Assetes/BasicDie.png" id="11_getpj"]
-[ext_resource type="AudioStream" uid="uid://gbdt4hooo8h4" path="res://sounds/die_rolling.mp3" id="17_yaehf"]
+[ext_resource type="PackedScene" uid="uid://dyisxaevwwv5q" path="res://die.tscn" id="9_ycdy4"]
+[ext_resource type="Script" uid="uid://2imjp750xma3" path="res://die_side.gd" id="10_w48qg"]
 [ext_resource type="Texture2D" uid="uid://b42fab531ymuj" path="res://Assets/UI Assets/ScoreGray.png" id="18_074og"]
 [ext_resource type="Texture2D" uid="uid://cpyx54fbe32g5" path="res://Assets/UI Assets/ScoreGreen.png" id="18_cegan"]
 [ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
 [ext_resource type="Texture2D" uid="uid://qtcbtx1x5lsv" path="res://Assets/UI Assets/BankGray.png" id="21_ryguw"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hcva3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_vivmo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2cqfq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_yaehf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_074og")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_cegan")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_82xsv")
-}],
-"loop": 1,
-"name": &"Roll",
-"speed": 7.0
-}]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8e4i"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lmeg"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cp0l"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0n3wm"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gngh3"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0rl1p"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ok6jj"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_facbu"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b1qrp"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_come4"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kq58d"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_seu75"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_htxhm"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jq2sk"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4k2k6"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0odxb"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lswn8"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a6jrf"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuqvo"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsp4k"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryguw"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrvbo"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d13ii"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uypp3"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blkrb"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_getpj"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnost"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnkbs"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6a44"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cbny"]
+[sub_resource type="Resource" id="Resource_l438t"]
+script = ExtResource("10_w48qg")
+side_ability = 4
+side_num = 6
+metadata/_custom_type_script = "uid://2imjp750xma3"
 
 [node name="Main" type="Node2D" unique_id=203334925]
 script = ExtResource("1_ycdy4")
@@ -215,295 +128,29 @@ offset_top = 15.0
 offset_right = 20.0
 offset_bottom = 15.0
 
-[node name="Die" type="Node" parent="Dice" unique_id=681120199]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
+[node name="Die" parent="Dice" unique_id=642897667 instance=ExtResource("9_ycdy4")]
+position = Vector2(-16, -16)
+side6 = SubResource("Resource_l438t")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die" unique_id=400353154]
-z_index = 1
-position = Vector2(182, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
+[node name="Die2" parent="Dice" unique_id=4819076 instance=ExtResource("9_ycdy4")]
+position = Vector2(33.000008, -17)
+die_index = 1
 
-[node name="Die Base" type="TextureRect" parent="Dice/Die/AnimatedSprite2D" unique_id=570534850]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
+[node name="Die3" parent="Dice" unique_id=1196906446 instance=ExtResource("9_ycdy4")]
+position = Vector2(85.00001, -17)
+die_index = 2
 
-[node name="Button" type="Button" parent="Dice/Die/AnimatedSprite2D" unique_id=1139664449 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_h8e4i")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_4lmeg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0cp0l")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_0n3wm")
-theme_override_styles/focus = SubResource("StyleBoxTexture_gngh3")
-toggle_mode = true
+[node name="Die4" parent="Dice" unique_id=1126854610 instance=ExtResource("9_ycdy4")]
+position = Vector2(136, -16)
+die_index = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Dice/Die/AnimatedSprite2D" unique_id=1505331884]
-stream = ExtResource("17_yaehf")
+[node name="Die5" parent="Dice" unique_id=1860872796 instance=ExtResource("9_ycdy4")]
+position = Vector2(183, -15)
+die_index = 4
 
-[node name="Die7" type="Node" parent="Dice" unique_id=1550840036]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die7" unique_id=1296916759]
-z_index = 1
-position = Vector2(232, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
-
-[node name="Die Base" type="TextureRect" parent="Dice/Die7/AnimatedSprite2D" unique_id=977059361]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
-
-[node name="Button" type="Button" parent="Dice/Die7/AnimatedSprite2D" unique_id=113512864 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_0rl1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ok6jj")
-theme_override_styles/hover = SubResource("StyleBoxTexture_facbu")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_b1qrp")
-theme_override_styles/focus = SubResource("StyleBoxTexture_come4")
-toggle_mode = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Dice/Die7" unique_id=180082981]
-stream = ExtResource("17_yaehf")
-
-[node name="Die2" type="Node" parent="Dice" unique_id=574217439]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die2" unique_id=779526743]
-z_index = 1
-position = Vector2(282, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
-
-[node name="Die Base" type="TextureRect" parent="Dice/Die2/AnimatedSprite2D" unique_id=1418060055]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
-
-[node name="Button" type="Button" parent="Dice/Die2/AnimatedSprite2D" unique_id=1151899878 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_kq58d")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_seu75")
-theme_override_styles/hover = SubResource("StyleBoxTexture_htxhm")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_jq2sk")
-theme_override_styles/focus = SubResource("StyleBoxTexture_4k2k6")
-toggle_mode = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die2/AnimatedSprite2D" unique_id=453245403]
-stream = ExtResource("17_yaehf")
-
-[node name="Die3" type="Node" parent="Dice" unique_id=1364009544]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die3" unique_id=1194617023]
-z_index = 1
-position = Vector2(332, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
-
-[node name="Die Base" type="TextureRect" parent="Dice/Die3/AnimatedSprite2D" unique_id=1643964503]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
-
-[node name="Button" type="Button" parent="Dice/Die3/AnimatedSprite2D" unique_id=13092493 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_0odxb")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_lswn8")
-theme_override_styles/hover = SubResource("StyleBoxTexture_a6jrf")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_xuqvo")
-theme_override_styles/focus = SubResource("StyleBoxTexture_qsp4k")
-toggle_mode = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die3/AnimatedSprite2D" unique_id=578379376]
-stream = ExtResource("17_yaehf")
-
-[node name="Die4" type="Node" parent="Dice" unique_id=69857179]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die4" unique_id=723667655]
-z_index = 1
-position = Vector2(382, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
-
-[node name="Die Base" type="TextureRect" parent="Dice/Die4/AnimatedSprite2D" unique_id=1793212872]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="Dice/Die4/AnimatedSprite2D" unique_id=944277827 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_ryguw")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_hrvbo")
-theme_override_styles/hover = SubResource("StyleBoxTexture_d13ii")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_uypp3")
-theme_override_styles/focus = SubResource("StyleBoxTexture_blkrb")
-toggle_mode = true
-metadata/_edit_use_anchors_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die4/AnimatedSprite2D" unique_id=1588077717]
-stream = ExtResource("17_yaehf")
-
-[node name="Die5" type="Node" parent="Dice" unique_id=1318417110]
-script = ExtResource("8_vivmo")
-metadata/_custom_type_script = "uid://b2jkjeth4ektf"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dice/Die5" unique_id=66483750]
-z_index = 1
-position = Vector2(432, 198)
-sprite_frames = SubResource("SpriteFrames_hcva3")
-animation = &"Roll"
-metadata/_edit_group_ = true
-
-[node name="Die Base" type="TextureRect" parent="Dice/Die5/AnimatedSprite2D" unique_id=425719651]
-z_index = -1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_getpj")
-
-[node name="Button" type="Button" parent="Dice/Die5/AnimatedSprite2D" unique_id=1952371799 groups=["dice_buttons"]]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_getpj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_qnost")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wnkbs")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_f6a44")
-theme_override_styles/focus = SubResource("StyleBoxTexture_0cbny")
-toggle_mode = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dice/Die5/AnimatedSprite2D" unique_id=597229971]
-stream = ExtResource("17_yaehf")
+[node name="Die6" parent="Dice" unique_id=1323645837 instance=ExtResource("9_ycdy4")]
+position = Vector2(231, -14)
+die_index = 5
 
 [node name="ScoreBtn" type="TextureButton" parent="." unique_id=1094627571]
 offset_left = 160.0
@@ -554,11 +201,5 @@ texture_disabled = ExtResource("21_ryguw")
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
 [connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
 [connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
-[connection signal="toggled" from="Dice/Die/AnimatedSprite2D/Button" to="Dice/Die" method="_on_button_toggled"]
-[connection signal="toggled" from="Dice/Die7/AnimatedSprite2D/Button" to="Dice/Die7" method="_on_button_toggled"]
-[connection signal="toggled" from="Dice/Die2/AnimatedSprite2D/Button" to="Dice/Die2" method="_on_button_toggled"]
-[connection signal="toggled" from="Dice/Die3/AnimatedSprite2D/Button" to="Dice/Die3" method="_on_button_toggled"]
-[connection signal="toggled" from="Dice/Die4/AnimatedSprite2D/Button" to="Dice/Die4" method="_on_button_toggled"]
-[connection signal="toggled" from="Dice/Die5/AnimatedSprite2D/Button" to="Dice/Die5" method="_on_button_toggled"]
 [connection signal="pressed" from="ScoreBtn" to="." method="_on_score_btn_pressed"]
 [connection signal="pressed" from="BankBtn" to="." method="_on_bank_btn_pressed"]
