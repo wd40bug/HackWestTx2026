@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="3_gmb2m"]
 [ext_resource type="Texture2D" uid="uid://s6k3xaqdq8f2" path="res://Assets/Dice Assetes/BasicDie.png" id="4_8kdgp"]
 [ext_resource type="Texture2D" uid="uid://grurjnt7rj1j" path="res://Assets/Shop Assets/Chest3.png" id="4_gmb2m"]
-[ext_resource type="Texture2D" uid="uid://da16yk3cqw8ej" path="res://Assets/Shop Assets/Chest5.png" id="5_8kdgp"]
 [ext_resource type="Texture2D" uid="uid://druxcdyh4r767" path="res://Assets/UI Assets/Hover.png" id="8_p5a0g"]
 [ext_resource type="Script" uid="uid://dr44ht4t7vi2l" path="res://hover.gd" id="9_xqmyw"]
 [ext_resource type="FontFile" uid="uid://cr5o2oe7eq1qq" path="res://Assets/Pixelta.ttf" id="10_xqmyw"]
@@ -232,6 +231,135 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="ShopDice/ShopDie2" unique_id=2068620375]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopDie3" type="TextureRect" parent="ShopDice" unique_id=209266515]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 225.0
+offset_right = 402.0
+offset_bottom = 257.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="Price" type="Label" parent="ShopDice/ShopDie3" unique_id=416297857]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 30.0
+offset_right = 35.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_gmb2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Side_mod" type="TextureRect" parent="ShopDice/ShopDie3" unique_id=866640448]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="ShopDice/ShopDie3" unique_id=1014190326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopDice/ShopDie3" unique_id=481477984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopDie4" type="TextureRect" parent="ShopDice" unique_id=1467779487]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 225.0
+offset_right = 402.0
+offset_bottom = 257.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="Price" type="Label" parent="ShopDice/ShopDie4" unique_id=1366995184]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 30.0
+offset_right = 35.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_gmb2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Side_mod" type="TextureRect" parent="ShopDice/ShopDie4" unique_id=769840862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="ShopDice/ShopDie4" unique_id=201214318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopDice/ShopDie4" unique_id=349887224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopDie5" type="TextureRect" parent="ShopDice" unique_id=585483818]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 225.0
+offset_right = 402.0
+offset_bottom = 257.0
+texture = ExtResource("4_8kdgp")
+metadata/_edit_group_ = true
+
+[node name="Price" type="Label" parent="ShopDice/ShopDie5" unique_id=1582994564]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 30.0
+offset_right = 35.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_gmb2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Side_mod" type="TextureRect" parent="ShopDice/ShopDie5" unique_id=700603731]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Side_num" type="TextureRect" parent="ShopDice/ShopDie5" unique_id=1139351006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopDice/ShopDie5" unique_id=1760761257]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
