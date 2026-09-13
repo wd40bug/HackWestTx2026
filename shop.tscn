@@ -348,6 +348,7 @@ offset_right = 49.0
 offset_bottom = 165.0
 
 [node name="Dice_Select" type="Control" parent="." unique_id=55357392]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
