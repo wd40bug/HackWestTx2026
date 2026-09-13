@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_yohae")
-title = "CompOneAdd"
-description = "Adds a flat bonus for each one in scored hand"
+title = "Ones Add"
+description = "Adds a flat bonus for each one in hand"
 texture = ExtResource("2_0wkjq")
 is_die = true
 price = 2

@@ -13,6 +13,7 @@ enum HandTypes {
 	FOUR_OF_KIND = 0x20,
 	FOUR_OF_KIND_1 = 0x21,
 	STRAIGHT = 0x30,
+	STRAIGHT_GAP = 0x91,
 	THREE_PAIR = 0x40,
 	FULL_HOUSE = 0x50,
 	FIVE_OF_KIND = 0x60,
@@ -34,6 +35,7 @@ const HandVals: Dictionary[HandTypes, int] = {
 	HandTypes.FOUR_OF_KIND : 1000,
 	HandTypes.FOUR_OF_KIND_1 : 1500,
 	HandTypes.STRAIGHT : 1500,
+	HandTypes.STRAIGHT_GAP : 1500,
 	HandTypes.THREE_PAIR : 1500,
 	HandTypes.FULL_HOUSE : 1500,
 	HandTypes.FIVE_OF_KIND : 2000,
@@ -115,62 +117,62 @@ class CalculateHandsReturn extends RefCounted:
 	var hands: Array[HandTypes]
 	var remainder: Array[Die_side.DieType] = []
 
-static func calculate_hands(dice: Array[Die_side.DieType]) -> CalculateHandsReturn:
+static func calculate_hands(dice: Array[Die_side.DieType], gap_in_straight: bool) -> CalculateHandsReturn:
 	var hand = HandTypes.SIX_OF_KIND_1
 	
 	var counts: Dictionary[int, int] = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
-	var wilds = 0
+	var wilds = [0]
 	
 	var ret: Array[HandTypes]
 	
 	for die in dice:
 		if (die == Die_side.DieType.WILD):
-			wilds += 1
+			wilds[0] += 1
 		else:
 			counts[die] += 1
 	
 	var consume = func(die_val: int, amount: int):
 		var actual_taken = min(counts[die_val], amount)
 		counts[die_val] -= actual_taken
-		# Wilds are used if needed
-		wilds -= (amount - actual_taken)
+		# wilds[0] are used if needed
+		wilds[0] -= (amount - actual_taken)
 	
 	# Six of a kind
-	if counts[1] + wilds == 6:
+	if counts[1] + wilds[0] == 6:
 		ret.append(HandTypes.SIX_OF_KIND_1)
 		consume.call(1, 6)
 	
 	for v in range(6, 1, -1):
-		if counts[v] + wilds >= 6:
+		if counts[v] + wilds[0] >= 6:
 			ret.append(HandTypes.SIX_OF_KIND)
 			consume.call(v, 6)
 	
 	# Two triple
-	var two_triple_faces = find_best_grouping([3, 3], counts, wilds)
+	var two_triple_faces = find_best_grouping([3, 3], counts, wilds[0])
 	if not two_triple_faces.is_empty():
 		consume.call(two_triple_faces[0], 3)
 		consume.call(two_triple_faces[1], 3)
 		ret.append(HandTypes.TWO_TRIPLETS)
 	
 	# Five of a kind
-	if counts[1] + wilds >= 5:
+	if counts[1] + wilds[0] >= 5:
 		ret.append(HandTypes.FIVE_OF_KIND_1)
 		consume.call(1, 5)
 	
 	for v in range(6, 1, -1):
-		if counts[v] + wilds == 5:
+		if counts[v] + wilds[0] == 5:
 			ret.append(HandTypes.FIVE_OF_KIND)
 			consume.call(v, 5)
 	
 	# Full House
-	var full_house_faces = find_best_grouping([4, 2], counts, wilds)
+	var full_house_faces = find_best_grouping([4, 2], counts, wilds[0])
 	if not full_house_faces.is_empty():
 		consume.call(full_house_faces[0], 4)
 		consume.call(full_house_faces[1], 2)
 		ret.append(HandTypes.FULL_HOUSE)
 	
 	# Three Pair
-	var three_pair_faces = find_best_grouping([2, 2, 2], counts, wilds)
+	var three_pair_faces = find_best_grouping([2, 2, 2], counts, wilds[0])
 	if not three_pair_faces.is_empty():
 		consume.call(three_pair_faces[0], 2)
 		consume.call(three_pair_faces[1], 2)
@@ -179,48 +181,57 @@ static func calculate_hands(dice: Array[Die_side.DieType]) -> CalculateHandsRetu
 	
 	# Straight
 	var straight_wilds_used = 0
+	var gap_used = not gap_in_straight
+	var gapped_val = 0
 	for i in range(1, 7):
-		if counts[i] == 0 && wilds == straight_wilds_used:
+		if counts[i] == 0 && wilds[0] == straight_wilds_used && gap_used:
 			break
 		elif counts[i] == 0:
-			straight_wilds_used += 1
+			if not gap_used:
+				gap_used = true
+				gapped_val = i
+			else:
+				straight_wilds_used += 1
 		
 		if i == 6:
 			for j in range(1, 7):
+				if (j == gapped_val):
+					continue
 				consume.call(j, 1)
-			ret.append(HandTypes.STRAIGHT)
+			ret.append(HandTypes.STRAIGHT if not gap_in_straight || not gap_used else HandTypes.STRAIGHT_GAP)
+			break
 	
 	# Four of a kind
-	while counts[1] + wilds >= 4:
+	while counts[1] + wilds[0] >= 4:
 		ret.append(HandTypes.FOUR_OF_KIND_1)
 		consume.call(1, 4)
 	
 	for v in range(6, 1, -1):
-		while counts[v] + wilds >= 4:
+		while counts[v] + wilds[0] >= 4:
 			ret.append(HandTypes.FOUR_OF_KIND)
 			consume.call(v, 4)
 	
 	# Three of a kind
-	if counts[1] + wilds == 3:
+	if counts[1] + wilds[0] == 3:
 		ret.append(HandTypes.THREE_1)
 		consume.call(1, 3)
 	
 	for v in range(6, 1, -1):
-		if counts[v] + wilds == 3:
+		if counts[v] + wilds[0] == 3:
 			ret.append(0x10 | v)
 			consume.call(v, 3)
 	
 	# Singles
-	if counts[1] + wilds>= 1:
-		for i in range(counts[1] + wilds):
+	if counts[1] + wilds[0]>= 1:
+		for i in range(counts[1] + wilds[0]):
 			ret.append(HandTypes.SINGLE_1)
-		consume.call(1, counts[1] + wilds)
+		consume.call(1, counts[1] + wilds[0])
 
 			
-	if counts[5] + wilds>= 1:
-		for i in range(counts[5] + wilds):
+	if counts[5] + wilds[0]>= 1:
+		for i in range(counts[5] + wilds[0]):
 			ret.append(HandTypes.SINGLE_5)
-		consume.call(5, counts[5] + wilds)
+		consume.call(5, counts[5] + wilds[0])
 
 	
 	var ret_cls = CalculateHandsReturn.new()

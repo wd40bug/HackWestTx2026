@@ -2,34 +2,55 @@
 
 [ext_resource type="Texture2D" uid="uid://twhv5idljecv" path="res://Assets/UI Assets/Mainbg.png" id="1_efxa6"]
 [ext_resource type="Script" uid="uid://dy4n4a5hwr4tg" path="res://game.gd" id="1_ycdy4"]
+[ext_resource type="Resource" uid="uid://bepi27h2rknm8" path="res://Specials/Dice/gap_straight.tres" id="2_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://2edkfulvhxfs" path="res://Assets/UI Assets/SideBar.png" id="2_dg77c"]
+[ext_resource type="Resource" uid="uid://c2vfketnhfjcr" path="res://Specials/Cups/angel.tres" id="2_vivmo"]
 [ext_resource type="Texture2D" uid="uid://bjo56ng2fueht" path="res://Assets/UI Assets/Rack.png" id="3_efxa6"]
 [ext_resource type="FontFile" uid="uid://c7lki41j7jhch" path="res://Assets/the-lowly-scribe.ttf" id="4_w48qg"]
+[ext_resource type="Script" uid="uid://crd388qstkyk6" path="res://goal_num.gd" id="6_2cqfq"]
+[ext_resource type="Script" uid="uid://d21si8ndohvu0" path="res://level_num.gd" id="6_074og"]
 [ext_resource type="Script" uid="uid://deknhkhvyqw2w" path="res://banked_num.gd" id="6_w48qg"]
 [ext_resource type="Script" uid="uid://boxd4iwolrvax" path="res://score_num.gd" id="7_w48qg"]
 [ext_resource type="Script" uid="uid://bwa28wkm813mo" path="res://turn_num.gd" id="8_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://dyisxaevwwv5q" path="res://die.tscn" id="9_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://cxpbhonrqsioi" path="res://Assets/Cups/Angel.png" id="10_2cqfq"]
 [ext_resource type="Script" uid="uid://2imjp750xma3" path="res://die_side.gd" id="10_w48qg"]
+[ext_resource type="Resource" uid="uid://c42sqvwb5wd1e" path="res://Specials/Dice/comp_one_add.tres" id="14_074og"]
+[ext_resource type="AudioStream" uid="uid://d0xkaugqlrrh1" path="res://sounds/sad_trumpet.mp3" id="15_vivmo"]
+[ext_resource type="AudioStream" uid="uid://c8riy2xmff8bp" path="res://sounds/bg_music.mp3" id="17_yaehf"]
 [ext_resource type="Texture2D" uid="uid://b42fab531ymuj" path="res://Assets/UI Assets/ScoreGray.png" id="18_074og"]
 [ext_resource type="Texture2D" uid="uid://cpyx54fbe32g5" path="res://Assets/UI Assets/ScoreGreen.png" id="18_cegan"]
 [ext_resource type="Texture2D" uid="uid://b0j7d81r0py2c" path="res://Assets/UI Assets/BankGreen.png" id="20_getpj"]
 [ext_resource type="Texture2D" uid="uid://qtcbtx1x5lsv" path="res://Assets/UI Assets/BankGray.png" id="21_ryguw"]
 
-[sub_resource type="Resource" id="Resource_l438t"]
+[sub_resource type="Resource" id="Resource_ycdy4"]
 script = ExtResource("10_w48qg")
-side_ability = 4
-side_num = 6
+side_ability = 1
+side_num = 1
 metadata/_custom_type_script = "uid://2imjp750xma3"
 
-[sub_resource type="Resource" id="Resource_kwyh5"]
+[sub_resource type="Resource" id="Resource_vivmo"]
 script = ExtResource("10_w48qg")
 side_ability = 3
-side_num = 1
+side_num = 2
+metadata/_custom_type_script = "uid://2imjp750xma3"
+
+[sub_resource type="Resource" id="Resource_w48qg"]
+script = ExtResource("10_w48qg")
+side_ability = 4
+side_num = 5
+metadata/_custom_type_script = "uid://2imjp750xma3"
+
+[sub_resource type="Resource" id="Resource_2cqfq"]
+script = ExtResource("10_w48qg")
+side_ability = 3
+side_num = 2
 metadata/_custom_type_script = "uid://2imjp750xma3"
 
 [node name="Main" type="Node2D" unique_id=203334925]
 script = ExtResource("1_ycdy4")
 goal = 1500
+cup = ExtResource("2_vivmo")
 
 [node name="UI" type="Control" parent="." unique_id=884199193]
 layout_mode = 3
@@ -74,6 +95,7 @@ theme_override_font_sizes/font_size = 28
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_074og")
 
 [node name="GoalNum" type="Label" parent="UI" unique_id=395506092]
 layout_mode = 0
@@ -86,6 +108,7 @@ theme_override_fonts/font = ExtResource("4_w48qg")
 theme_override_font_sizes/font_size = 20
 text = "10000
 "
+script = ExtResource("6_2cqfq")
 
 [node name="BankedNum" type="Label" parent="UI" unique_id=1251190106]
 layout_mode = 0
@@ -126,6 +149,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_2cqfq")
 
+[node name="TextureRect" type="TextureRect" parent="UI" unique_id=1663503594]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 180.0
+offset_right = 96.0
+offset_bottom = 252.0
+texture = ExtResource("10_2cqfq")
+
 [node name="Dice" type="Control" parent="." unique_id=2028048908]
 layout_mode = 3
 anchors_preset = 0
@@ -135,29 +166,33 @@ offset_right = 20.0
 offset_bottom = 15.0
 
 [node name="Die" parent="Dice" unique_id=642897667 instance=ExtResource("9_ycdy4")]
-position = Vector2(-30, -33)
-side6 = SubResource("Resource_l438t")
+position = Vector2(-30, -13)
+side1 = SubResource("Resource_ycdy4")
+side2 = SubResource("Resource_vivmo")
 
 [node name="Die2" parent="Dice" unique_id=4819076 instance=ExtResource("9_ycdy4")]
-position = Vector2(19.000008, -34)
+position = Vector2(19.000008, -14)
 die_index = 1
 
 [node name="Die3" parent="Dice" unique_id=1196906446 instance=ExtResource("9_ycdy4")]
-position = Vector2(71.00001, -34)
+position = Vector2(71.00001, -14)
 die_index = 2
+side5 = SubResource("Resource_w48qg")
+die_ability = ExtResource("2_2cqfq")
 
 [node name="Die4" parent="Dice" unique_id=1126854610 instance=ExtResource("9_ycdy4")]
-position = Vector2(122, -33)
+position = Vector2(122, -13)
 die_index = 3
 
 [node name="Die5" parent="Dice" unique_id=1860872796 instance=ExtResource("9_ycdy4")]
-position = Vector2(169, -32)
+position = Vector2(169, -12)
 die_index = 4
+side2 = SubResource("Resource_2cqfq")
 
 [node name="Die6" parent="Dice" unique_id=1323645837 instance=ExtResource("9_ycdy4")]
-position = Vector2(217, -31)
+position = Vector2(217, -11)
 die_index = 5
-side1 = SubResource("Resource_kwyh5")
+die_ability = ExtResource("14_074og")
 
 [node name="ScoreBtn" type="TextureButton" parent="." unique_id=1094627571]
 offset_left = 160.0
@@ -196,6 +231,19 @@ theme_override_fonts/font = ExtResource("4_w48qg")
 theme_override_font_sizes/font_size = 100
 text = "BUSTED"
 
+[node name="SavedLabel" type="Label" parent="." unique_id=1755066881]
+visible = false
+offset_left = 153.0
+offset_top = 80.0
+offset_right = 524.0
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(0.7882353, 0.47843137, 0.18039216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_w48qg")
+theme_override_font_sizes/font_size = 100
+text = "SAVED"
+
 [node name="BankBtn" type="TextureButton" parent="." unique_id=196218779]
 offset_left = 238.0
 offset_top = 228.0
@@ -205,7 +253,18 @@ disabled = true
 texture_normal = ExtResource("20_getpj")
 texture_disabled = ExtResource("21_ryguw")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1572597180]
+stream = ExtResource("15_vivmo")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1309815600]
+stream = ExtResource("17_yaehf")
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
 [connection signal="banked_score_sig" from="." to="UI/BankedNum" method="_on_main_banked_score_sig"]
+[connection signal="goal_sig" from="." to="UI/GoalNum" method="_on_main_goal_sig"]
+[connection signal="level_sig" from="." to="UI/LevelNum" method="_on_main_level_sig"]
 [connection signal="turns_left_sig" from="." to="UI/TurnNum" method="_on_main_turns_left_sig"]
 [connection signal="unbanked_score_sig" from="." to="UI/ScoreNum" method="_on_main_unbanked_score_sig"]
 [connection signal="pressed" from="ScoreBtn" to="." method="_on_score_btn_pressed"]

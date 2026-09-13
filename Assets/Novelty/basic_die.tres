@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://c27tcdbw3c11x"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_mib50"]
+[ext_resource type="Texture2D" uid="uid://b1gmtlni1mt4f" path="res://Assets/Novelty/BasicDie.png" id="2_wgfi4"]
+
+[resource]
+script = ExtResource("1_mib50")
+title = "Basic Die"
+description = "Nothing special	"
+texture = ExtResource("2_wgfi4")
+is_die = true
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
