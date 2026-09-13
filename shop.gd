@@ -1,6 +1,6 @@
 extends Node2D
 
-var seed = 1234
+@export var seed = 1234
 
 var num_images = (
 	["res://Assets/Dice Assetes/One.png",
@@ -84,3 +84,8 @@ func generate_items():
 	
 	$Chests/Chest1/Price.text = "$%d" %shopchests[0][1]
 	$Chests/Chest2/Price.text = "$%d" %shopchests[1][1]
+
+
+func _on_item_hover(special: Special) -> void:
+	print("Hovering!!!")
+	$TextureRect.display(special)

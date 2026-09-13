@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-signal hover
+signal hover(item: Special)
 signal unhover
 
 @export var item_data: Special:
@@ -18,6 +18,8 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		mouse_entered.connect(_on_mouse_entered)
 		mouse_exited.connect(_on_mouse_exited)
+		$CollisionShape2D.shape = RectangleShape2D.new()
+		$CollisionShape2D.shape.size = sprite.texture.get_size()
 
 func _update_visuals() -> void:
 	# Ensure the sprite node actually exists before trying to update it
@@ -31,7 +33,7 @@ func _update_visuals() -> void:
 		sprite.texture = null 
 
 func _on_mouse_entered() -> void:
-	hover.emit()
+	hover.emit(item_data)
 
 func _on_mouse_exited() -> void:
 	unhover.emit()
