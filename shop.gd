@@ -388,7 +388,7 @@ func _on_reroll_button_down() -> void:
 
 func _on_shop_item_hover(item: Special) -> void:
 	print("Hovering!!!")
-	$TextureRect.display(item)
+	show_hover(item)
 
 
 func _on_shop_item_unhover() -> void:
@@ -398,17 +398,52 @@ func _on_shop_item_unhover() -> void:
 
 func _on_shop_item_2_hover(item: Special) -> void:
 	print("Hovering!!!")
-	$TextureRect.display(item)
-	
-	var mouse = get_global_mouse_position()
-	var view = get_viewport().get_visible_rect().size
-	var size = $TextureRect.texture.get_size() * $TextureRect.scale
-	var target = Vector2(mouse.x - (size.x / 2), mouse.y - size.y)
-	target.x = clamp(target.x, 0, view.x - size.x)
-	if target.y < 0: 
-		target.y = mouse.y
-	$TextureRect.global_position = target
+	show_hover(item)
 
 func _on_shop_item_2_unhover() -> void:
 	print("Unhovering!!!")
 	$TextureRect.hide_menu()
+
+func show_hover(item: Special) -> void:
+	var popup = $TextureRect
+	
+	popup.display(item)
+
+	await get_tree().process_frame
+
+	var mouse := get_global_mouse_position()
+	var viewport_size := get_viewport_rect().size
+	
+	# Get the actual size of the texture being displayed
+	var popup_size = popup.texture.get_size() * popup.scale
+	
+	var margin := 10.0
+	
+	# Default position: centered above mouse
+	var target := Vector2(
+		mouse.x - popup_size.x / 2.0,
+		mouse.y - popup_size.y - margin
+	)
+	
+	# --------------------------------
+	# LEFT / RIGHT
+	# --------------------------------
+	if target.x < margin:
+		target.x = margin
+	
+	if target.x + popup_size.x > viewport_size.x - margin:
+		target.x = viewport_size.x - popup_size.x - margin
+	
+	# --------------------------------
+	# TOP
+	# --------------------------------
+	if target.y < margin:
+		target.y = mouse.y + margin
+	
+	# --------------------------------
+	# BOTTOM
+	# --------------------------------
+	if target.y + popup_size.y > viewport_size.y - margin:
+		target.y = viewport_size.y - popup_size.y - margin
+	
+	popup.global_position = target

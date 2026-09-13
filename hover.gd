@@ -19,4 +19,13 @@ func hide_menu() -> void:
 func _process(_delta: float) -> void:
 	# Snap the menu to the mouse while visible
 	if visible:
-		global_position = get_global_mouse_position() + Vector2(15, 15)
+		var mouse = get_global_mouse_position()
+		var screen = get_viewport_rect().size
+		
+		global_position = mouse + Vector2(15, 15)
+		
+		if global_position.x + size.x > screen.x:
+			global_position.x = mouse.x - size.x - 15
+		
+		if global_position.y + size.y > screen.y:
+			global_position.y = mouse.y - size.y - 15

@@ -260,35 +260,33 @@ offset_right = 44.0
 offset_bottom = 45.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1660829018]
-offset_right = 115.0
-offset_bottom = 150.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("8_p5a0g")
 script = ExtResource("9_xqmyw")
 
 [node name="DescLabel" type="Label" parent="TextureRect" unique_id=1911102406]
-custom_maximum_size = Vector2(86, -1)
+custom_maximum_size = Vector2(70, -1)
 layout_mode = 0
 offset_left = 14.0
-offset_top = 32.0
-offset_right = 100.0
-offset_bottom = 141.0
+offset_top = 46.0
+offset_right = 84.0
+offset_bottom = 115.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_xqmyw")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 8
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 autowrap_mode = 2
 
 [node name="TitleLabel" type="Label" parent="TextureRect" unique_id=1117717851]
 layout_mode = 0
-offset_left = 14.0
+offset_left = 26.0
 offset_top = 16.0
-offset_right = 99.0
+offset_right = 66.0
 offset_bottom = 39.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_gmb2m")
-theme_override_font_sizes/font_size = 12
 text = "Title"
-horizontal_alignment = 1
 
 [node name="ShopCup" parent="." unique_id=1056026310 instance=ExtResource("11_sw5c6")]
 position = Vector2(369, 148)
@@ -331,6 +329,15 @@ offset_bottom = -56.0
 [node name="ShopItem2" parent="." unique_id=1652561559 instance=ExtResource("11_sw5c6")]
 position = Vector2(262, 226)
 item_data = ExtResource("13_rrolr")
+
+[node name="TitleLabel2" type="Label" parent="ShopItem2" unique_id=1622489118]
+offset_left = -236.0
+offset_top = -210.0
+offset_right = -196.0
+offset_bottom = -187.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gmb2m")
+text = "Title"
 
 [node name="DescLabel2" type="Label" parent="ShopItem2" unique_id=1795698286]
 offset_left = 107.0
