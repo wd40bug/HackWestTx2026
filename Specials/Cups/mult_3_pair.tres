@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://dcrcscfvwjary"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_vb26k"]
+[ext_resource type="Texture2D" uid="uid://gqpw17oldxi0" path="res://Assets/Cups/3pairmult.png" id="2_skjqx"]
+
+[resource]
+script = ExtResource("1_vb26k")
+title = "MultThreePair"
+description = "Multiplies the value of three pairs"
+texture = ExtResource("2_skjqx")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

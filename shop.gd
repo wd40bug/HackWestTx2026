@@ -23,11 +23,56 @@ func _ready() -> void:
 	seed(seed)
 	generate_chests()
 
+	generate_items()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 enum modifier {add, coins, daisy, multmod, weighted, none}
+
+# separate lists in case we want to weigh each cup modifier type's
+# probability of appearing in the sop
+
+# pool of cups that multiply hand types, e.g. 3 of a kind, full house
+var cup_hand_mult_list: Array[String] = [
+	"mult_2_triplets",
+	"mult_3_of_kind",
+	"mult_3_pair",
+	"mult_4_of_kind",
+	"mult_5_of_kind",
+	"mult_6_of_kind",
+	"mult_full_house",
+	"mult_single",
+	"mult_straight"
+]
+
+# pool of cups that multiply compoundingly via number of
+# numbers in a hand
+var cup_comp_mult_list: Array[String] = [
+	"comp_mult_mixed_fives",
+	"comp_mult_mixed_fours",
+	"comp_mult_mixed_ones",
+	"comp_mult_mixed_sixes",
+	"comp_mult_mixed,threes",
+	"comp_mult_mixed_twos",
+	"comp_mult_only_fives",
+	"comp_mult_only_fours",
+	"comp_mult_only_ones",
+	"comp_mult_only_sixes",
+	"comp_mult_only,threes",
+	"comp_mult_only_twos"
+]
+
+# cups with misc abilities
+var cup_other_abilities_list = [
+	"additional_all_two",
+	"angel",
+	"extra_die",
+	"reroll_evens",
+	"reroll_odds",
+	"times_two"
+]
 
 var mod_list = [modifier.add, modifier.coins, modifier.daisy, modifier.multmod, modifier.weighted]
 
@@ -42,6 +87,33 @@ var shopdies = []
 var shopchests = []
 
 var chestsides = []
+
+var shop_cup
+
+var cup_pool: Array[String] = []
+
+func generate_cup():
+	const HAND_MULT_CHANCE = .5
+	const HAND_COMP_MULT_CHANCE = .3
+	const OTHER_ABILITY_CHANCE = .2
+	
+	var rand_num = randf()
+	var cup_pool
+	if(rand_num < HAND_MULT_CHANCE):
+		cup_pool = cup_hand_mult_list
+	elif(rand_num > HAND_MULT_CHANCE + HAND_COMP_MULT_CHANCE):
+		cup_pool = cup_comp_mult_list
+	else:
+		cup_pool = cup_other_abilities_list
+		
+	var shop_cup_name = cup_pool.pick_random()
+	var shop_cup_path = "res://Specials/Cups/" + shop_cup_name + ".tres"
+	
+	var cup = load(shop_cup_path)
+
+	return cup
+	
+		
 
 func generate_side():
 	var side = side_pool[randi() % side_pool.size()]
@@ -61,6 +133,18 @@ func generate_chest():
 func generate_chests():
 	shopchests = [generate_chest(), generate_chest()]
 		
+	shop_cup = generate_cup()
+	
+	$ShopCup.item_data = shop_cup
+	$ShopCup/Price.text = "$" + str(shop_cup.price)
+	
+	$ShopDice/ShopDie1/Side_num.texture = load(num_images[shopsides[0][0] - 1])
+	if shopsides[0][1] != modifier.none:
+		$ShopDice/ShopDie1/Side_mod.texture = load(mod_images[shopsides[0][1]])
+	
+	$ShopDice/ShopDie2/Side_num.texture = load(num_images[shopsides[1][0] - 1])
+	if shopsides[1][1] != modifier.none:
+		$ShopDice/ShopDie2/Side_mod.texture = load(mod_images[shopsides[1][1]])
 	if shopchests[0][0] == "tier 1":
 		$Chests/Chest1.texture = load("res://Assets/Shop Assets/Chest3.png")
 	else:
@@ -125,3 +209,13 @@ func _on_chest_screen_side_selected(side):
 #func _on_item_hover(special: Special) -> void:
 	#print("Hovering!!!")
 	#$TextureRect.display(special)
+
+func _on_item_hover(special: Special) -> void:
+	print("Hovering!!!")
+	$TextureRect.display(special)
+	
+
+
+func _on_shop_cup_unhover() -> void:
+	print("Unhovering!!!")
+	$TextureRect.hide_menu()

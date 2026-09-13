@@ -10,10 +10,6 @@
 [ext_resource type="Script" uid="uid://dr44ht4t7vi2l" path="res://hover.gd" id="9_xqmyw"]
 [ext_resource type="FontFile" uid="uid://cr5o2oe7eq1qq" path="res://Assets/Pixelta.ttf" id="10_xqmyw"]
 [ext_resource type="PackedScene" uid="uid://8ja1e1n7i30c" path="res://ShopItem.tscn" id="11_sw5c6"]
-[ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/explosion.tres" id="12_e23gp"]
-[ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/extra_die.tres" id="12_msgp6"]
-[ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/snowflake.tres" id="13_rrolr"]
-[ext_resource type="PackedScene" uid="uid://0sbrrgllwkn6" path="res://chest_screen.tscn" id="14_rrolr"]
 [ext_resource type="Resource" uid="uid://dcdb6ovy3xfet" path="res://Specials/Dice/explosion.tres" id="12_e23gp"]
 [ext_resource type="Resource" uid="uid://dsoc03yvel7p2" path="res://Specials/Cups/extra_die.tres" id="12_msgp6"]
 [ext_resource type="Resource" uid="uid://82aihhdfhjcf" path="res://Specials/Dice/snowflake.tres" id="13_rrolr"]
@@ -27,7 +23,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="UI" unique_id=1209675329]
 layout_mode = 0
@@ -92,7 +87,6 @@ offset_left = 131.0
 offset_top = 190.0
 offset_right = 171.0
 offset_bottom = 230.0
-mouse_filter = 1
 
 [node name="Chest1" type="TextureRect" parent="Chests" unique_id=1129327458]
 layout_mode = 1
@@ -107,7 +101,7 @@ grow_vertical = 2
 texture = ExtResource("4_gmb2m")
 metadata/_edit_group_ = true
 
-[node name="Chest1Button" type="Button" parent="Chests/Chest1" unique_id=1272653653]
+[node name="Button" type="Button" parent="Chests/Chest1" unique_id=1272653653]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,7 +132,7 @@ grow_vertical = 2
 texture = ExtResource("4_gmb2m")
 metadata/_edit_group_ = true
 
-[node name="Chest2Button" type="Button" parent="Chests/Chest2" unique_id=40216191]
+[node name="Button" type="Button" parent="Chests/Chest2" unique_id=40216191]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +157,6 @@ offset_left = -10.0
 offset_top = -14.0
 offset_right = -10.0
 offset_bottom = -14.0
-mouse_filter = 1
 
 [node name="ShopDie1" type="TextureRect" parent="ShopDice" unique_id=1242445465]
 layout_mode = 0
@@ -255,7 +248,6 @@ offset_left = -25.0
 offset_top = -16.0
 offset_right = 15.0
 offset_bottom = 24.0
-mouse_filter = 1
 
 [node name="BasicDie" type="TextureRect" parent="UserDice" unique_id=238811843]
 layout_mode = 0
@@ -272,7 +264,6 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 45.0
-mouse_filter = 1
 
 [node name="BasicDie2" type="TextureRect" parent="UserDice" unique_id=1712407289]
 layout_mode = 0
@@ -395,63 +386,12 @@ offset_bottom = 23.0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Price" type="Label" parent="ShopCup" unique_id=1587129225]
-offset_left = -9.0
-offset_top = 36.0
-offset_right = 10.0
-offset_bottom = 57.0
-theme_override_fonts/font = ExtResource("3_gmb2m")
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ShopItem" parent="." unique_id=1578675073 instance=ExtResource("11_sw5c6")]
 position = Vector2(303, 227)
 item_data = ExtResource("12_e23gp")
-
-[node name="DescLabel2" type="Label" parent="ShopItem" unique_id=1861642722]
-offset_left = 66.0
-offset_top = -79.0
-offset_right = 106.0
-offset_bottom = -56.0
-
-[node name="TitleLabel2" type="Label" parent="ShopItem" unique_id=1238874624]
-offset_left = 66.0
-offset_top = -79.0
-offset_right = 106.0
-offset_bottom = -56.0
 
 [node name="ShopItem2" parent="." unique_id=1652561559 instance=ExtResource("11_sw5c6")]
 position = Vector2(262, 226)
 item_data = ExtResource("13_rrolr")
 
-[node name="ChestScreen" parent="." unique_id=1012830468 instance=ExtResource("14_rrolr")]
-visible = false
-
-[node name="Chest_open_info" type="Label" parent="." unique_id=1725620212]
-offset_left = 9.0
-offset_top = 142.0
-offset_right = 49.0
-offset_bottom = 165.0
-
-[connection signal="button_down" from="Chests/Chest1/Chest1Button" to="." method="_on_chest_1_button_button_down"]
-[connection signal="button_down" from="Chests/Chest2/Chest2Button" to="." method="_on_chest_2_button_button_down"]
-[connection signal="hover" from="Area2D" to="." method="_on_item_hover"]
-[connection signal="side_selected" from="ChestScreen" to="." method="_on_chest_screen_side_selected"]
-[node name="TitleLabel2" type="Label" parent="ShopItem2" unique_id=1622489118]
-offset_left = -236.0
-offset_top = -210.0
-offset_right = -196.0
-offset_bottom = -187.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_gmb2m")
-text = "Title"
-
-[node name="DescLabel2" type="Label" parent="ShopItem2" unique_id=1795698286]
-offset_left = 107.0
-offset_top = -78.0
-offset_right = 147.0
-offset_bottom = -55.0
-
 [connection signal="hover" from="ShopCup" to="." method="_on_item_hover"]
-[connection signal="unhover" from="ShopCup" to="." method="_on_shop_cup_unhover"]

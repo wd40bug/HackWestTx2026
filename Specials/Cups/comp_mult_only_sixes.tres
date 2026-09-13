@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://fmapg3skiocm"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_uclmx"]
+[ext_resource type="Texture2D" uid="uid://cm66lw5d3qh5b" path="res://Assets/Cups/times2_only6.png" id="2_0icsg"]
+
+[resource]
+script = ExtResource("1_uclmx")
+title = "OnlySixesHand"
+description = "Gives a compounding multiplier per six in scored hand. Scoring hand must only contain sixes."
+texture = ExtResource("2_0icsg")
+price = 5
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

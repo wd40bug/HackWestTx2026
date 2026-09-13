@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://73yjohylleog"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_vbkjn"]
+[ext_resource type="Texture2D" uid="uid://srijr4lrox6m" path="res://Assets/Cups/times2_2.png" id="2_ahks5"]
+
+[resource]
+script = ExtResource("1_vbkjn")
+title = "MixedTwosHand"
+description = "Gives a compounding multiplier per two in scored hand"
+texture = ExtResource("2_ahks5")
+price = 6
+metadata/_custom_type_script = "uid://b35o8k85e4q20"

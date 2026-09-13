@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Special" format=3 uid="uid://bb2qddrmdsiit"]
+
+[ext_resource type="Script" uid="uid://b35o8k85e4q20" path="res://special.gd" id="1_b6xfw"]
+[ext_resource type="Texture2D" uid="uid://dhekjc666rr7i" path="res://Assets/Cups/twotripsmult.png" id="2_g847k"]
+
+[resource]
+script = ExtResource("1_b6xfw")
+title = "MultTwoTriplets"
+description = "Multiplies the value of two triplets"
+texture = ExtResource("2_g847k")
+price = 4
+metadata/_custom_type_script = "uid://b35o8k85e4q20"
